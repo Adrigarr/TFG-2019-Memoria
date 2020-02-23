@@ -1,0 +1,74 @@
+\chapter{Estado de la Cuestión}
+\label{cap:estadoDeLaCuestion}
+
+
+\section{Conceptos sobre el ámbito}
+
+Toda la información almacenada en la web está relacionada de alguna forma siguiendo una estructura. Esto significa que los documentos pueden ser enlazados entre sí con ciertos objetivos concretos, como crear motores de búsqueda o recomendadores.
+
+El sistema estructural más importante que nos interesa para este proyecto es el Esquema RDF (Resource Description Framework), que es un modelo de datos basado en declaraciones sobre recursos web mediante expresiones sujeto-predicado-objeto. Dichas expresiones se llaman “triples”, donde el sujeto representa al recurso, el objeto representa el valor del recurso y el predicado supone los rasgos o aspectos del recurso que relacionan sujeto y objeto.\cite{sakr2018}
+
+Estos tres argumentos se representan mediante un Identificador de Recursos: una URI~(Uniform Resource Identifier).\cite{sakr2018,berners1998}
+
+A su vez, esta URI puede ser una URL (Uniform Resource Locator), que es un identificador de recursos cuyos recursos referidos pueden variar en el tiempo, o una URN (Uniform Resource Name), que es un identificador de recursos independiente de la localización de estos recursos.\cite{berners1994,saint2017,sakr2018}
+
+Esencialmente, estas tres tuplas están relacionadas entre ellas de una forma que podemos representar mediante un grafo. Cada una de estas tuplas puede estar relacionada también con otras, creando así un grafo más grande y completo que enlaza una gran cantidad de información.
+
+Una vez comprendido esto, podemos hablar sobre los distintos formatos de RDF:
+\begin{itemize}
+\item xml
+\item json
+\item turtle
+\item triples
+\end{itemize}
+
+El lenguaje principal que vamos a utilizar para consultar los datos enlazados de la web es SPARQL. Este es un lenguaje especializado para buscar y consultar datos RDF. Tiene una sintaxis sencilla e incluye uso de prefijos para simplificar las URL.
+
+Como hemos comentado, si empleamos este lenguaje seremos capaces de relacionar un sujeto y un objeto mediante un predicado de forma que obtendremos un grafo similar al siguiente:\\
+
+(GRAPH)\\
+
+Podríamos decir que estamos estableciendo una relación entre dos objetos unidos mediante una propiedad. Esta propiedad es una "métrica" que nos sirve para relacionar objetos. En nuestro proyecto, estos objetos son canciones.
+
+
+\section{SPARQL y WikiData}
+
+Gracias a WikiData, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset o conjunto de datos, esencialmente datos acerca de artistas y sus temas musicales.
+
+Necesitamos un método para navegar por esta información, por lo que usaremos SPARQL. WikiData está estructurada de tal manera que resulta sencillo acceder a su información utilizando el lenguaje de consultas SPARQL. Cada objeto tiene ciertas propiedades a las que podemos acceder seleccionando el identificador correcto de la propiedad.
+
+Un ejemplo de una consulta sencilla podría ser:\\
+
+-Obtén todos los Artistas cuyo género musical sea Rock:\\
+
+\begin{lstlisting}[language=SPARQL]
+SELECT ?singer ?singerLabel ?genre ?genreLabel
+WHERE
+{
+  ?singer wdt:P31 wd:Q215380;
+      	  wdt:P136 wd:Q7749;
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
+}
+\end{lstlisting}
+
+
+\section{Métricas}
+
+Una vez tengamos las consultas básicas, crearemos otras más complejas que devuelvan información útil para relacionar canciones. Estudiaremos estas consultas con el objetivo de establecer un número de métricas que determinen si una canción podría estar relacionada con otra.
+
+En una primera fase, buscaremos métricas básicas para relacionar diferentes tipos de canciones, por ejemplo: género, artista, tipo de voz, etc. Después buscaremos métricas más complejas que normalmente un humano pasaría por alto. Asignaremos una complejidad de k=1 a las métricas básicas. Estas métricas son una relación directa entre dos canciones relacionadas por una propiedad.\\
+
+(DRAW)\\
+
+Las métricas complejas, sin embargo, pueden estar formadas por relaciones indirectas entre los datos de una forma que se puede representar con un grafo. Estas métricas pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántas aristas del grafo separen ambos elementos.\\
+
+(DRAW)\\
+
+
+Primeras Métricas:
+
+Una de las principales métricas que debemos contemplar es la popularidad de las canciones. En un dataset hay unas canciones que son más escuchadas que otras. Es útil tomar ese punto en consideración cuando necesitemos recomendar una canción basándonos en la idea de que las canciones populares tendrán una mayor probabilidad de encajar con otras. Por ejemplo, si tenemos que recomendar una canción pop será una mejor elección un tema de Michael Jackson, uno de los artistas más representativos del género, antes que recomendar una canción o artista poco popular.
+
+Siguiendo este principio, nos encontramos una situación similar con las décadas. Creemos que hay una mayor probabilidad de que exista una relación entre dos canciones que pertenezcan a la misma década. Esto se debe a que a lo largo del tiempo ha habido periodos marcados por uno o varios géneros musicales. Esto también ayuda a estudiar cómo estos distintos géneros están relacionados entre sí, lo cual es otro punto importante a tener en cuenta ya que hay géneros íntimamente relacionados entre sí: techno y house, heavy metal y thrash metal, etc.
+
+La siguiente métrica son los premios. Existe una variedad de premios compartidos por diferentes artistas. Algunos de estos premios son más específicos que otros y pueden darnos indicios para establecer nuevas relaciones.
