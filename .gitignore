@@ -1,0 +1,12 @@
+
+*.aux
+TFMTeXiS.bbl
+TFMTeXiS.blg
+TFMTeXiS.idx
+TFMTeXiS.lof
+TFMTeXiS.log
+TFMTeXiS.lot
+TFMTeXiS.out
+TFMTeXiS.pdf
+TFMTeXiS.synctex.gz
+TFMTeXiS.toc
