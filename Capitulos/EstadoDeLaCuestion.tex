@@ -51,6 +51,16 @@ WHERE
 }
 \end{lstlisting}
 
+En esta consulta estamos accediendo a todos los onjetos que contengan las propiedades(wdt) P31(Tipo Instancia) Y P136(Género) con el valor(wd) que nosotros estamos seleccionando, Q215380 Y Q7749. Forrzando a que las dos propiedades sean Grupo Musical y Rock and Roll respectivamente.
+SPARQL es un lenguaje muy potente que puede abarcar gran cantidad de datos en funcion de la web (se pueden crear consultas mucho más complejas para obtener datos más específicos). En nuestro caso usaremos la API de Wikidata mediante la librería SPARQLWrapper de Python.
+
+Librerias:
+
+SPARQLWRAPPER
+Para usar eficientemente esta librería, se crea una variable SPARQLWrapper que nos permitirá ejecutar consultas SPARQL mediante formatos string.
+El resultado es un formato JSON el cual se trata para eliminar información extra de la query.
+PANDAS:
+Tratado de los datasets que creamos a partir de los ficheros JSON y para el estudio del dataset original.
 
 \section{Métricas}
 
@@ -72,3 +82,20 @@ Una de las principales métricas que debemos contemplar es la popularidad de las
 Siguiendo este principio, nos encontramos una situación similar con las décadas. Creemos que hay una mayor probabilidad de que exista una relación entre dos canciones que pertenezcan a la misma década. Esto se debe a que a lo largo del tiempo ha habido periodos marcados por uno o varios géneros musicales. Esto también ayuda a estudiar cómo estos distintos géneros están relacionados entre sí, lo cual es otro punto importante a tener en cuenta ya que hay géneros íntimamente relacionados entre sí: techno y house, heavy metal y thrash metal, etc.
 
 La siguiente métrica son los premios. Existe una variedad de premios compartidos por diferentes artistas. Algunos de estos premios son más específicos que otros y pueden darnos indicios para establecer nuevas relaciones.
+
+La metrica Género es una de las más representativas ya que las personas se guian por el género que prefieren en orden a escuchar canciones similares aunque en ocasiones no deba ser así.
+
+
+La metrica Género es una de las más representativas ya que las personas se guian por el género que prefieren en orden a escuchar canciones similares aunque en ocasiones no deba ser así. Un usuario que sea fan del Heavy Metal querrá escuchar canciones  de ese mismo género o generos similares.
+
+Label Record hace referencia a la compañia por la que ha firmado el artista. Hemos podido observar que una misma compañí
+a puede firmar a artistas que a veces no tienen relacion ninguna en cuanto al estilo musical, pero hay otras causas que si los pueden relacionar indirectamente como la tendencia del momento, el target del publico que generan etc...
+
+Como última metrica directa añadimos el país de origen. A priori se generan muchos resultados que no ofrecen una relacion clara pero para países con una poblacion más pequeña resulta muy util pues obtenemos resultados más especí
+ficos. Tambien a lo largo de la historia en un pais se genera una tendencia o nuevo género musical el cual es propio de ese país.
+
+Metricas Indirectas:
+
+La métricas indirectas nos van a ofrecer relaciones más complejas que nos proporcionen información que a simple vista no podríamos relacionar.
+El principal método que hemos establecido es proseguir el estudio de las metricas directas creando un grafo en forma de árbol.
+Para cada una de las métricas directas ejecutaremos más consultas SPARQL obtenien
