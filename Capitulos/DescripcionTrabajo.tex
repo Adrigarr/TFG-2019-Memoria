@@ -13,7 +13,7 @@ Aquí comienza la descripción del trabajo realizado. Se deben incluir tantos ca
 Si te sirve de utilidad,  puedes incluir tablas para mostrar resultados, tal como se ve en la tabla \ref{tab:sampleTable}.
 
 
-\begin{table}
+\begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c}
 		\textbf{Col 1} & \textbf{Col 2} & \textbf{Col 3} \\
@@ -29,3 +29,47 @@ Si te sirve de utilidad,  puedes incluir tablas para mostrar resultados, tal com
 	\caption{Tabla de ejemplo}
 	\label{tab:sampleTable}
 \end{table}
+
+\section{Explicaciones}
+
+Una vez tengamos las consultas básicas, crearemos otras más complejas que devuelvan información útil para relacionar canciones. Estudiaremos estas consultas con el objetivo de establecer un número de explicaciones que determinen si una canción podría estar relacionada con otra.
+
+En una primera fase, buscaremos explicaciones básicas para relacionar diferentes tipos de canciones, por ejemplo: género, artista, tipo de voz, etc. Después buscaremos explicaciones más complejas que normalmente un humano pasaría por alto. Asignaremos una complejidad de k=1 a las explicaciones básicas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad.\\
+
+(DRAW)\\
+
+Las explicaciones complejas, sin embargo, pueden estar formadas por relaciones indirectas entre los datos de una forma que se puede representar con un grafo. Estas explicaciones pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántas aristas del grafo separen ambos elementos.\\
+
+(DRAW)\\
+
+
+Primeras explicaciones:
+
+Una de las principales explicaciones que debemos contemplar es la popularidad de las canciones. En un dataset hay unas canciones que son más escuchadas que otras. Es útil tomar ese punto en consideración cuando necesitemos recomendar una canción basándonos en la idea de que las canciones populares tendrán una mayor probabilidad de encajar con otras. Por ejemplo, si tenemos que recomendar una canción pop será una mejor elección un tema de Michael Jackson, uno de los artistas más representativos del género, antes que recomendar una canción o artista poco popular.\\
+
+Siguiendo este principio, nos encontramos una situación similar con las décadas. Creemos que hay una mayor probabilidad de que exista una relación entre dos canciones que pertenezcan a la misma década. Esto se debe a que a lo largo del tiempo ha habido periodos marcados por uno o varios géneros musicales. Esto también ayuda a estudiar cómo estos distintos géneros están relacionados entre sí, lo cual es otro punto importante a tener en cuenta ya que hay géneros íntimamente relacionados entre sí: techno y house, heavy metal y thrash metal, etc.\\
+
+La siguiente explicación son los premios. Existe una variedad de premios compartidos por diferentes artistas. Algunos de estos premios son más específicos que otros y pueden darnos indicios para establecer nuevas relaciones.\\
+
+La explicación Género es una de las más representativas ya que las personas se guían por el género que prefieren en orden a escuchar canciones similares, aunque en ocasiones no deba ser así. Un usuario que sea fan del Jazz querrá escuchar canciones de ese mismo género o géneros similares.\\
+
+Compañía discográfica hace referencia a la compañía por la que ha firmado el artista. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.\\
+
+Como última explicación directa añadimos el país de origen. A priori se generan muchos resultados que no ofrecen una relación clara, pero para países con una población más pequeña resulta muy útil, pues obtenemos resultados más específicos. También a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país.\\
+
+Explicaciones Indirectas:
+
+La explicaciones indirectas nos van a ofrecer relaciones más complejas que nos proporcionen información que a simple vista no podríamos relacionar.
+El principal método que hemos establecido es proseguir el estudio de las explicaciones directas creando un grafo en forma de árbol.
+Para cada una de las explicaciones directas ejecutaremos más consultas SPARQL obteniendo\\
+
+
+A continuación enumeramos las explicaciones indirectas que buscamos para establecer la relación entre dos canciones:\\
+
+Una de las explicaciones más importantes es la \textbf{década}. La fecha en que se han publicado las canciones es relevante para establecer su relación, ya que dos canciones que pertenezcan a la misma década pueden ser igualmente interesantes para un mismo usuario aunque no exista una relación directa entre ellas.\\
+
+También es interesante comprobar si ambas canciones aparecen en la \textbf{banda sonora} de una misma película. Para esta explicación necesitaremos recurrir a una fuente como MusicBrainz debido a que la información de Wikidata es insuficiente en lo referente a bandas sonoras.\\
+
+La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas, así que podemos encontrar una relación entre dos canciones examinando estas influencias.\\
+
+De la misma forma, un artista puede pertenecer a dos o más bandas musicales a lo largo de su carrera. Comparando \textbf{los miembros de las bandas} podemos encontrar otra explicación para relacionar dos canciones entre sí.\\
