@@ -55,11 +55,19 @@ Siguiendo este principio, nos encontramos una situación similar con las década
 
 \subsubsection*{Artista}
 
-Otra explicación muy importante es el artista. Si dos canciones pertenecen al mismo artista, poseen una clara relación directa y será una de las explicaciones más importantes cuando aparezca.
+El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretadas por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista.
+
+Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Get Lucky}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.
+
+Para esta explicación utilizamos la propiedad "performer" (intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}). 
 
 \subsubsection*{Álbum}
 
-De la misma forma, una explicación muy potente será que ambas canciones pertenezcan al mismo álbum. A menudo esta explicación aparecerá acompañada de la explicación del artista y, en cualquier caso, la relación que existe entre dos temas del mismo álbum suele ser más estrecha debido a que poseen más puntos en común, como puede ser el género, la fecha o la temática.
+Una explicación muy potente será que ambas canciones pertenezcan al mismo álbum. A menudo esta explicación aparecerá acompañada de la explicación del artista y, en cualquier caso, la relación que existe entre dos temas del mismo álbum suele ser más estrecha debido a que poseen más puntos en común, como puede ser el género, la fecha o la temática.
+
+Tomemos como ejemplo \textit{Smells Like Teen Spirit} y \textit{Come as You Are}. Estas dos canciones son muy cercanas porque tienen varios puntos en común, pero una de las explicaciones que podemos ofrecer es que ambas pertenecen al álbum \textit{Nevermind}, de \textbf{Nirvana}. \textit{About a Girl} es otro tema que se podría recomendar a raíz de \textit{Smells Like Teen Spirit}, pero es una peor elección que \textit{Come as You Are} porque pertenece a un álbum diferente.
+
+Volvemos a utilizar Wikidata para obtener esta explicación, concretamente la propiedad "part of" (parte de). Esta propiedad se utiliza para varias cosas, entre ellas indicar los álbumes a los que pertenecen las canciones. Así obtenemos que \textit{Smells Like Teen Spirit} es "parte de" \textit{Nevermind}.
 
 \subsubsection*{Premios}
 
