@@ -49,17 +49,13 @@ Las explicaciones complejas, sin embargo, pueden estar formadas por relaciones i
 
 Una de las principales explicaciones que debemos contemplar es la popularidad de las canciones. En un dataset hay unas canciones que son más escuchadas que otras. Es útil tomar ese punto en consideración cuando necesitemos recomendar una canción basándonos en la idea de que las canciones populares tendrán una mayor probabilidad de encajar con otras. Por ejemplo, si tenemos que recomendar una canción pop será una mejor elección un tema de Michael Jackson, uno de los artistas más representativos del género, antes que recomendar una canción o artista poco popular.
 
-\subsubsection*{Décadas}
-
-Siguiendo este principio, nos encontramos una situación similar con las décadas. Creemos que hay una mayor probabilidad de que exista una relación entre dos canciones que pertenezcan a la misma década. Esto se debe a que a lo largo del tiempo ha habido periodos marcados por uno o varios géneros musicales. Esto también ayuda a estudiar cómo estos distintos géneros están relacionados entre sí, lo cual es otro punto importante a tener en cuenta ya que hay géneros íntimamente relacionados entre sí: techno y house, heavy metal y thrash metal, etc.
-
 \subsubsection*{Artista}
 
 El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretadas por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista.
 
 Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Get Lucky}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.
 
-Para esta explicación utilizamos la propiedad "performer" (intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}). 
+Para esta explicación utilizamos la propiedad ``performer'' (intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}). 
 
 \subsubsection*{Álbum}
 
@@ -67,11 +63,23 @@ Una explicación muy potente será que ambas canciones pertenezcan al mismo álb
 
 Tomemos como ejemplo \textit{Smells Like Teen Spirit} y \textit{Come as You Are}. Estas dos canciones son muy cercanas porque tienen varios puntos en común, pero una de las explicaciones que podemos ofrecer es que ambas pertenecen al álbum \textit{Nevermind}, de \textbf{Nirvana}. \textit{About a Girl} es otro tema que se podría recomendar a raíz de \textit{Smells Like Teen Spirit}, pero es una peor elección que \textit{Come as You Are} porque pertenece a un álbum diferente.
 
-Volvemos a utilizar Wikidata para obtener esta explicación, concretamente la propiedad "part of" (parte de). Esta propiedad se utiliza para varias cosas, entre ellas indicar los álbumes a los que pertenecen las canciones. Así obtenemos que \textit{Smells Like Teen Spirit} es "parte de" \textit{Nevermind}.
+Volvemos a utilizar Wikidata para obtener esta explicación, concretamente la propiedad ``part of'' (parte de). Esta propiedad se utiliza para varias cosas, entre ellas indicar los álbumes a los que pertenecen las canciones. Así obtenemos que \textit{Smells Like Teen Spirit} es ``parte de'' \textit{Nevermind}.
+
+\subsubsection*{Década}
+
+Creemos que hay una mayor probabilidad de que exista una relación entre dos canciones que pertenezcan a la misma década. Esto se debe a que a lo largo del tiempo ha habido periodos marcados por uno o varios géneros musicales. Esto también ayuda a estudiar cómo estos distintos géneros están relacionados entre sí, lo cual es otro punto importante a tener en cuenta ya que hay géneros íntimamente relacionados entre sí: techno y house, heavy metal y thrash metal, etc.
+
+Gracias a esta explicación, podemos relacionar dos canciones que a priori son muy distintas, como es el caso de \textit{September} de \textbf{Earth, Wind \& Fire} y \textit{Bohemian Rhapsody} de \textbf{Queen}. Estos temas no comparten algo tan básico como el artista o el género, pero ambos fueron publicados en los años 70 y por ello pueden resultar interesantes para un usuario que busque escuchar los ritmos de esa época.
+
+Para obtener esta explicación, emplearemos la propiedad ``publication date'' (fecha de publicación) de las canciones en Wikidata y comprobaremos si las dos fechas se sitúan dentro de la misma década.
 
 \subsubsection*{Premios}
 
-La siguiente explicación son los premios. Existe una variedad de premios compartidos por diferentes artistas. Algunos de estos premios son más específicos que otros y pueden darnos indicios para establecer nuevas relaciones.
+La siguiente explicación son los premios recibidos. Existe una variedad de premios compartidos por diferentes canciones. Algunos de estos premios son más específicos que otros, pero en cualquier caso pueden resultar una relación útil para el recomendador ya que son un reflejo de la repercusión de las canciones. Nuestro objetivo es encontrar al menos un premio que hayan recibido ambas canciones.
+
+Así explicaríamos la relación entre \textit{Single Ladies (Put a Ring on It)} de \textbf{Beyoncé} y \textit{Rolling in the Deep} de \textbf{Adele}, ya que ambos temas han recibido el Premio Grammy a la canción del año.
+
+Usaremos la propiedad ``award received'' (premio recibido) encontrada en Wikidata. De esta forma, \textit{Rolling in the Deep} sería el sujeto, ``award received'' sería el predicado y \textit{Grammy Award for Song of the Year} sería el objeto.
 
 \subsubsection*{Género}
 
@@ -79,7 +87,11 @@ La explicación Género es una de las más representativas ya que las personas s
 
 \subsubsection*{Compañía discográfica}
 
-Compañía discográfica hace referencia a la compañía por la que ha firmado el artista. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.
+Compañía discográfica hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.
+
+Para ilustrarlo con un ejemplo, tanto la canción \textit{Born in the U.S.A.} de \textbf{Bruce Springsteen} como la canción \textit{Ashes} de \textbf{Céline Dion} fueron publicadas por el sello discográfico \textbf{Columbia Records}.
+
+Podemos alcanzar esta explicación gracias a la propiedad ``record label'' (sello discográfico) de Wikidata. \textit{Born in the U.S.A.} tiene un ``record label'' cuyo nombre (o valor) es \textbf{Columbia Records}.
 
 \subsubsection*{Singles}
 
@@ -108,8 +120,16 @@ La \textbf{influencia de los artistas} es otra explicación importante. A menudo
 
 \subsubsection*{Integrantes}
 
-De la misma forma, un artista puede pertenecer a dos o más bandas musicales a lo largo de su carrera. Comparando \textbf{los miembros de las bandas} podemos encontrar otra explicación para relacionar dos canciones entre sí.
+De la misma forma, un artista puede pertenecer a dos o más bandas musicales a lo largo de su carrera. Comparando \textbf{los integrantes de las bandas} podemos encontrar otra explicación para relacionar dos canciones entre sí, ya que esta presencia de un mismo artista en diferentes proyectos suele influir al sonido de los mismos. Además, los aficionados de un artista concreto a menudo desean escucharlo en todas las etapas de su carrera musical.
+
+Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
+
+Para comprobarlo, primero tendremos que usar la propiedad de Wikidata ``performer'', como ya hicimos en la explicación del Artista, y después comprobar la propiedad ``has part'' (formado por) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
 
 \subsubsection*{Tipo de voz}
 
 Siguiendo con el estudio de los artistas, el \textbf{tipo de voz} de los vocalistas es una buena explicación para relacionar dos canciones. El tipo de voz influye en el sonido general del tema y puede ser especialmente determinante en ciertos géneros musicales. Por limitaciones técnicas, solo aplicaremos esta explicación con artistas en solitario.
+
+La voz de un artista puede encajar en más de un tipo, como veremos en el siguiente ejemplo, aunque en esta explicación buscamos que coincidan en al menos un tipo. La cantante \textbf{Lady Gaga} se asemeja a \textbf{Amy Winehouse} por su tipo de voz, ya que ambas son \textit{mezzo-soprano} y \textit{contralto}. Así podemos explicar la relación entre dos canciones de estas artistas como \textit{Poker Face} y \textit{Rehab}.
+
+Para esta explicación resulta útil la propiedad ``voice type'' (tipo de voz) en Wikidata. Partiendo de \textit{Poker Face}, utilizamos la propiedad ``performer'' para llegar a \textbf{Lady Gaga} y finalmente usamos su ``voice type'' para obtener \textit{mezzo-soprano}.
