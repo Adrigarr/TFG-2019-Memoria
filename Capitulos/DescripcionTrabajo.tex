@@ -95,11 +95,11 @@ Podemos alcanzar esta explicación gracias a la propiedad ``record label'' (sell
 
 \subsubsection*{Singles}
 
-Existe también una cierta relación entre aquellos temas que sean singles o sencillos, así que consideramos esto como una explicación más. El razonamiento para esta decisión es que los singles son canciones que se publican de forma independiente por razones promocionales, por lo que suelen convertirse en los temas más populares y representativos del trabajo del artista. Por ello, pueden poseer más valor para el recomendador que otras canciones.
+Existe también una cierta relación entre aquellos temas que sean singles o sencillos, así que consideramos esto como una explicación más. El razonamiento para esta decisión es que los singles son canciones que se publican de forma independiente por razones promocionales, por lo que suelen convertirse en los temas más populares y representativos del trabajo del artista. Por ello, pueden poseer más valor para el recomendador que otras canciones porque los singles tienen más probabilidades de coincidir con los gustos del usuario.
 
-\subsubsection*{País de origen}
+El tema \textit{Bad Guy} de \textbf{Billie Eilish} es un single, así que podemos decir que tiene cierta relación con \textit{Shallow} de \textbf{Lady Gaga} y \textbf{Bradley Cooper}, que también es un single.
 
-Como última explicación directa añadimos el país de origen. A priori se generan muchos resultados que no ofrecen una relación clara, pero para países con una población más pequeña resulta muy útil, pues obtenemos resultados más específicos. También a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país.
+Para esta explicación emplearemos la propiedad ``instance of'' (instancia de) en Wikidata y su valor ``single''. De esta forma comprobaremos que tanto \textit{Bad Guy} como \textit{Shallow} son ``instancia de'' ``single''.
 
 \subsection{Explicaciones indirectas}
 
@@ -108,7 +108,15 @@ El principal método que hemos establecido es proseguir el estudio de las explic
 Para cada una de las explicaciones directas ejecutaremos más consultas SPARQL obteniendo\\
 
 
-A continuación enumeramos las explicaciones indirectas que buscamos para establecer la relación entre dos canciones:
+A continuación enumeramos las explicaciones indirectas adicionales que buscamos para establecer la relación entre dos canciones:
+
+\subsubsection*{País de origen}
+
+Para empezar podemos fijarnos en el país de origen de los artistas. Esta explicación puede ser especialmente útil para países relativamente pequeños donde la música nacional presenta unos patrones claros. Además, a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país.
+
+La canción \textit{Fire} de la banda \textbf{BTS} y \textit{Kill This Love} de \textbf{Blackpink} guardan cierta similitud porque ambos grupos son originarios de \textbf{Corea del Sur}.
+
+Para comprobarlo, primero tendremos que usar la propiedad de Wikidata ``performer'', como ya hicimos en la explicación del Artista, y después comprobar la propiedad ``country of origin'' (país de origen) en el caso de las bandas o la propiedad ``country of citizenship'' (país de nacionalidad) en el caso de los artistas en solitario. \textit{Fire} tiene el ``performer'' \textbf{BTS}, cuyo ``country of origin'' es Corea del Sur.
 
 \subsubsection*{Banda sonora}
 
@@ -116,7 +124,11 @@ También es interesante comprobar si ambas canciones aparecen en la \textbf{band
 
 \subsubsection*{Influencia}
 
-La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas, así que podemos encontrar una relación entre dos canciones examinando estas influencias.
+La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas de formas que no siempre están ligadas a un género musical concreto, así que podemos encontrar una relación entre dos canciones examinando estas influencias.
+
+Tomando como ejemplo las canciones \textit{Billie Jean} de \textbf{Michael Jackson} y \textit{Paint It Black} de \textit{The Rolling Stones}, podemos establecer una relación entre ellas al ver que ambos artistas fueron influenciados por la banda \textbf{The Beatles}.
+
+Obtenemos esta explicación gracias a la propiedad ``influenced by'' (influenciado por) de Wikidata, además de la propiedad ``performer'' para relacionar el tema con su artista. Así averiguamos que \textit{Billie Jean} tiene de ``intérprete'' a \textbf{Michael Jackson}, quien fue ``influenciado por'' \textbf{The Beatles}.
 
 \subsubsection*{Integrantes}
 
@@ -124,7 +136,7 @@ De la misma forma, un artista puede pertenecer a dos o más bandas musicales a l
 
 Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
 
-Para comprobarlo, primero tendremos que usar la propiedad de Wikidata ``performer'', como ya hicimos en la explicación del Artista, y después comprobar la propiedad ``has part'' (formado por) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
+Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (formado por) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
 
 \subsubsection*{Tipo de voz}
 
