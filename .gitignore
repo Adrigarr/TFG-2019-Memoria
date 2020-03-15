@@ -1,8 +1,8 @@
 
 *.aux
 *.log
-TFMTeXiS.bbl
-TFMTeXiS.blg
+*.bbl
+*.blg
 TFMTeXiS.idx
 TFMTeXiS.lof
 TFMTeXiS.lot
@@ -11,3 +11,4 @@ TFMTeXiS.pdf
 TFMTeXiS.synctex.gz
 TFMTeXiS.toc
 
+bibliography.bib.bak
