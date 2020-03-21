@@ -173,6 +173,13 @@ La canción \textit{Fire} de la banda \textbf{BTS} y \textit{Kill This Love} de 
 
 Para comprobarlo, primero tendremos que usar la propiedad de Wikidata ``performer'', como ya hicimos en la explicación del Artista, y después comprobar la propiedad ``country of origin'' (país de origen) en el caso de las bandas o la propiedad ``country of citizenship'' (país de nacionalidad) en el caso de los artistas en solitario. \textit{Fire} tiene el ``performer'' \textbf{BTS}, cuyo ``country of origin'' es Corea del Sur.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/País ejemplo.png}
+	\caption{Ejemplo de explicación por país de origen}
+	\label{fig:sampleImage}
+\end{figure}
+
 \subsubsection*{Banda sonora}
 
 También es interesante comprobar si ambas canciones aparecen en la \textbf{banda sonora} de una misma película. Para esta explicación necesitaremos recurrir a una fuente como MusicBrainz debido a que la información de Wikidata es insuficiente en lo referente a bandas sonoras.
@@ -181,9 +188,16 @@ También es interesante comprobar si ambas canciones aparecen en la \textbf{band
 
 La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas de formas que no siempre están ligadas a un género musical concreto, así que podemos encontrar una relación entre dos canciones examinando estas influencias.
 
-Tomando como ejemplo las canciones \textit{Billie Jean} de \textbf{Michael Jackson} y \textit{Paint It Black} de \textit{The Rolling Stones}, podemos establecer una relación entre ellas al ver que ambos artistas fueron influenciados por la banda \textbf{The Beatles}.
+Tomando como ejemplo las canciones \textit{Billie Jean} de \textbf{Michael Jackson} y \textit{Paint It Black} de \textbf{The Rolling Stones}, podemos establecer una relación entre ellas al ver que ambos artistas fueron influenciados por la banda \textbf{The Beatles}.
 
 Obtenemos esta explicación gracias a la propiedad ``influenced by'' (influenciado por) de Wikidata, además de la propiedad ``performer'' para relacionar el tema con su artista. Así averiguamos que \textit{Billie Jean} tiene de ``intérprete'' a \textbf{Michael Jackson}, quien fue ``influenciado por'' \textbf{The Beatles}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Influencia ejemplo.png}
+	\caption{Ejemplo de explicación por influencia}
+	\label{fig:sampleImage}
+\end{figure}
 
 \subsubsection*{Integrantes}
 
@@ -191,7 +205,14 @@ De la misma forma, un artista puede pertenecer a dos o más bandas musicales a l
 
 Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
 
-Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (formado por) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
+Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (compuesto de) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Integrante ejemplo.png}
+	\caption{Ejemplo de explicación por integrantes}
+	\label{fig:sampleImage}
+\end{figure}
 
 \subsubsection*{Tipo de voz}
 
@@ -200,3 +221,10 @@ Siguiendo con el estudio de los artistas, el \textbf{tipo de voz} de los vocalis
 La voz de un artista puede encajar en más de un tipo, como veremos en el siguiente ejemplo, aunque en esta explicación buscamos que coincidan en al menos un tipo. La cantante \textbf{Lady Gaga} se asemeja a \textbf{Amy Winehouse} por su tipo de voz, ya que ambas son \textit{mezzo-soprano} y \textit{contralto}. Así podemos explicar la relación entre dos canciones de estas artistas como \textit{Poker Face} y \textit{Rehab}.
 
 Para esta explicación resulta útil la propiedad ``voice type'' (tipo de voz) en Wikidata. Partiendo de \textit{Poker Face}, utilizamos la propiedad ``performer'' para llegar a \textbf{Lady Gaga} y finalmente usamos su ``voice type'' para obtener \textit{mezzo-soprano}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Voz ejemplo.png}
+	\caption{Ejemplo de explicación por tipo de voz}
+	\label{fig:sampleImage}
+\end{figure}
