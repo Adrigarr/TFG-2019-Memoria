@@ -210,15 +210,19 @@ Podemos alcanzar esta explicación gracias a la propiedad ``record label'' (sell
 
 \subsubsection*{Integrantes}
 
-De la misma forma, un artista puede pertenecer a dos o más bandas musicales a lo largo de su carrera. Comparando \textbf{los integrantes de las bandas} podemos encontrar otra explicación para relacionar dos canciones entre sí, ya que esta presencia de un mismo artista en diferentes proyectos suele influir al sonido de los mismos. Además, los aficionados de un artista concreto a menudo desean escucharlo en todas las etapas de su carrera musical.
+Los \textbf{integrantes} son cada uno de los miembros que conforman un grupo. En caso de ser un único artista, esta propiedad es irrelevante ya que haríamos referencia a la propiedad directa de artista. Esta propiedad resulta útil en casos en los que miembros de la banda han cambiado de grupo a lo largo de su carrera musical. Esto nos da acceso a otros grupos que por valores o gustos musicales del artista nos hacen pensar que pueden ser muy parecidos.
 
-Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
+Uno de los ejemplos más relevantes de la historia de la música es el abandono del grupo "Gun's and Roses" por parte de su guitarrista \textbf{Saul Hudson "Slash"}, uno de los guitarristas más influyentes de la época. Pasó a formar su propio grupo \textbf{Velvet Revolver} junto a otros artistas muy conocidos como el afamado guitarrista \textbf{Dave Kushner} y el cantante de \textbf{Stone Temple Pilots}, \textbf{Scott Weiland}.
+
+Es un hecho obvio que todos estos artistas brindaron a este grupo el estilo propio que dotaban ellos mismos aportaban en sus anteriores bandas.
+
+Como este podemos encontrar muchos ejemplos. Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
 
 Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (compuesto de) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Integrante ejemplo.png}
+	\includegraphics[width = 0.8\textwidth]{Imagenes/Bitmap/Integrante ejemplo.png}
 	\caption{Ejemplo de explicación por integrantes}
 	\label{fig:sampleImage}
 \end{figure}
@@ -261,17 +265,9 @@ Cabe destacar la diferencia entre las propiedades Influed by y Subgenre, mientra
 
 Con esta propiedad intentamos tener en cuenta la historia de la música o su cronograma. Hay géneros que fueron desarrollados conjuntamente a lo largo del tiempo. Un ejemplo de este caso se dio en curiosamente el tecnopop que tanto caracterizó a los años 80, pues convivió a veces con el soul y el estilo afroamericano doo-wop, de Billy Joel.
 
-
 \subsubsection*{País}
 
 Por último, recogemos la información del país donde se formó ese género. Con esta propiedad queremos poder recoger movimientos artísticos que surgieron en el mismo país. Los géneros que fueron formados en un determinado país están mucho más arraigados a este a pesar de que se hayan extendido por todo el mundo. Es por esto que si queremos relacionar una artista que cualquier parte del mundo, que tiene un estilo Techno, será más propenso a estar relacionado con artistas o canciones Holandesas, cuna del este estilo musical. 
-
-
-\subsubsection*{Integrantes}
-Los integrantes son cada uno de los miembros que conforman un grupo. En caso de ser un único artista, esta propiedad es irrelevante ya que haríamos referencia a la propiedad directa de artista. Esta propiedad resulta útil en casos en los que miembros de la banda han cambiado de grupo a lo largo de su carrera musical. Esto nos da acceso a otros grupos que por valores o gustos musicales del artista nos hacen pensar que pueden ser muy parecidos.
-Uno de los ejemplos más relevantes de la historia de la música es el abandono del grupo "Gun's and Roses" por parte de su guitarrista Saul Hudson "Slash", uno de los guitarristas más influyentes de la época. Pasó a formar su propio grupo "Velver Revolver" junto a otros artistas muy conocidos como el afamado guitarrista Dave Kushner y el cantante de Stone Temple Pilots, Scott Weiland.
-Es un hecho obvio que todos estos artistas brindaron a este grupo el estilo propio que dotaban ellos mismos aportaban en sus anteriores bandas.
-
 
 \subsubsection*{Banda sonora}
 
@@ -279,7 +275,7 @@ También es interesante comprobar otras métricas a priori más "alternativas", 
 
 \subsection{Extras}
 
-En esta sección hemos añadido propiedades menos conocidas o musicales que pueden ayudarnos a establecer relaciones estre canciones que no son muy parecidas musicalmente hablado, pero que mantienen puntos de unión estre artistas o miembros estudiados.
+En esta sección hemos añadido propiedades menos conocidas o musicales que pueden ayudarnos a establecer relaciones entre canciones que no son muy parecidas musicalmente hablado, pero que mantienen puntos de unión entre artistas o miembros estudiados.
 El primer caso peculiar lo obtendremos con la propiedad "Member", la cual indica que ese sujeto pertenece a un determinado grupo de personas que comparten algo en común. Para explicar mejor este caso lo ejemplificamos en la siguiente figura:
 
 \begin{figure}[h!]
@@ -289,6 +285,6 @@ El primer caso peculiar lo obtendremos con la propiedad "Member", la cual indica
 	\label{fig:sampleImage}
 \end{figure}
 
-The 27 Club hace referencia al conjunto de artistas o personalidades que murieron a la edad de 27 años. Esta propiedad es compartida por los cantantes Kurt Cobain y Jim Morrison. A priori son dos artistas que no tienenpuntos en común en sus estilos musicales sin embargo, un usuario puede escuchar diferentes canciones por hechos o noticias de diferentes personas por mera curiosidad personal.
+The 27 Club hace referencia al conjunto de artistas o personalidades que murieron a la edad de 27 años. Esta propiedad es compartida por los cantantes Kurt Cobain y Jim Morrison. A priori son dos artistas que no tienen puntos en común en sus estilos musicales sin embargo, un usuario puede escuchar diferentes canciones por hechos o noticias de diferentes personas por mera curiosidad personal.
 
 También añadimos a esta sección propiedades como la causa de la muerte, ocupaciones distintas del artista (escritor, bailarín etc..) y más propiedades que iremos estudiando.
