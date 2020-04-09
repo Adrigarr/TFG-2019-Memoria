@@ -34,13 +34,9 @@ Si te sirve de utilidad,  puedes incluir tablas para mostrar resultados, tal com
 
 Una vez tengamos las consultas básicas, crearemos otras más complejas que devuelvan información útil para relacionar canciones. Estudiaremos estas consultas con el objetivo de establecer un número de explicaciones que determinen si una canción podría estar relacionada con otra.
 
-En una primera fase, buscaremos explicaciones básicas para relacionar diferentes tipos de canciones, por ejemplo: género, artista, álbum, etc. Después buscaremos explicaciones más complejas que normalmente un humano pasaría por alto. Asignaremos una complejidad de k=1 a las explicaciones básicas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad.\\
+En una primera fase, generaremos explicaciones básicas para relacionar diferentes tipos de canciones, por ejemplo: género, artista, álbum, etc. Asignaremos una complejidad de k=1 a las explicaciones directas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad.\\
 
-(DRAW)\\
-
-Las explicaciones complejas, sin embargo, pueden estar formadas por relaciones indirectas entre los datos de una forma que se puede representar con un grafo. Estas explicaciones pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántas aristas del grafo separen ambos elementos.\\
-
-(DRAW)\\
+Después generaremos explicaciones más complejas que normalmente un humano pasaría por alto. Estas explicaciones complejas pueden estar formadas por relaciones indirectas entre los datos de una forma que se puede representar con un grafo. Estas explicaciones pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántas aristas del grafo separen ambos elementos.\\
 
 
 \subsection{Explicaciones directas}
@@ -48,13 +44,9 @@ Las explicaciones complejas, sin embargo, pueden estar formadas por relaciones i
 En esta sección vamos a recopilar todas la propiedades propias de la canción en sí. Es decir, propiedades que tiene inherentes en sí y no por terceros objetos o personas que puedan estar relacionados:
 
 
-\subsubsection*{Popularidad}
-
-Una de las principales explicaciones que debemos contemplar es la popularidad de las canciones. En un dataset hay unas canciones que son más escuchadas que otras. Es útil tomar ese punto en consideración cuando necesitemos recomendar una canción basándonos en la idea de que las canciones populares tendrán una mayor probabilidad de encajar con otras. Por ejemplo, si tenemos que recomendar una canción pop será una mejor elección un tema de Michael Jackson, uno de los artistas más representativos del género, antes que recomendar una canción o artista poco popular.
-
 \subsubsection*{Artista}
 
-El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretadas por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista. Además, a partir del artista podemos obtener otras relaciones más complejas en función de los datos de este mismo.
+El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretados por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista. Además, a partir del artista podemos obtener otras relaciones más complejas en función de los datos de este mismo.
 
 Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Get Lucky}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.
 
@@ -100,7 +92,7 @@ También utilizaremos la propiedad ``work period'' (periodo de trabajo), que hac
 
 \subsubsection*{Premios}
 
-La siguiente explicación son los premios recibidos. Existe una variedad de premios compartidos por diferentes canciones. Algunos de estos premios son más específicos que otros, pero en cualquier caso pueden resultar una relación útil para el recomendador ya que son un reflejo de la repercusión de las canciones. Nuestro objetivo es encontrar al menos un premio que hayan recibido ambas canciones.
+La siguiente explicación son los premios recibidos. Existe una variedad de premios compartidos por diferentes canciones. Algunos de estos premios son más específicos que otros, pero en cualquier caso pueden resultar una relación útil para nuestras explicaciones ya que son un reflejo de la repercusión de las canciones.
 
 Así explicaríamos la relación entre \textit{Single Ladies (Put a Ring on It)} de \textbf{Beyoncé} y \textit{Rolling in the Deep} de \textbf{Adele}, ya que ambos temas han recibido el Premio Grammy a la canción del año.
 
@@ -130,6 +122,20 @@ Para esta relación utilizamos la propiedad ``genre'' (género) de Wikidata. As�
 
 Además, si hacemos un estudio más profundo de los géneros y la frecuencia en que aparecen juntos dentro de las mismas canciones, podemos llegar a relacionar temas de géneros que no son idénticos en nuestra fuente pero sí similares. Este sería el caso de \textit{Fight the Power} de \textbf{Public Enemy} y \textit{Juicy} de \textbf{The Notorious B.I.G.}, siendo el primero considerado un tema de \textbf{hip hop music} según la información de Wikidata mientras que el segundo aparece como \textbf{political hip hop}.
 
+\subsubsection*{Compañía discográfica}
+
+Compañía discográfica hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.
+
+Para ilustrarlo con un ejemplo, tanto la canción \textit{Born in the U.S.A.} de \textbf{Bruce Springsteen} como la canción \textit{Ashes} de \textbf{Céline Dion} fueron publicadas por el sello discográfico \textbf{Columbia Records}.
+
+Podemos alcanzar esta explicación gracias a la propiedad ``record label'' (sello discográfico) de Wikidata. \textit{Born in the U.S.A.} tiene un ``record label'' cuyo nombre (o valor) es \textbf{Columbia Records}.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Discográfica ejemplo.png}
+	\caption{Ejemplo de explicación por compañía discográfica}
+	\label{fig:sampleImage}
+\end{figure}
 
 \subsubsection*{Singles}
 
@@ -149,16 +155,15 @@ Para esta explicación emplearemos la propiedad ``instance of'' (instancia de) e
 
 \subsection{Explicaciones indirectas}
 
-La explicaciones indirectas nos van a ofrecer relaciones más complejas que nos proporcionen información que a simple vista no podríamos relacionar ya que están relacionadas con sujetos externos como son el artistas que interpreta la canción y el género de la canción:
+La explicaciones indirectas nos van a ofrecer relaciones más complejas que nos proporcionen información que a simple vista no podríamos relacionar, ya que están relacionadas con sujetos externos como son el artista que interpreta la canción y el género de la canción.
 
-El punto de base principal serán las explicaciones directas. En podemos sacar de cada una de las explicaciones directas más propiedades de estas que indirectamente estarán relacionadas con la canción. Así pues, desde una canción podemos obtener su artista, a partir de este los géneros musicales con los que está relacionado y pasamos a estudiar subgéneros de esos géneros obteniendo así un grafo en forma de árbol que puede dividirse en varios niveles. Podemos profundizar en estos niveles tanto como nosotros creamos conveniente. \\
+El punto de partida principal serán las explicaciones directas. De cada una de las explicaciones directas podemos obtener más propiedades que indirectamente estarán relacionadas con la canción. Así pues, desde una canción podemos obtener su artista, a partir del artista los géneros musicales con los que está relacionado y pasamos a estudiar subgéneros de esos géneros obteniendo así un grafo en forma de árbol que puede dividirse en varios niveles. Podemos profundizar en estos niveles tanto como nosotros creamos conveniente. \\
 
-
-A continuación enumeramos las explicaciones indirectas adicionales que buscamos para establecer la relación entre dos canciones. Cabe destacar que las dos principales ramas o propiedades directas que vamos a explotar son el género y al artista/grupo de la canción:
+A continuación enumeramos las explicaciones indirectas adicionales que buscamos para establecer la relación entre dos canciones. Cabe destacar que las dos principales ramas o propiedades directas que vamos a explorar son el género y el artista/grupo de la canción:
 
 \subsubsection*{País de origen}
 
-El primer estudio de relaciones indirectas viene dado por investigar y obtener propiedades del artista que interpreta la canción:
+El primer estudio de relaciones indirectas viene dado por investigar y obtener propiedades del artista que interpreta la canción.
 
 Para empezar podemos fijarnos en el país de origen del artista. Esta explicación puede ser especialmente útil para países relativamente pequeños donde la música nacional presenta unos patrones claros. Además, a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país.
 
@@ -192,31 +197,11 @@ Obtenemos esta explicación gracias a la propiedad ``influenced by'' (influencia
 	\label{fig:sampleImage}
 \end{figure}
 
-\subsubsection*{Compañía discográfica}
-
-Compañía discográfica hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.
-
-Para ilustrarlo con un ejemplo, tanto la canción \textit{Born in the U.S.A.} de \textbf{Bruce Springsteen} como la canción \textit{Ashes} de \textbf{Céline Dion} fueron publicadas por el sello discográfico \textbf{Columbia Records}.
-
-Podemos alcanzar esta explicación gracias a la propiedad ``record label'' (sello discográfico) de Wikidata. \textit{Born in the U.S.A.} tiene un ``record label'' cuyo nombre (o valor) es \textbf{Columbia Records}.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Discográfica ejemplo.png}
-	\caption{Ejemplo de explicación por compañía discográfica}
-	\label{fig:sampleImage}
-\end{figure}
-
-
 \subsubsection*{Integrantes}
 
 Los \textbf{integrantes} son cada uno de los miembros que conforman un grupo. En caso de ser un único artista, esta propiedad es irrelevante ya que haríamos referencia a la propiedad directa de artista. Esta propiedad resulta útil en casos en los que miembros de la banda han cambiado de grupo a lo largo de su carrera musical. Esto nos da acceso a otros grupos que por valores o gustos musicales del artista nos hacen pensar que pueden ser muy parecidos.
 
-Uno de los ejemplos más relevantes de la historia de la música es el abandono del grupo "Gun's and Roses" por parte de su guitarrista \textbf{Saul Hudson "Slash"}, uno de los guitarristas más influyentes de la época. Pasó a formar su propio grupo \textbf{Velvet Revolver} junto a otros artistas muy conocidos como el afamado guitarrista \textbf{Dave Kushner} y el cantante de \textbf{Stone Temple Pilots}, \textbf{Scott Weiland}.
-
-Es un hecho obvio que todos estos artistas brindaron a este grupo el estilo propio que dotaban ellos mismos aportaban en sus anteriores bandas.
-
-Como este podemos encontrar muchos ejemplos. Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
+Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
 
 Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (compuesto de) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
 
@@ -268,10 +253,6 @@ Con esta propiedad intentamos tener en cuenta la historia de la música o su cro
 \subsubsection*{País}
 
 Por último, recogemos la información del país donde se formó ese género. Con esta propiedad queremos poder recoger movimientos artísticos que surgieron en el mismo país. Los géneros que fueron formados en un determinado país están mucho más arraigados a este a pesar de que se hayan extendido por todo el mundo. Es por esto que si queremos relacionar una artista que cualquier parte del mundo, que tiene un estilo Techno, será más propenso a estar relacionado con artistas o canciones Holandesas, cuna del este estilo musical. 
-
-\subsubsection*{Banda sonora}
-
-También es interesante comprobar otras métricas a priori más "alternativas", como por ejemplo si dos canciones aparecen en la \textbf{banda sonora} de una misma película. Para esta explicación necesitaremos recurrir a una fuente como MusicBrainz debido a que la información de Wikidata es insuficiente en lo referente a bandas sonoras.
 
 \subsection{Extras}
 

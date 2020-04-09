@@ -4,27 +4,17 @@
 
 \section{Conceptos sobre el ámbito}
 
-La llamada \textbf{Web Semántica} es una extensión de la World Wide Web propuesta por Tim Berners-Lee \cite{berners2001}, cuyo objetivo es proveer a los datos estructura y significado. Con esto se consigue que la información de la web sea más fácilmente comprensible para las máquinas (o agentes de software). De esta forma se desea lograr que los agentes no solo analicen gramaticalmente, sino que comprendan la gran cantidad de información contenida en la web. Gracias a este entendimiento, los agentes podrán integrar datos de diversas fuentes, inferir hechos ocultos y responder a consultas complejas fácilmente.\cite{sakr2018}\\
+La llamada \textbf{Web Semántica} es una extensión de la World Wide Web propuesta por Tim Berners-Lee \cite{berners2001}, cuyo objetivo es proveer a los datos estructura y significado. Con esto se consigue que la información de la web sea más fácilmente comprensible para las máquinas (o agentes de software). De esta forma se desea lograr que los agentes no solo analicen gramaticalmente, sino que comprendan la gran cantidad de información contenida en la web. Gracias a este entendimiento, los agentes podrán integrar datos de diversas fuentes, inferir hechos ocultos y responder a consultas complejas fácilmente \cite{sakr2018}.\\
 
 Para poder hacer realidad esta Web Semántica es necesario que la información de la web sea accesible en un formato estandarizado, accesible y manejable por las herramientas de la Web Semántica. Además, no basta con tener acceso a los datos sino también a la relación entre la información, lo cual marca la diferencia entre la Web Semántica y una simple colección de datasets. Esta colección de datos interrelacionados es lo que llamamos \textbf{Linked Data} (o datos enlazados) y será la base de nuestro trabajo en el dominio de los temas musicales.\\
 
-El sistema estructural más importante que nos interesa para este proyecto es el Esquema RDF (Resource Description Framework), que es un modelo de datos basado en declaraciones sobre recursos web mediante expresiones sujeto-predicado-objeto. Dichas expresiones se llaman “triples”, donde el sujeto representa al recurso, el objeto representa el valor del recurso y el predicado supone los rasgos o aspectos del recurso que relacionan sujeto y objeto.\cite{sakr2018}
+El sistema estructural más importante que nos interesa para este proyecto es el Esquema RDF (Resource Description Framework), que es un modelo de datos basado en declaraciones sobre recursos web mediante expresiones sujeto-predicado-objeto. Dichas expresiones se llaman “tripletas”, donde el sujeto representa al recurso, el objeto representa el valor del recurso y el predicado supone los rasgos o aspectos del recurso que relacionan sujeto y objeto \cite{sakr2018}.
 
-Estos tres argumentos se representan mediante un Identificador de Recursos: una URI~(Uniform Resource Identifier).\cite{sakr2018,berners1998}
+Estos tres argumentos se representan mediante un Identificador de Recursos: una URI~(Uniform Resource Identifier) \cite{sakr2018,berners1998}.
 
-A su vez, esta URI puede ser una URL (Uniform Resource Locator), que es un identificador de recursos cuyos recursos referidos pueden variar en el tiempo, o una URN (Uniform Resource Name), que es un identificador de recursos independiente de la localización de estos recursos.\cite{berners1994,saint2017,sakr2018}
+A su vez, esta URI puede ser una URL (Uniform Resource Locator), que es un identificador de recursos cuyos recursos referidos pueden variar en el tiempo, o una URN (Uniform Resource Name), que es un identificador de recursos independiente de la localización de estos recursos \cite{berners1994,saint2017,sakr2018}.
 
 Esencialmente, estas tres tuplas están relacionadas entre ellas de una forma que podemos representar mediante un grafo. Cada una de estas tuplas puede estar relacionada también con otras, creando así un grafo más grande y completo que enlaza una gran cantidad de información.
-
-Una vez comprendido esto, podemos hablar sobre los distintos formatos de RDF:
-\begin{itemize}
-\item xml
-\item json
-\item turtle
-\item triples
-\end{itemize}
-
-El lenguaje principal que vamos a utilizar para consultar los datos enlazados de la web es SPARQL. Este es un lenguaje especializado para buscar y consultar datos RDF. Tiene una sintaxis sencilla e incluye uso de prefijos para simplificar las URL.
 
 Como hemos comentado, si empleamos este lenguaje seremos capaces de relacionar un sujeto y un objeto mediante un predicado de forma que obtendremos un grafo similar al siguiente:\\
 
@@ -32,8 +22,9 @@ Como hemos comentado, si empleamos este lenguaje seremos capaces de relacionar u
 
 Podríamos decir que estamos estableciendo una relación entre dos objetos unidos mediante una propiedad. Esta propiedad es una ``explicación'' que nos sirve para relacionar objetos. En nuestro proyecto, estos objetos son canciones.
 
-
 \section{SPARQL y WikiData}
+
+El lenguaje principal que vamos a utilizar para consultar los datos enlazados de la web es SPARQL. Este es un lenguaje especializado para buscar y consultar datos RDF. Tiene una sintaxis sencilla e incluye uso de prefijos para simplificar las URL.
 
 Gracias a WikiData, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset o conjunto de datos, esencialmente datos acerca de artistas y sus temas musicales.
 
