@@ -1,6 +1,9 @@
 \chapter{Estado de la Cuestión}
 \label{cap:estadoDeLaCuestion}
 
+Actualmente Internet aloja una cantidad ingente de información de todo tipo. A pesar de los beneficios evidentes que supone tener tanta información subida a la web, este hecho también trae consigo problemas debido a dificultades semánticas, un más que elevado número de fuentes de información y el propio tamaño de los datos. Como consecuencia, la información accesible de forma efectiva es muy inferior a lo que cabría esperar.
+
+A continuación estudiaremos tecnologías cuyo objetivo es facilitar contexto a los datos y facilitar el proceso de búsqueda al proveer información verdaderamente relevante para los usuarios.
 
 \section{Conceptos sobre el ámbito}
 
@@ -8,7 +11,7 @@ La llamada \textbf{Web Semántica} es una extensión de la World Wide Web propue
 
 Para poder hacer realidad esta Web Semántica es necesario que la información de la web sea accesible en un formato estandarizado, accesible y manejable por las herramientas de la Web Semántica. Además, no basta con tener acceso a los datos sino también a la relación entre la información, lo cual marca la diferencia entre la Web Semántica y una simple colección de datasets. Esta colección de datos interrelacionados es lo que llamamos \textbf{Linked Data} (o datos enlazados) y será la base de nuestro trabajo en el dominio de los temas musicales.\\
 
-El sistema estructural más importante que nos interesa para este proyecto es el Esquema RDF (Resource Description Framework), que es un modelo de datos basado en declaraciones sobre recursos web mediante expresiones sujeto-predicado-objeto. Dichas expresiones se llaman “tripletas”, donde el sujeto representa al recurso, el objeto representa el valor del recurso y el predicado supone los rasgos o aspectos del recurso que relacionan sujeto y objeto \cite{sakr2018}.
+El sistema estructural más importante que nos interesa para este proyecto es el \textbf{Esquema RDF} (Resource Description Framework), que es un modelo de datos basado en declaraciones sobre recursos web mediante expresiones sujeto-predicado-objeto. Dichas expresiones se llaman “tripletas”, donde el sujeto representa al recurso, el objeto representa el valor del recurso y el predicado supone los rasgos o aspectos del recurso que relacionan sujeto y objeto \cite{sakr2018}.
 
 Estos tres argumentos se representan mediante un Identificador de Recursos: una URI~(Uniform Resource Identifier) \cite{sakr2018,berners1998}.
 
@@ -18,17 +21,21 @@ Esencialmente, estas tres tuplas están relacionadas entre ellas de una forma qu
 
 Como hemos comentado, si empleamos este lenguaje seremos capaces de relacionar un sujeto y un objeto mediante un predicado de forma que obtendremos un grafo similar al siguiente:\\
 
-(GRAPH)\\
-
 Podríamos decir que estamos estableciendo una relación entre dos objetos unidos mediante una propiedad. Esta propiedad es una ``explicación'' que nos sirve para relacionar objetos. En nuestro proyecto, estos objetos son canciones.
 
-\section{SPARQL y WikiData}
+\section{WikiData}
+
+Wikidata es una base de datos libre, colaborativa, multilingüe y secundaria, que recopila datos estructurados para dar soporte a Wikipedia, Wikimedia Commons, así como a otras wikis del movimiento Wikimedia y a cualquier persona en el mundo \cite{wikidataIntro}.
+
+Gracias a Wikidata, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset (o conjunto de datos), esencialmente datos acerca de artistas y sus temas musicales.
+
+Necesitamos un método para que nuestra aplicación pueda navegar por esta información, por lo que usaremos SPARQL.
+
+\section{SPARQL}
 
 El lenguaje principal que vamos a utilizar para consultar los datos enlazados de la web es SPARQL. Este es un lenguaje especializado para buscar y consultar datos RDF. Tiene una sintaxis sencilla e incluye uso de prefijos para simplificar las URL.
 
-Gracias a WikiData, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset o conjunto de datos, esencialmente datos acerca de artistas y sus temas musicales.
-
-Necesitamos un método para navegar por esta información, por lo que usaremos SPARQL. WikiData está estructurada de tal manera que resulta sencillo acceder a su información utilizando el lenguaje de consultas SPARQL. Cada objeto tiene ciertas propiedades a las que podemos acceder seleccionando el identificador correcto de la propiedad.
+Wikidata está estructurada de tal manera que resulta sencillo acceder a su información utilizando el lenguaje de consultas SPARQL. Cada objeto tiene ciertas propiedades a las que podemos acceder seleccionando el identificador correcto de la propiedad.
 
 Un ejemplo de una consulta sencilla podría ser:\\
 
@@ -45,12 +52,4 @@ WHERE
 \end{lstlisting}
 
 En esta consulta estamos accediendo a todos los objetos que contengan las propiedades(wdt) P31(Tipo Instancia) y P136(Género) con el valor(wd) que nosotros estamos seleccionando, Q215380 y Q7749, forzando así a que las dos propiedades sean Grupo Musical y Rock and Roll respectivamente.
-SPARQL es un lenguaje muy potente que puede abarcar gran cantidad de datos en función de la web (se pueden crear consultas mucho más complejas para obtener datos más específicos). En nuestro caso usaremos la API de Wikidata mediante la librería SPARQLWrapper de Python.
-
-Librerías:
-
-SPARQLWRAPPER
-Para usar eficientemente esta librería, se crea una variable SPARQLWrapper que nos permitirá ejecutar consultas SPARQL mediante formatos string.
-El resultado es un formato JSON el cual se trata para eliminar información extra de la query.
-PANDAS:
-Tratado de los datasets que creamos a partir de los ficheros JSON y para el estudio del dataset original.
+SPARQL es un lenguaje muy potente que puede abarcar gran cantidad de datos en función de la web (se pueden crear consultas mucho más complejas para obtener datos más específicos).
