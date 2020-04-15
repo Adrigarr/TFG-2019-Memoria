@@ -49,8 +49,7 @@ Creemos que hay una mayor probabilidad de que exista una relación entre dos can
 
 Gracias a esta explicación, podemos relacionar dos canciones que a priori son muy distintas, como es el caso de \textit{September} de \textbf{Earth, Wind \& Fire} y \textit{Bohemian Rhapsody} de \textbf{Queen}. Estos temas no comparten algo tan básico como el artista o el género, pero ambos fueron publicados en los años 70 y por ello pueden resultar interesantes para un usuario que busque escuchar los ritmos de esa época.
 
-Para obtener esta explicación, emplearemos la propiedad ``publication date'' (fecha de publicación) de las canciones en Wikidata y comprobaremos si las dos fechas se sitúan dentro de la misma década.
-También utilizaremos la propiedad ``work period'' (periodo de trabajo), que hace referencia al periodo en el que el artista o grupo se consolidó y empezó su actividad de una manera mucho más persistente. Con esta propiedad tratamos de acotar un poco más esta explicación década para ser más precisos.\\
+Para obtener esta explicación, emplearemos la propiedad ``publication date'' (fecha de publicación) de las canciones en Wikidata y comprobaremos si las dos fechas se sitúan dentro de la misma década.\\
 
 \begin{figure}[h!]
 	\centering
@@ -89,8 +88,6 @@ Para esta relación utilizamos la propiedad ``genre'' (género) de Wikidata. As�
 	\label{fig:sampleImage}
 \end{figure}
 
-Además, si hacemos un estudio más profundo de los géneros y la frecuencia en que aparecen juntos dentro de las mismas canciones, podemos llegar a relacionar temas de géneros que no son idénticos en nuestra fuente pero sí similares. Este sería el caso de \textit{Fight the Power} de \textbf{Public Enemy} y \textit{Juicy} de \textbf{The Notorious B.I.G.}, siendo el primero considerado un tema de \textbf{hip hop music} según la información de Wikidata mientras que el segundo aparece como \textbf{political hip hop}.
-
 \subsection*{Compañía discográfica}
 
 Compañía discográfica hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc.
@@ -128,9 +125,15 @@ La explicaciones indirectas nos van a ofrecer relaciones más complejas que nos 
 
 El punto de partida principal serán las explicaciones directas. De cada una de las explicaciones directas podemos obtener más propiedades que indirectamente estarán relacionadas con la canción. Así pues, desde una canción podemos obtener su artista, a partir del artista los géneros musicales con los que está relacionado y pasamos a estudiar subgéneros de esos géneros obteniendo así un grafo en forma de árbol que puede dividirse en varios niveles. Podemos profundizar en estos niveles tanto como nosotros creamos conveniente. \\
 
-A continuación enumeramos las explicaciones indirectas adicionales que buscamos para establecer la relación entre dos canciones. Cabe destacar que las dos principales ramas o propiedades directas que vamos a explorar son el género y el artista/grupo de la canción:
+A continuación enumeramos las explicaciones indirectas adicionales que buscamos para establecer la relación entre dos canciones. Cabe destacar que las dos principales ramas o propiedades directas que vamos a explorar son el género y el artista/grupo de la canción.
 
-\subsection*{País de origen}
+\subsection{Explicaciones basadas en el artista}
+
+La primera propiedad de las canciones que hemos estudiado en profundidad es el artista. Se trata de uno de los aspectos que más influye en los temas musicales y, lo que es más importante, nos permite acceder a mucha información útil que no se relaciona de forma directa con la propia canción.
+
+Las siguientes explicaciones se basan en propiedades de los artistas que interpretan las canciones analizadas:
+
+\subsubsection*{País de origen (Artista)}
 
 El primer estudio de relaciones indirectas viene dado por investigar y obtener propiedades del artista que interpreta la canción.
 
@@ -150,7 +153,7 @@ Para comprobarlo, obtendremos la propiedad ``country of origin'' (país de orige
 Cabe destacar que también hemos incluido una propiedad ``location of formation'' (lugar de formación) que hace referencia a la localidad de formación del grupo o artista, ejerciendo una selección más precisa pues nos da un núcleo de población más pequeño. Un ejemplo de ello podría ser dos míticas bandas de la ciudad de Boston: Aerosmith y Boston. Creemos que la unión de la ciudad natal con la música puede hacer a un usuario el escuchar grupos de su misma ciudad o estado.
 
 
-\subsection*{Influencia}
+\subsubsection*{Influencia}
 
 La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas de formas que no siempre están ligadas a un género musical concreto, así que podemos encontrar una relación entre dos canciones examinando estas influencias.
 
@@ -165,13 +168,13 @@ Obtenemos esta explicación gracias a la propiedad ``influenced by'' (influencia
 	\label{fig:sampleImage}
 \end{figure}
 
-\subsection*{Integrantes}
+\subsubsection*{Integrantes}
 
 Los \textbf{integrantes} son cada uno de los miembros que conforman un grupo. En caso de ser un único artista, esta propiedad es irrelevante ya que haríamos referencia a la propiedad directa de artista. Esta propiedad resulta útil en casos en los que miembros de la banda han cambiado de grupo a lo largo de su carrera musical. Esto nos da acceso a otros grupos que por valores o gustos musicales del artista nos hacen pensar que pueden ser muy parecidos.
 
 Si tomamos los temas \textit{Lithium} de \textbf{Nirvana} y \textit{The Pretender} de \textbf{Foo Fighters} podemos observar que existe una relación entre ellos porque el músico \textbf{Dave Grohl} ha formado parte de ambas bandas.
 
-Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (compuesto de) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.
+Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comprobaremos la propiedad ``has part'' (compuesto de) para ver todos los miembros de la banda y buscar coincidencias. De este modo, podemos ver que \textit{The Pretender} tiene un ``performer'' que es \textbf{Foo Fighters}, y a su vez \textbf{Foo Fighters} ``has part'' \textbf{Dave Grohl}.\\\\\\
 
 \begin{figure}[h!]
 	\centering
@@ -180,7 +183,7 @@ Para comprobarlo usaremos la propiedad de Wikidata ``performer'' y después comp
 	\label{fig:sampleImage}
 \end{figure}
 
-\subsection*{Tipo de voz}
+\subsubsection*{Tipo de voz}
 
 Siguiendo con el estudio de los artistas, el \textbf{tipo de voz} de los vocalistas es una buena explicación para relacionar dos canciones. El tipo de voz influye en el sonido general del tema y puede ser especialmente determinante en ciertos géneros musicales. Por limitaciones técnicas, solo aplicaremos esta explicación con artistas en solitario.
 
@@ -195,28 +198,30 @@ Para esta explicación resulta útil la propiedad ``voice type'' (tipo de voz) e
 	\label{fig:sampleImage}
 \end{figure}
 
-\subsection*{Premios}
-Por último nos queda comentar la propiedad de premios. En esta sección hemos recogido dos propiedades: ``award received'' (premio recibido) y ``nominated for'' (nominado a). Estas categorías hacen referencia a los premios que ha recibido los artistas a lo largo de su carrera y la segunda a los premios a los que han sido nominados. Normalmente los premios se reparten según distintas categorías en función al estilo de música, pero también hay otros que nos aportan otro tipo de información al estudio como Grammy al Mejor Videoclip, Grammy Award a la Mejor Canción Escrita, Grammy Award a la Mejor Interpretación Rap/Sung etc...
+\subsubsection*{Premios (Artista)}
+Por último nos queda comentar la propiedad de premios. En esta sección hemos recogido dos propiedades: ``award received'' (premio recibido) y ``nominated for'' (nominado a). Estas categorías hacen referencia a los premios que ha recibido los artistas a lo largo de su carrera y la segunda a los premios a los que han sido nominados. Normalmente los premios se reparten según distintas categorías en función al estilo de música, pero también hay otros que nos aportan otro tipo de información al estudio como Grammy al Mejor Videoclip, Grammy Award a la Mejor Canción Escrita, Grammy Award a la Mejor Interpretación Rap/Sung etc...\\\\\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/awads.png}
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/awads.png}
 	\caption{Ejemplo Relaciones que pueden tener artistas por premios}
 	\label{fig:sampleImage}
 \end{figure}
 
 
-\subsection*{Género}
-El segundo estudio que hemos hecho ha sido el que viene ligado al género de la canción. Es una de las propiedades más detalladas en Wikidata y por lo tanto una de de las que más información nos puede proporcionar. Hay muchos tipos de géneros y subgéneros documentados lo que nos facilita enormemente la obtención y clasificación de estos. En cuanto a esta propiedad hemos sacado las siguientes relaciones:
+\subsection{Explicaciones basadas en el género}
+El segundo estudio que hemos hecho ha sido el que viene ligado al género de la canción. Es una de las propiedades más detalladas en Wikidata y por lo tanto una de de las que más información nos pueden proporcionar. Hay muchos géneros y subgéneros documentados, lo que nos facilita la obtención y clasificación de estos.
 
-\subsection*{Influenciado por y Subgénero}
+En cuanto a esta propiedad, hemos sacado las siguientes relaciones:
+
+\subsubsection*{Influenciado por y Subgénero}
 Al igual que pasaba con los artistas, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...
-Cabe destacar la diferencia entre las propiedades Influed by y Subgenre, mientras que la primera solo indica que ese estilo musical ha marcado una cierta influencia tomando algunos aspectos, la segunda señala que es un Subgénero, una tendencia muy parecida y que toma como base ese estilo musical. En conclusión, ambas propiedades son incluidas para obtener todas las fuentes posibles.
+Cabe destacar la diferencia entre las propiedades Influed by y Subgenre, mientras que la primera solo indica que ese estilo musical ha marcado una cierta influencia tomando algunos aspectos, la segunda señala que es un Subgénero, una tendencia muy parecida y que toma como base ese estilo musical.
 
-\subsection*{Fecha de fundación}
+\subsubsection*{Fecha de fundación}
 
 Con esta propiedad intentamos tener en cuenta la historia de la música o su cronograma. Hay géneros que fueron desarrollados conjuntamente a lo largo del tiempo. Un ejemplo de este caso se dio en curiosamente el tecnopop que tanto caracterizó a los años 80, pues convivió a veces con el soul y el estilo afroamericano doo-wop, de Billy Joel.
 
-\subsection*{País}
+\subsubsection*{País de origen (Género)}
 
 Por último, recogemos la información del país donde se formó ese género. Con esta propiedad queremos poder recoger movimientos artísticos que surgieron en el mismo país. Los géneros que fueron formados en un determinado país están mucho más arraigados a este a pesar de que se hayan extendido por todo el mundo. Es por esto que si queremos relacionar una artista que cualquier parte del mundo, que tiene un estilo Techno, será más propenso a estar relacionado con artistas o canciones Holandesas, cuna del este estilo musical.
