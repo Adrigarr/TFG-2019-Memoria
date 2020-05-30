@@ -1,26 +1,19 @@
 \chapter{Diseño de la interfaz de explicaciones}
 \label{cap:interfaz}
 
-A la hora de pensar en el tipo de interfaz gráfica, debemos tener en cuenta el método de almacenamiento de datos, su formato y por último cuál es la mejor manera de representarlos gráficamente. En nuestro caso, los datos se basan en objetos y las relaciones que tienen entre sí, por lo que creemos que la mejor representación que podemos elegir es un grafo.
+El objetivo de nuestro proyecto, como ya hemos expresado anteriormente en este documento, consiste en proporcionar explicaciones que justifiquen la relación existente entre dos canciones proporcionadas por un recomendador de música. Una vez realizado el estudio de las canciones y las distintas explicaciones posibles, es necesario mostrar el resultado de nuestro estudio de una forma gráfica, comprensible para un usuario humano.\\
 
-En este grafo queremos plasmar todos los caminos que han sido seleccionados navegando por el formato RDF que proporciona la web Wikidata. De esta forma, solo incluiremos en el diseño aquellos caminos que lleven a una propiedad que compartan ambas canciones, con la intención de representar cada uno de ellos.
+Los datos que manejamos en nuestro estudio consisten en objetos y las relaciones que existen entre ellos, pues siguen el modelo de datos RDF. Necesitamos representar todos los caminos que se forman entre las dos canciones iniciales, mostrando las conexiones existentes entre los objetos intermedios. Por estos motivos hemos decidido llevar a cabo la visualización mediante un grafo porque consideramos que se adecúa mejor a nuestras necesidades.\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/InterfaceResult.png}
+	\includegraphics[width = 0.8\textwidth]{Imagenes/Bitmap/InterfaceResult.png}
 	\caption{Primer diseño de la interfaz web}
 	\label{fig:sampleImage}
 \end{figure}
 
-Para poder explicar la interfaz, se deben explicar las dos ramas principales que ejecutamos a la hora de realizar el estudio. El objeto de cada una de estas ramas es el título de las dos canciones que queremos estudiar. Cada rama o camino empieza estudiando las propiedades de cada una de las canciones, a partir de ahí, se navegará por cada una de las siguientes propiedades hasta que ambas ramas se junten en una misma propiedad común.
-Lo ideal sería poder representar claramente los tres primeros niveles que hasta el momento hemos considerado y hacer la representación de cada uno de ellos.
+Es importante que la interfaz sea fácil de entender y usar, así que siempre trataremos de mantenerla lo más sencilla posible. La base de nuestro diseño es el grafo de explicaciones ya mencionado, pues es el elemento más importante debido a la gran cantidad de información que aporta y, por lo tanto, es también la parte central de la interfaz alrededor de la cual se posicionarán el resto de elementos.\\
 
-Tomando en cuenta las explicaciones dadas sobre los niveles de complejidad que hemos recogido, suponiendo que hay relaciones compartidas en todos ellos obtendríamos los siguientes grafos:
+En la Figura 1 se puede observar la primera iteración de nuestro diseño. En ella se ve un ejemplo de grafo donde los nodos son los distintos sujetos y objetos (según el modelo RDF) mientras que las aristas representan los predicados que relacionan a esos nodos.\\
 
-\begin{itemize}
-  \item Tenemos tres niveles en cada canción.
-  \item Suponemos que cada nivel de la canción 1 puede relacionarse con todos los niveles de la canción 2. Así pues, la propiedad género de la canción 1 (nivel 1) puede coincidir con la propiedad género del artista (nivel 2) de la canción 2 o con la propiedad género de un miembro de la banda que toca la canción 2 (nivel 3).
-  \item Se pueden representar un máximo de 9 grafos (3\^{}2).
-\end{itemize}
-
-Como información extra y con un carácter meramente informativo, consideramos una extensión que pueda mostrar toda la información recogida sobre cada objeto que aparece en el grafo. Así al hacer click sobre un objeto, ya sea un artista, un género o una canción, se muestre una extension que muestre todas las relaciones que hemos recopilado sobre ese objeto, incluidas las no compartidas por la otra rama de la segunda canción.
+Los nodos posicionados a ambos extremos son las canciones sobre las que estamos realizando el estudio, diferenciados por el color rojo. A partir de ellas parten todas las explicaciones. En el centro se puede ver también un nodo coloreado de un rojo más suave, este representa al objeto de una explicación directa (en este caso la explicación ``Idioma'').
