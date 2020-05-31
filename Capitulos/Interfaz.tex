@@ -27,3 +27,20 @@ Por último tenemos nodos morados que representan a los miembros o integrantes d
 En esta versión del diseño también se propone una funcionalidad que permite visualizar datos adicionales. Haciendo click en los nodos sobre los que se hacen los estudios (canciones, artistas y miembros), se despliega una sección inferior en la que se muestran todos los datos obtenidos en el estudio del elemento concreto, aparezcan en el grafo o no. Así podemos ver todos los sellos discográficos con los que trabajaron \textbf{The Rolling Stones} aunque solo \textbf{Polydor Records} los relacione con \textbf{The Beatles}.\\
 
 Esta función no es integral para el objetivo de nuestro proyecto, tan solo es un complemento que ofrece opciones al usuario. Por ello se le ha dado una prioridad baja durante el desarrollo de este trabajo y acabó siendo retirado de diseños posteriores por carecer del interés suficiente para la materia que nos ocupa.\\
+
+\section{Diseño de la interfaz}
+
+Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura 4.2. En esta iteración, el diseño del grafo se mantiene intacto en la mayor parte. Las novedades a destacar es que se pueden ver las explicaciones indirectas obtenidas por el estudio de los géneros de la canción, representados por nodos de color verde, además de que el nombre de las explicaciones (el predicado según RDF) se traslada a las aristas. (WIP. SEGURAMENTE HAYA QUE CAMBIAR ESTE PÁRRAFO Y/O LA IMAGEN)\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Segunda Interfaz.jpg}
+	\caption{Primer diseño de la interfaz web}
+	\label{fig:sampleImage}
+\end{figure}
+
+El resto de la interfaz consiste en los elementos con los que interactuará el usuario antes de generar el grafo de explicaciones. A ambos lados de la pantalla se sitúan los campos a rellenar con los datos básicos de las canciones. Para identificar la canción deseada es necesario escribir en ellos el título de la canción y el nombre de su artista, separados por una coma. En realidad este campo de entrada es un buscador que mostrará en un desplegable la lista de canciones que coinciden con el texto introducido y el usuario deberá seleccionar la que está buscando. Si intenta comparar una canción no contemplada por el sistema, aparecerá un mensaje de error.\\
+
+La decisión de limitar las posibles entradas ha sido tomada por motivos prácticos. En Wikidata hay una cantidad ingente de temas musicales registrados, sin embargo los datos de cada canción concreta no siempre son tan completos como cabría esperar. A menudo falta información o la que hay no aparece siguiendo los mismos estándares que el resto, especialmente cuando se trata de canciones menos populares. Por ello hemos elaborado una lista de canciones que poseen información útil en Wikidata y que podemos tratar en nuestra aplicación sin problemas.\\
+
+Por último, en la parte inferior de la pantalla hay un botón para ``COMPARAR’’. Una vez rellenados los campos de las dos canciones con opciones válidas, el usuario deberá pulsar este botón para que se dibuje el grafo de explicaciones. La primera vez que se use la aplicación no aparecerá ningún grafo en el centro de la interfaz, pero en las comparaciones siguientes el grafo previo no se borrará hasta pulsar de nuevo este botón para dibujar un grafo nuevo.\\
