@@ -1,6 +1,32 @@
 \chapter{Implementación}
 \label{cap:implementacion}
 
-Aquí irá toda la documentación relacionada con la implementación de nuestro proyecto.
+\section{Procesamiento y manejo de la muestra}
 
+Partimos de una muestra (o \textbf{dataset}) de alrededor de 19 millones de líneas, obtenido a partir de la API de \textbf{Last.fm} \cite{lastfm}, una plataforma que almacena y proporciona mucho contenido musical. Constaba de los siguientes campos: \textbf{<user, timestamp, artist, song>}, los cuales hacen referencia al usuario que ha escuchado la canción, la fecha en la que fue escuchada, el nombre del artista y el título de la canción respectivamente.\\
 
+El primer paso fue hacer un pequeño estudio del dataset para hacernos una idea de cómo era nuestra muestra y qué podríamos sacar de ella. Se trataba de un dataset con muy pocos campos que no daba información ninguna sobre la canción o el artista, sino que solo proporcionaba un medio para poder obtenerla de una fuente externa. Hicimos una limpieza del dataset, ya que había numerosos valores que eran nulos en determinados campos o no tenían una codificación correcta.\\
+
+Es en este punto donde comenzamos a pensar cómo queríamos mostrar la información que podíamos ofrecer previa al funcionamiento de la aplicación. Dudábamos entre permitir utilizar cualquier objeto del dataset o restringirlo solo a algunos.\\
+
+En la librería de Wikidata, por motivos obvios, se debe poner como entrada de cualquier función de búsqueda el código identificador del objeto sobre el que se quiere obtener información. Estos identificadores son fijos y únicos para cada uno de los objetos que están registrados en la página. Con nuestra librería somos capaces de, a partir de un string que represente un título de canción o un artista, género, etc., obtener su respectivo identificador para posteriormente procesar las consultas.\\
+
+El problema aquí es que para obtener el identificador del objeto, su nombre o título debía ser exacto al que aparecía en Wikidata, pues de cualquier otra forma se lanzaría una excepción. Por ejemplo, intentar obtener el identificador de la canción ``Don’t Stop me Now'' sería incorrecto, porque en Wikidata figura como ``Don’t Stop Me Now''. Debido a esto, es necesario hacer un parseo previo de cualquier String (o cadena de caracteres) que se vaya a utilizar como entrada.\\
+
+Finalmente decidimos crear una lista preseleccionada y parseada de las canciones más populares de todo el dataset. Para ello ordenamos las canciones del dataset por popularidad descendente, entendiendo como popularidad la cantidad de veces que aparecían en la muestra. Después elaboramos un script que recorría todas ellas, ejecutaba el parseo y finalmente comprobaba si era posible obtener los datos de Wikidata.\\
+
+Empezamos con un dataset de las 2500 canciones más populares y fuimos capaces de obtener la información de 1408 canciones con su determinado artista. Cabe señalar que en cada búsqueda de una canción se debe añadir su artista, pues hay varias canciones con el mismo título que no podrían diferenciarse de otro modo.\\
+
+Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban. a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.\\
+
+\section{Arquitectura de la aplicación}
+
+Como inicio tenemos varios scripts que nos ayudan a organizar y manejar mucho mejor los datos, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
+
+Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos.\\
+
+Como siguiente punto tendríamos el modelo de la aplicación, que es una serie de clases que se encargan de ejecutar todo el proceso de obtención de datos, el cual es genérico para todas las canciones.\\
+
+Cuenta con una lista de propiedades que son el objeto de estudio de cada canción y métodos para añadir o eliminar alguna de estas. Actualmente cuenta con un número de 21 propiedades totales, las cuales pueden tener su vez aún más de un modo recursivo.\\
+
+Por último tenemos la clase principal, que es la que se encarga de hacer todas las llamadas al modelo de cada una de las dos canciones y artistas que son introducidos. También se encarga del manejo de excepciones y creación del CSV con las relaciones totales.\\

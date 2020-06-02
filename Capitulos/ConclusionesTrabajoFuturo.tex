@@ -1,8 +1,19 @@
 \chapter{Conclusiones y Trabajo Futuro}
 \label{cap:conclusiones}
 
-Conclusiones del trabajo y líneas de trabajo futuro.
+\section{Trabajo futuro}
 
-Antes de la entrega de actas de cada convocatoria, en el plazo que se indica en el calendario de los trabajos de fin de máster, el estudiante entregará en el Campus Virtual la versión final de la memoria en PDF. En la portada de la misma deberán figurar, como se ha señalado anteriormente, la convocatoria y la calificación obtenida. Asimismo, el estudiante también entregará todo el material que tenga concedido en préstamo a lo largo del curso.
+El esquema RDF y el uso de SPARQL para su uso y análisis puede ser muy potente y abarcar grandes cantidades de datos. En nuestro caso nos hemos centrado en trabajar con la herramienta y los datos de Wikidata por una cuestión de cantidad de información, fiabilidad y resultados obtenidos.\\
 
+Con Wikidata hemos sido capaces de crear conexiones entre canciones con toda la información posible en cada una de sus respectivas páginas descriptivas. Sin embargo hay más opciones de donde recopilar más información sobre canciones y artistas.\\ 
 
+En un principio intentamos obtener información que se alejaba un poco más de lo que hemos creado, que es un análisis musical. Hay otras opciones y datos que se pueden sacar sobre canciones, como por ejemplo las películas o series en las que aparecen como banda sonora, o también canciones que han sido emitidas durante grandes eventos como la Superbowl. El problema que tuvimos es que el proyecto en ese punto se desviaba de su rumbo original, ya que en Wikidata no había datos tan específicos para la gran mayoría de canciones y debíamos recurrir a otras fuentes.\\
+
+El problema de otras bases de datos alternativas es que tampoco poseen ese tipo de información tan detallada, no siguen el modelo de datos RDF o tienen la información tan solo en casos muy concretos y sin una forma efectiva de acceder a ella a partir de nuestro dataset, como comprobamos al estudiar la posibilidad de utilizar \textbf{MusicBrainz} \cite{musicbrainz} para obtener las bandas sonoras en las que aparece una canción.\\
+
+Otro aspecto en el que se puede trabajar para llegar a un trabajo mucho más completo y poder hacer una explicación de la relación de dos canciones, sería un estudio a nivel de usuario.
+En nuestro proyecto hemos hecho un análisis avanzado de las relaciones que tienen las entidades en un ámbito musical. Sin embargo, hay otro estudio posible que es el análisis de los usuarios que han escuchado esas canciones. Partimos de la base de que dos personas que escuchan una misma canción, pueden compartir parte de sus gustos musicales, y se pueden recomendar y crear relaciones conforme a su historial.\\
+
+Cada usuario tiene un historial de temas escuchados, de hecho uno de los datasets que obtuvimos al principio del proyecto era de este carácter. Si se hiciese un estudio individual de un usuario, se podrían analizar sus gustos musicales, canciones más escuchadas, últimos géneros más populares, etc…\\
+
+Como ejemplo podemos seleccionar un usuario cuya mayoría de temas escuchados pertenecen al género pop, pero también cuenta con algunos pertenecientes al género indie durante los últimos meses. Si se encuentra una tendencia similar entre una cantidad significativa de usuarios, podríamos sacar una explicación que establezca una relación entre un tema de género pop y otro de género indie por la frecuencia con que aparecen estos géneros juntos entre las listas de temas escuchados de estos usuarios mencionados.\\
