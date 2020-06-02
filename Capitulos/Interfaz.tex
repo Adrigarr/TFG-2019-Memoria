@@ -24,18 +24,18 @@ Los nodos coloreados de color naranja representan los artistas de ambas cancione
 
 Por último tenemos nodos morados que representan a los miembros o integrantes de los artistas, pues en este caso dichos artistas son bandas formadas por varias personas. Su funcionamiento es el mismo que el descrito en el párrafo anterior, con la salvedad de que estos miembros se obtienen del artista y, por lo tanto, sus explicaciones presentan un nivel extra de profundidad.\\
 
-En esta versión del diseño también se propone una funcionalidad que permite visualizar datos adicionales. Haciendo click en los nodos sobre los que se hacen los estudios (canciones, artistas y miembros), se despliega una sección inferior en la que se muestran todos los datos obtenidos en el estudio del elemento concreto, aparezcan en el grafo o no. Así podemos ver todos los sellos discográficos con los que trabajaron \textbf{The Rolling Stones} aunque solo \textbf{Polydor Records} los relacione con \textbf{The Beatles}.\\
+En esta versión del diseño también se propone una funcionalidad que permite visualizar datos adicionales. Haciendo click en los nodos sobre los que se hacen los estudios (canciones y artistas), se despliega una sección inferior en la que se muestran todos los datos obtenidos en el estudio del elemento concreto, aparezcan en el grafo o no. Así podemos ver todos los sellos discográficos con los que trabajaron \textbf{The Rolling Stones} aunque solo \textbf{Polydor Records} los relacione con \textbf{The Beatles}.\\
 
-Esta función no es integral para el objetivo de nuestro proyecto, tan solo es un complemento que ofrece opciones al usuario. Por ello se le ha dado una prioridad baja durante el desarrollo de este trabajo y acabó siendo retirado de diseños posteriores por carecer del interés suficiente para la materia que nos ocupa.\\
+Esta función no es integral para el objetivo de nuestro proyecto, tan solo es un complemento que ofrece opciones al usuario, pero consideramos que puede ser un añadido interesante.\\
 
-\section{Diseño de la interfaz}
+\section{Diseño básico de la interfaz}
 
-Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura 4.2. En esta iteración, el diseño del grafo se mantiene intacto en la mayor parte. Las novedades a destacar es que se pueden ver las explicaciones indirectas obtenidas por el estudio de los géneros de la canción, representados por nodos de color verde, además de que el nombre de las explicaciones (el predicado según RDF) se traslada a las aristas. (WIP. SEGURAMENTE HAYA QUE CAMBIAR ESTE PÁRRAFO Y/O LA IMAGEN)\\
+Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura 4.2. En esta iteración, el diseño del grafo se mantiene intacto en su mayor parte. La novedad a destacar es que se pueden ver las explicaciones indirectas obtenidas por el estudio de los géneros de la canción, representados por nodos de color verde.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Segunda Interfaz.jpg}
-	\caption{Primer diseño de la interfaz web}
+	\caption{Segundo diseño de la interfaz web}
 	\label{fig:sampleImage}
 \end{figure}
 
@@ -44,3 +44,33 @@ El resto de la interfaz consiste en los elementos con los que interactuará el u
 La decisión de limitar las posibles entradas ha sido tomada por motivos prácticos. En Wikidata hay una cantidad ingente de temas musicales registrados, sin embargo los datos de cada canción concreta no siempre son tan completos como cabría esperar. A menudo falta información o la que hay no aparece siguiendo los mismos estándares que el resto, especialmente cuando se trata de canciones menos populares. Por ello hemos elaborado una lista de canciones que poseen información útil en Wikidata y que podemos tratar en nuestra aplicación sin problemas.\\
 
 Por último, en la parte inferior de la pantalla hay un botón para ``COMPARAR’’. Una vez rellenados los campos de las dos canciones con opciones válidas, el usuario deberá pulsar este botón para que se dibuje el grafo de explicaciones. La primera vez que se use la aplicación no aparecerá ningún grafo en el centro de la interfaz, pero en las comparaciones siguientes el grafo previo no se borrará hasta pulsar de nuevo este botón para dibujar un grafo nuevo.\\
+
+\section{Diseño avanzado}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Tercera Interfaz.png}
+	\caption{Tercer diseño de la interfaz web}
+	\label{fig:sampleImage}
+\end{figure}
+
+Partiendo de la base establecida en los apartados anteriores, hicimos un diseño más completo de la interfaz para nuestra aplicación. Aquí se puede ver el regreso de la sección inferior con datos adicionales de los artistas y las canciones, esta vez en forma de tabla para que sea más legible para el usuario.\\
+
+También por motivos de visibilidad y comprensibilidad se ha desplazado el botón ``COMPARAR'' a la parte superior de la pantalla, además de mostrar una lista con todas las canciones disponibles bajo los campos de entrada. Esta decisión se ha tomado para tratar de evitar que el usuario se sienta perdido por la falta de opciones visibles al abrir la aplicación por primera vez. Cabe destacar que esta lista se sigue filtrando en función de la entrada que esté escribiendo el usuario, mostrando así cuáles son sus opciones en todo momento.\\
+
+En esta iteración se hacen algunos cambios al grafo de explicaciones. Para empezar, el nombre de las explicaciones (el predicado según RDF) se traslada a las aristas. También se han colapsado los nodos correspondientes a los premios recibidos por los artistas para eliminar aristas y nodos innecesarios.\\
+
+De la misma forma se colapsan los nodos de los miembros de los artistas, reduciéndolos a un solo nodo por artista. Para expresar cuántos integrantes se ven involucrados en cada explicación, el grosor de la arista que los une varía en función del número de miembros que participan en esa explicación concreta. Además, al colocar el ratón sobre esas aristas aparece una etiqueta donde figuran los nombres de esos miembros. Este cambio se propuso para reducir el número de nodos y aristas, pues en ciertos casos podía ser abrumador a la vista.\\
+
+Por último, cabe destacar las pestañas que se ven justo encima del marco para el grafo. Para tratar de mejorar la legibilidad lo máximo posible decidimos hacer dos grafos diferentes, siendo el que vemos en la Figura 4.3 el de ``explicaciones cercanas''. Este grafo muestra solamente las explicaciones existentes entre elementos del mismo ``nivel de estudio''. Esto quiere decir que, por ejemplo, el género de una canción solo podrá relacionarse con un género de la otra canción, pues corresponden al mismo estudio. Por el contrario, no se verán relaciones existentes entre ese género y otro elemento, como una canción, artista o miembro.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Tercera Interfaz (Alternativa).png}
+	\caption{Grafo de explicaciones lejanas}
+	\label{fig:sampleImage}
+\end{figure}
+
+En la Figura 4.4 se ve el llamado ``grafo de explicaciones lejanas'', con el que se ve mejor la diferencia. Al contrario del ``grafo de explicaciones cercanas'', aquí solo se muestran las explicaciones existentes entre elementos que pertenecen a estudios diferentes. De esta forma, en este grafo se ve la relación entre el artista \textbf{The Rolling Stones}, autor de la primera canción, y el género \textbf{pop rock} obtenido de la segunda canción.\\
+
+El usuario podrá cambiar de vista libremente para consultar ambos grafos haciendo click en las pestañas anteriormente mencionadas. Todas las funciones explicadas en esta sección aparecen en ambos grafos.\\
