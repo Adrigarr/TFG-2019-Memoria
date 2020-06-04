@@ -17,7 +17,24 @@ Finalmente decidimos crear una lista preseleccionada y parseada de las canciones
 
 Empezamos con un dataset de las 2500 canciones más populares y fuimos capaces de obtener la información de 1408 canciones con su determinado artista. Cabe señalar que en cada búsqueda de una canción se debe añadir su artista, pues hay varias canciones con el mismo título que no podrían diferenciarse de otro modo.\\
 
-Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban. a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.\\
+Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban. a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.
+
+\section{Estudio del dataset}
+
+Para poder comprender mejor el dataset obtenido con el objetivo de poder ofrecer al usuario una lista limpia, donde sea cual sea la opción que elija el usuario podamos ofrecer un resultado, estudiamos el género de todas las canciones de la muestra,al igual que la cantidad de relaciones que podíamos obtener de cada una de ellas.\\
+
+Con el género queremos demostrar la variedad de la muestra y cómo de posible es relacionar canciones de distinto género entre sí. Si hubiésemos obtenido muy pocos géneros similares entre sí, la muestra no tendría un gran valor desde el punto de vista de esta explicación, pues no habríamos llegado a un resultado realmente interesante. Cabe destacar que no es un conteo exacto, ya que una canción puede tener más de un género o ninguno (por falta de documentación, no es posible catalogarlo en una categoría exacta, etc.). Sin embargo, el componente de variedad y representación musical no se ve afectado.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.75\textwidth]{Imagenes/Bitmap/estudioGeneros.png}
+	\caption{Gráfico resultado del estudio de géneros}
+	\label{fig:sampleImage}
+\end{figure}
+
+En total hemos obtenido 81 géneros distintos para las canciones, entre los que destacan en gran principalmente subgéneros o géneros derivados del rock. El estilo más popular es \textbf{alternative rock}, el cual cuenta con un 22\% sobre el total, lo cual es una cantidad bastante alta en comparación con el resto. Le siguen \textbf{indie rock} y \textbf{rock music} con un 8,3\% y 3,9\% respectivamente.\\
+
+Sin embargo, también encontramos otros géneros más distantes a los anteriores, como por ejemplo \textbf{rhythm \& blues}, \textbf{soul}, \textbf{reggae}, \textbf{jazz} o \textbf{house music}. Todos estos son estilos dispares entres sí, lo que nos da la posibilidad de ver cómo de potentes pueden ser las relaciones y explicaciones que hemos obtenido y probar nuestro sistema para ver si es capaz de relacionar canciones muy diferentes o incluso opuestas.\\
 
 \section{Arquitectura de la aplicación}
 
