@@ -1,64 +1,50 @@
 \chapter{Introducción}
 \label{cap:introduccion}
 
-\chapterquote{Frase célebre dicha por alguien inteligente}{Autor}
+Desde el desarrollo de internet como una red global, siempre ha albergado grandes cantidades de documentos e información escrita. A medida que fue creciendo, hubo que encontrar distintas maneras de organizar esa información para que pudiera ser utilizada como un servicio a cualquier usuario. La Web Semántica, cuyas características explicaremos más tarde, es uno de los métodos que toda la red global de internet pudo adaptar a la hora de darle un sentido y una utilidad a esa información.\\
 
+Básicamente, la Web Semántica trata de enlazar toda esa información con tal de darle contexto y accesibilidad. Para ello adopta el método de Linked Data, el cual haciendo referencia a su propio nombre nombre, conecta o une distintos datos estableciendo una relación. El principal objetivo de todo esto es que los ordenadores puedan navegar y acceder a la mayor parte de los datos almacenados en internet para que estos sean útiles y no queden perdidos en un mar de información.\\
 
-El estudiante elaborará una memoria descriptiva del trabajo realizado, con una \textbf{extensión mínima recomendada de 50 páginas} incluyendo al menos una introducción, objetivos y plan de trabajo, resultados con una discusión crítica y razonada de los mismos, conclusiones y bibliografía empleada en la elaboración de la memoria.
+Hay varias maneras de poder organizar y conectar todo ese contenido conocidas como sistemas ontológicos. La ontología es una rama filosófica que estudia los entes y sus conexiones y aquí es aplicada en su punto más técnico. El método ontológico que nosotros usaremos es el modelo RDF, uno de los más usados y extendidos.\\
 
-La memoria se puede redactar en castellano o en inglés, pero en el primer caso la introducción y las conclusiones de la memoria tienen que traducirse también al inglés y aparecerán como capítulos \textbf{al final de la memoria}. En ambos casos, el título de la memoria aparecerá en castellano y en inglés.
-
-Además del cuerpo principal describiendo el trabajo realizado, la memoria contendrá los siguientes elementos, que no computarán para el cálculo de la extensión mínima del trabajo:
-
-\begin{itemize}
-\item un resumen en inglés de media página, incluyendo el título en inglés,
-\item ese mismo resumen en castellano, incluyendo el título en castellano,
-\item una lista de no más de 10 palabras clave en inglés,
-\item esa misma lista en castellano,
-\item un índice de contenidos, y
-\item una bibliografía.
-\end{itemize}
-
-La portada de la memoria deberá contener la siguiente información:
-
-\begin{itemize}
-\item "Máster en NOMBRE DEL MÁSTER, Facultad de Informática, Universidad Complutense de Madrid"
-\item Título
-\item Autor
-\item Director(es)
-\item Colaborador externo de dirección, si lo hay
-\item Curso académico
-\item Solo en la versión final: convocatoria y calificación obtenida
-\end{itemize}
-
-Para facilitar la escritura de la memoria siguiendo esta estructura, el estudiante podrá usar las plantillas en LaTeX o Word preparadas al efecto y publicadas en la página web del máster correspondiente.
-
-Todo el material no original, ya sea texto o figuras, deberá ser convenientemente citado y referenciado. En el caso de material complementario se deben respetar las licencias y copyrights asociados al software y hardware que se emplee. En caso contrario no se autorizará la defensa, sin menoscabo de otras acciones que correspondan.
-
+Es mediante este concepto como los motores de búsqueda pueden ser ayudados por esta tecnología, ya que dotamos a las máquinas de la capacidad para navegar sobre esas relaciones y entender datos que nosotros requerimos o que podrían sernos útiles.\\
 
 \section{Motivación}
-Introducción al tema del TFM.
 
+Como ya hemos comentado, la Web Semántica es una manera de mejorar la conexión entre los datos guardados en la red, haciendo que internet sea más útil y accesible para las personas. Se trata de un método que permite que navegar por la red sea más intuitivo y reduce la cantidad de información que acaba volviéndose inaccesible para aquellos usuarios para los que resulta relevante.\\
+
+El problema es que es una práctica que aún no está lo bastante extendida para que suponga un verdadero avance en nuestra forma de relacionarnos con la red, pues requiere hacer cambios en la forma en que se almacena la información. En este trabajo intentaremos mostrar el potencial de la Web Semántica\\
+
+Nuestro proyecto utilizará todo este sistema en el que colaboran distintas metodologías y lo orientará a la conexión y relación de temas musicales. De esta forma estamos especializando las opciones que nos proporciona la Web Semántica en un sentido útil y creativo.\\
+
+La idea principal es poder recoger todas las conexiones que aparezcan entre toda la información que podamos recoger sobre cada uno de los dos temas musicales o canciones, indagando en un punto sistematizado por el concepto de Linked Data y con formato RDF. Para ello, deberemos estudiar ese ente y todos los relacionados; artista que interpreta la canción, su género musical, los integrantes de su grupo, su sello discográfico, etc. y a su vez las relaciones entre estos, hasta disponer de suficientes conexiones que nos puedan asegurar que esas dos canciones tienen o no algo que ver.\\
+
+Una vez tengamos toda esa información, la mostraremos gráficamente en una aplicación web de forma que una persona pueda ver y comprender todas esas conexiones con un manejo sencillo de la misma. Para ello estudiaremos diversas librerías gráficas y escogeremos aquella que pueda adaptarse de mejor manera a nuestras necesidades, ya que deberán ser capaces de representar nodos y aristas conforme a nuestra información recopilada.\\
 
 \section{Objetivos}
-Descripción de los objetivos del trabajo.
 
+Los objetivos principales de este trabajo son los siguientes:\\
+
+\begin{itemize}
+\item Demostrar la potencia y las conexiones que se pueden llegar a crear entre dos elementos usando el formato RDF en el contexto de la Web Semántica. La Web Semántica es un concepto que abarca muchísima información con conexiones constantes que no para de crecer. Queremos adaptarnos a ese sistema y aplicarlo a un dominio con el que estuviésemos cómodos y despertara nuestro interés.\\
+
+\item Establecer una relación entre dos canciones que, a priori, una persona no podría obtener sin hacer un estudio amplio de ello, empleando para ello explicaciones propias que compartan esas dos canciones. Y, sobre todo, intentar relacionar canciones que no sean tan parecidas musicalmente pero compartan otros elementos que puedan causar más curiosidad.\\
+
+\item Crear una aplicación web que pueda tener un uso habitual en la vida cotidiana y que aporte nuevos conocimientos a los posibles usuarios que la utilicen.\\
+
+\item Utilizar distintas tecnologías de forma que tengamos un resultado final operativo y simple para que cualquier usuario, tenga o no experiencia en el manejo de aplicaciones, sea capaz de usarlo.\\
+
+\item Trabajar con un dominio durante todo el proyecto que nos apasiona tanto a nosotros como a la mayoría de las personas como es la música, ya que al fin y al cabo la aplicación final recopila datos sobre canciones que un usuario no podría saber sin hacer un estudio previo.\\
+\end{itemize}
 
 \section{Plan de trabajo}
-Aquí se describe el plan de trabajo a seguir para la consecución de los objetivos descritos en el apartado anterior.
 
+El punto inicial del proyecto fue estudiar todas las nueva tecnologías nuevas y herramientas que íbamos a necesitar, al menos, para el proceso de obtención y estudio los datos.\\
 
+Primeramente hicimos una pequeña limpieza del dataset, ya que había valores sucios y nulos. Hicimos unas pequeñas agrupaciones, por popularidad y por género. La popularidad porque las canciones más populares serían las que estarían más documentadas en Wikidata y el género debido a que queríamos saber qué tipo de canciones predominaban en nuestra muestra.\\
 
-\section{Explicaciones adicionales sobre el uso de esta plantilla}
-Si quieres cambiar el \textbf{estilo del título} de los capítulos, edita \verb|TeXiS\TeXiS_pream.tex| y comenta la línea \verb|\usepackage[Lenny]{fncychap}| para dejar el estilo básico de \LaTeX.
+Más tarde comenzamos a ejecutar pequeñas consultas con el sistema RDF en la herramienta propia de Wikidata. Aquí aprendimos en que se diferenciaban las consultas que más tarde usaríamos en nuestra la librería del propio SPARQL. En este punto ya pudimos observar la cantidad de información que podíamos obtener con una simple consulta y a la vez los datos tan específicos que también nos daba la oportunidad de conseguir, dándonos cuenta de la potencia de este lenguaje.\\
 
-Si no te gusta que no haya \textbf{espacios entre párrafos} y quieres dejar un pequeño espacio en blanco, no metas saltos de línea (\verb|\\|) al final de los párrafos. En su lugar, busca el comando  \verb|\setlength{\parskip}{0.2ex}| en \verb|TeXiS\TeXiS_pream.tex| y aumenta el valor de $0.2ex$ a, por ejemplo, $1ex$.
+Una vez obtuvimos cierta soltura con Wikidata y las nuevas tecnologías que íbamos a usar, pasamos a buscar una librería lo suficientemente completa y potente que pudiese servirnos para ejecutar las consultas deseadas y en un tiempo aceptable. Después de estudiar algunas opciones, finalmente escogimos SPARQLWrapper debido a que nos permitía la ejecución de todo tipo de consultas y además nos facilitaba la conexión al punto de obtención.\\
 
-TFMTeXiS se ha elaborado a partir de la plantilla de TeXiS\footnote{\url{http://gaia.fdi.ucm.es/research/texis/}}, creada por Marco Antonio y Pedro Pablo Gómez Martín para escribir su tesis doctoral. Para explicaciones más extensas y detalladas sobre cómo usar esta plantilla, recomendamos la lectura del documento \texttt{TeXiS-Manual-1.0.pdf} que acompaña a esta plantilla.
-
-El siguiente texto se genera con el comando \verb|\lipsum[2-20]| que viene a continuación en el fichero .tex. El único propósito es mostrar el aspecto de las páginas usando esta plantilla. Quita este comando y, si quieres, comenta o elimina el paquete \textit{lipsum} al final de \verb|TeXiS\TeXiS_pream.tex|
-
-\subsection{Texto de prueba}
-
-
-\lipsum[2-20]
+Continuando con el proceso comenzamos el algoritmos y el conjunto de clases y librerías que nos permitirían obtener los datos y establecer las conexiones necesarias para dotar de una posible relación a dos canciones. Tuvimos varias versiones, ya que siempre incluíamos nuevas partes del código, nuevas propiedades a estudiar, distintas formas de devolver el resultado etc… Al final de este punto ya éramos capaces de obtener un gran conjunto de relaciones en distintos niveles del estudio y un formato que las organizaba y las clasificaba.\\
