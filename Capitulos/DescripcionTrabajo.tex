@@ -3,6 +3,11 @@
 
 El objetivo de nuestro trabajo consiste en explicar las relaciones entre dos canciones dadas por un recomendador de música que trabaja con un dataset concreto. De esta manera, llamaremos \textbf{explicación} a cada factor común que compartan ambas canciones, siendo principalmente propiedades que poseen las propias canciones o los valores de otras propiedades previas. A lo largo de este capítulo concretaremos todas las explicaciones que vamos a estudiar y el sistema que une todas ellas para poder relacionar dos canciones en su totalidad.\\
 
+Las relaciones que recogemos en cualquier caso de uso forman un grafo siguiendo el sistema RDF. Nosotros hemos decido además de seguir ese formato, dotarlas de un nivel que escala en función el estudio se aleje del objeto canción inicial. Al expresar alejamiento, nos referimos a que como en el contexto del formato RDF y Linked Data, la creación de relaciones se establece navegando por distintos objetos relacionados con el inicial secuencialmente. El motivo de los niveles viene dado por://
+
+El primero es debido a la cercania de niveles. Cuanto menor sea el nivel, significará que está mas próximo al objeto canción inicial y por ello tendrá más peso a la hora de relacionarlas\\
+El segundo es porque a la hora de representar gráficamente todas las relaciones, queremos dividirlas por objetos de estudio nivelada y ordenadamente.\\
+
 En una primera fase, generaremos explicaciones básicas para relacionar directamente las dos canciones u objetos principales, por ejemplo: género, artista, álbum, etc. Asignaremos una complejidad de k=1 a las explicaciones directas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad, es decir, solo tenemos en cuenta propiedades ligadas a cada objeto en un primer nivel.\\
 
 Una vez obtenemos las relaciones básicas, es necesario seguir avanzando en el estudio, ya que dos canciones que a priori no son muy similares musicalmente, no compartirán casi ninguna de estas relaciones directas. Es por esto por lo que indagamos más en la información que podemos obtener a partir de las relaciones que hemos sacado en el paso anterior. Aquí aparecen las relaciones indirectas, aquellas que surgen del estudio de otras obtenidas en niveles anteriores, siempre que coincidan en ambas canciones. La idea es poder representar toda la información compartida, de forma que se pueda representar con un grafo. Estas explicaciones pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántos niveles se hayan estudiado. La idea principal es ejecutar un estudio de ambas canciones obteniendo varios niveles de cada una de ellas, para finalmente unirlas enlazando únicamente las que coincidan.\\
@@ -18,19 +23,22 @@ Hemos recopilado a lo largo de investigación y consultas un conjunto de posible
 	\label{fig:sampleImage}
 \end{figure}
 
+
+
 Para nuestro caso, en el cual tratamos con dos objetos iniciales que representan a dos canciones, hemos seleccionado una serie de propiedades a investigar para obtener los distintos niveles. El primer nivel es el más intuitivo: obtener relaciones directamente de ambas canciones. Entre esas relaciones se encontraría la relación ``Interpretado por'', la cual nos proporciona el artista o grupo que interpreta la canción. Este artista es el que vamos a usar como objeto de estudio del nivel k = 2, obteniendo así otro conjunto de relaciones del artista y sus respectivos valores. También obtendremos el género de la canción, que usaremos para generar el nivel k = 3 mediante las propiedades que obtengamos del género. Por último, como nivel final hemos seleccionado investigar las propiedades de los miembros que conforman la banda de música en caso de que el intérprete de la canción esté formado por varios artistas, y denominamos a este último nivel k= 4.\\
 
 Queremos señalar que estos niveles podrían alargarse más a medida que seguimos investigando nuevas propiedades y generando un grafo más completo. Hemos decidido poner un límite en este punto debido a que, a medida que vamos avanzando en el estudio de los niveles de las propiedades, las explicaciones son menos significativas debido a que están más alejadas del primer nivel, que es el que está relacionado con la canción en sí.\\
 
-\section{Explicaciones directas}
 
-En esta sección vamos a recopilar las principales propiedades de la lista total. Algunas de ellas podrán aparecer en distintos niveles mientras que otras serán propias de un solo nivel.
 
-***Explcaciones de la cancion:
+En esta sección vamos a recopilar las principales propiedades de la lista total. Algunas de ellas podrán aparecer en distintos niveles mientras que otras serán propias de un solo nivel:\\
 
-\subsection*{Artista}
+\section{Explcaciones de la cancion}
 
 Aqui se encuentran las principales propiedades propias del objeto canción que no pueden tener el resto de niveles:
+
+
+\subsection*{Artista}
 
 El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretados por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista. Además, a partir del artista podemos obtener otras relaciones más complejas en función de los datos de este mismo.
 
@@ -92,7 +100,7 @@ Para esta explicación emplearemos la propiedad ``instance of'' (instancia de) e
 
 
 
-*** Explicaciones compartidas por Artista y Canción
+\section{Explicaciones compartidas por Artista y Canción}
 
 En esta sección exponemos propiedades que pueden ser establecidas tanto en el nivel de estudio de la canción como también en el artista.
 
@@ -166,7 +174,7 @@ El mismo caso podría servir de ejemplo para relacionar ambos artistas con la mi
 
 
 
-***Explicaciones compartidas del Artista y los Mienbros
+\section{Explicaciones compartidas del Artista y los Miembros}
 
 En esta sección solo aparecen las principales propiedades que por naturaleza son exclusivas de un artista, ya sea un artista en solitario o un miembro del grupo.
 
@@ -204,7 +212,7 @@ La propiedad ``location of formation'' (lugar de formación) que hace referencia
 
 
 
-***Explicaciones compartidas en el Artista, Miembro, Género y Canción
+\section{Explicaciones compartidas en el Artista, Miembro, Género y Canción}
 
 Estas explicaciones son compartidas en los cuatro niveles y resultan de gran interés porque nos permitirán enlazar los cuatro mismos en el caso en el que coincidan en el objeto con las relaciones de la canción opuesta.
 
@@ -246,13 +254,15 @@ Obtenemos esta explicación gracias a la propiedad ``influenced by'' (influencia
 \end{figure}
 
 Al igual que con el artista, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...
-Cabe destacar la diferencia entre las propiedades Influed by y Subgenre, mientras que la primera solo indica que ese estilo musical ha marcado una cierta influencia tomando algunos aspectos, la segunda señala que es un Subgénero, una tendencia muy parecida y que toma como base ese estilo musical.
 
 
 
 
 
 
+\section{Propiedades propias del artista o grupo}
+
+Aquí se expones las principales relaciones que solo pueden ser propias del artista o grupo.
 
 \subsubsection*{Integrantes}
 
@@ -286,17 +296,25 @@ Para esta explicación resulta útil la propiedad ``voice type'' (tipo de voz) e
 
 
 
-\subsection{Explicaciones basadas en el género}
-El segundo estudio que hemos hecho ha sido el que viene ligado al género de la canción. Es una de las propiedades más detalladas en Wikidata y por lo tanto una de de las que más información nos pueden proporcionar. Hay muchos géneros y subgéneros documentados, lo que nos facilita la obtención y clasificación de estos.
-
-En cuanto a esta propiedad, hemos sacado las siguientes relaciones:
 
 
 
+
+\section{Explicaciones basadas en el género}
+Estas propiedades vienen ligadas directamente al género de la canción. Es una de las propiedades más detalladas en Wikidata y por lo tanto una de de las que más información nos pueden proporcionar. Hay muchos géneros y subgéneros documentados, lo que nos facilita la obtención y clasificación de estos
+
+\subsection{Subgenre}
+
+Cabe destacar la diferencia entre las propiedades Influed by y Subgenre, mientras que la primera solo indica que ese estilo musical ha marcado una cierta influencia tomando algunos aspectos, la segunda señala que es un Subgénero, una tendencia muy parecida y que toma como base ese estilo musical.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Subgenre.png}
+	\caption{Ejemplo de explicación por Subgénero}
+	\label{fig:sampleImage}
+\end{figure}
+
+\section{Explicaciones basadas en el género y el artista}
 \subsubsection*{Fecha de fundación}
 
 Con esta propiedad intentamos tener en cuenta la historia de la música o su cronograma. Hay géneros que fueron desarrollados conjuntamente a lo largo del tiempo. Un ejemplo de este caso se dio en curiosamente el tecnopop que tanto caracterizó a los años 80, pues convivió a veces con el soul y el estilo afroamericano doo-wop, de Billy Joel.
-
-\subsubsection*{País de origen (Género)}
-
-
