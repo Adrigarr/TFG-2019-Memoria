@@ -31,10 +31,12 @@ Volviendo a lo que respecta al modelo RDF, hemos determinado el hecho de que si 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Grafo ejemplo.png}
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/RDFexample.png}
 	\caption{Ejemplo de grafo siguiendo el modelo RDF}
 	\label{fig:sampleImage}
 \end{figure}
+
+A simple vista para una persona, puede resultar una nomenclatura poco amigable de representar ya que las URIs pueden llegar a ser mucho más engorrosas y complejas. Más adelante explicaremos como hemos resuelto este problema en nuestro proyecto para que cualquiera que haga uso de nuestra futura interfaz pueda reconocer todos los objetos y sobre todo para darnos mucha más comodidad a la hora de trabajar con ellos.\\
 
 Podríamos decir que estamos estableciendo una relación entre dos objetos unidos mediante una propiedad. Esta propiedad es una ``explicación'' que nos sirve para relacionar objetos. En nuestro proyecto, estos objetos son canciones.\\
 
@@ -60,7 +62,7 @@ A la hora de hacer una consulta compleja, es posible que lleguemos a un código 
 
 \section{WikiData}
 
-Wikidata es una base de datos libre, colaborativa, multilingüe y secundaria, que recopila datos estructurados para dar soporte a Wikipedia, Wikimedia Commons, así como a otras wikis del movimiento Wikimedia y a cualquier persona en el mundo \cite{wikidataIntro}. Gracias a Wikidata, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset (o conjunto de datos), esencialmente datos acerca de artistas y sus temas musicales.\\
+Wikidata es una base de datos libre, colaborativa, multilingüe y secundaria, que recopila datos estructurados para dar soporte a Wikipedia, Wikimedia Commons, así como a otras wikis del movimiento Wikimedia y a cualquier persona en el mundo \cite{wikidataIntro}. El proyecto comenzó en 2012 liderado por wikimedia Alemania. Gracias a Wikidata, tenemos una gran cantidad de información relevante acerca de toda nuestra cultura reunida en un mismo sitio. La usaremos para consultar e investigar la información relacionada con nuestro dataset (o conjunto de datos), esencialmente datos acerca de artistas y sus temas musicales. Tiene numerosos servicios, uno de los que probablemente hayamos usado y no nos hemos dado cuenta, es el de servir información para rellenar las fichas de los artículos de Wikipedia.\\
 
 Wikidata está estructurada de tal manera que resulta sencillo acceder a su información utilizando el lenguaje de consultas SPARQL. Cada objeto tiene ciertas propiedades a las que podemos acceder seleccionando el identificador correcto de la propiedad.\\
 
