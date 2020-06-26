@@ -11,6 +11,18 @@ Ha sido el lenguaje de programación principal, al menos en la parte del back en
 
 Dos librerías propias de Python, especializadas en el manejo y procesamiento de datos. Han sido de una utilidad vital ya que en gran parte del trabajo trabajamos con numerosos datasets y estas librerías nos proporcionan todo lo necesario para tratarlos, pudiendo así trabajar con ellos más fácilmente.
 
+\subsection*{Sanic}
+
+El framework seleccionado para desarrollar nuestra aplicación. Es un framework web asíncrono para Python cuyo objetivo es proporcionar una forma de crear un servidor que sea rápido y fácil de usar. Su sencillez para empezar a utilizarlo es uno de los principales factores que nos hizo decantarnos por él en lugar de otras opciones.
+
+\subsection*{Jinja2}
+
+Un motor de plantillas para Python basado en el sistema de plantillas de Django. Permite trabajar con documentos HTML con marcadores de posición que son llenados por lo que se le indica desde el código Python, permitiendo así utilizar variables en las vistas. Es necesario en nuestro proyecto para tratar correctamente documentos cuyo título depende de la fecha y hora de su creación.
+
+\subsection*{SPARQLWrapper}
+
+Un wrapper para Python que permite ejecutar consultas SPARQL de forma remota. Proporciona una funcionalidad esencial para nuestro trabajo, pues es lo que utilizamos para obtener la información de Wikidata desde nuestra aplicación.
+
 \subsection*{HTML y CSS}
 
 Dos lenguajes fundamentales para la programación web. Debido a la naturaleza de nuestra aplicación hemos recurrido a estos lenguajes para darle forma y estilo a la interfaz de explicaciones, aquella parte de nuestro proyecto con la que interactuarán los usuarios.
@@ -52,6 +64,13 @@ Este ha sido el procesador de textos elegido para la realización de este docume
 TeXiS es una plantilla de LaTeX para Tesis, Trabajos de Fin de Máster y otros documentos desarrollada por Marco Antonio y Pedro Pablo Gómez Martín. Es la plantilla que se ha usado como base para construir este documento y ha resultado de gran ayuda tanto para cuestiones de organización como para aprender a usar varias funcionalidades de LaTeX, lo cual ha sido muy importante debido a nuestra falta de experiencia previa a este proyecto.
 
 \section{Tecnologías y herramientas descartadas}
+
+\subsection*{RDFstarTools}
+
+Esta es una colección de librerías Java y herramientas de línea de comandos para procesar datos RDF* y consultas SPARQL*. Proporciona varias funcionalidades, pero la verdaderamente relevante para nuestro proyecto es SPARQL* Parser, que sirve para hacer consultas SPARQL. Este parser está implementado sobre el framework Apache Jena.\\
+
+
+Esta fue una de las opciones que barajamos para hacer consultas SPARQL desde nuestro código, pero acabamos decidiendo usar SPARQLWrapper en su lugar debido a que RDFstarTools es una colección de librerías de las cuales solo nos haría falta una pequeña parte. Tomando en consideración ambas opciones, nos pareció más adecuado utilizar Python junto con SPARQLWrapper debido ya que era más conciso y sencillo de implementar.
 
 \subsection*{Alchemy.js}
 
