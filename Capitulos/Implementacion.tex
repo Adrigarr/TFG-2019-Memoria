@@ -38,12 +38,22 @@ Sin embargo, también encontramos otros géneros más distantes a los anteriores
 
 \section{Arquitectura de la aplicación}
 
-Como inicio tenemos varios scripts que nos ayudan a organizar y manejar mucho mejor los datos, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
+Como punto inicial hemos utilizado varios scripts que nos ayudaron a organizar y manejar mucho mejor los datos inciales que nos fueron proporcionados, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
 
-Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos.\\
+Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos hacia ese punto el cual debe permitir el intercambio de datos en formato RDF. Además nos proporciona un objeto respuesta, el cual puede devolverse en distintos formatos.\\
 
-Como siguiente punto tendríamos el modelo de la aplicación, que es una serie de clases que se encargan de ejecutar todo el proceso de obtención de datos, el cual es genérico para todas las canciones.\\
+La clase principal del modelo de la aplicación, es getInfoSong. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
 
-Cuenta con una lista de propiedades que son el objeto de estudio de cada canción y métodos para añadir o eliminar alguna de estas. Actualmente cuenta con un número de 21 propiedades totales, las cuales pueden tener su vez aún más de un modo recursivo.\\
+La clase Properties, se encarca de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instacia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuantan con las propiedades que hemos estudiado y probado aunque cuentan con la posibilidad de expandirse añadiendo nuevas propiedades, siempre que cuenten con la sintaxis de Wikidata. \\
 
-Por último tenemos la clase principal, que es la que se encarga de hacer todas las llamadas al modelo de cada una de las dos canciones y artistas que son introducidos. También se encarga del manejo de excepciones y creación del CSV con las relaciones totales.\\
+Por último tenemos el módulo dataOperations, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los ditintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.75\textwidth]{Imagenes/Bitmap/class-diagram.png}
+	\caption{Diagrama de clases sobre el modelo de datos}
+	\label{fig:sampleImage}
+\end{figure}
+
+
