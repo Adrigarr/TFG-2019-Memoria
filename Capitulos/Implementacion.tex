@@ -38,20 +38,20 @@ Sin embargo, también encontramos otros géneros más distantes a los anteriores
 
 \section{Arquitectura de la aplicación}
 
-Como punto inicial hemos utilizado varios scripts que nos ayudaron a organizar y manejar mucho mejor los datos inciales que nos fueron proporcionados, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
+Como punto inicial hemos utilizado varios scripts que nos ayudaron a organizar y manejar mucho mejor los datos iniciales que nos fueron proporcionados, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
 
-Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos hacia ese punto el cual debe permitir el intercambio de datos en formato RDF. Además nos proporciona un objeto respuesta, el cual puede devolverse en distintos formatos.\\
+Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos hacia ese punto, el cual debe permitir el intercambio de datos en formato RDF. Además nos proporciona un objeto respuesta, el cual puede devolverse en distintos formatos.\\
 
-La clase principal del modelo de la aplicación, es getInfoSong. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
+La clase principal del modelo de la aplicación es getInfoSong. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
 
-La clase Properties, se encarca de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instacia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuantan con las propiedades que hemos estudiado y probado aunque cuentan con la posibilidad de expandirse añadiendo nuevas propiedades, siempre que cuenten con la sintaxis de Wikidata. \\
+La clase Properties se encarga de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instancia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuentan con las propiedades que hemos estudiado y probado aunque tienen la posibilidad de expandirse añadiendo nuevas propiedades, siempre que respeten la sintaxis de Wikidata. \\
 
-Por último tenemos el módulo dataOperations, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los ditintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
+Por último tenemos el módulo dataOperations, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los distintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 0.75\textwidth]{Imagenes/Bitmap/class-diagram.png}
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/class-diagram.png}
 	\caption{Diagrama de clases sobre el modelo de datos}
 	\label{fig:sampleImage}
 \end{figure}
