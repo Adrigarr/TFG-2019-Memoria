@@ -42,15 +42,15 @@ Como punto inicial hemos utilizado varios scripts que nos ayudaron a organizar y
 
 Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos hacia ese punto, el cual debe permitir el intercambio de datos en formato RDF. Además nos proporciona un objeto respuesta, el cual puede devolverse en distintos formatos.\\
 
-A la hora de organizar el código de nuestra aplicación, nos hemos decantado por el patrón MVC (Modelo-Vista-Controlador) debido a su utilidad en el desarrollo y mantenimiento de aplicaciones web. Por ello, la lógica de nuestra aplicación se encuentra dividida en diferentes carpetas según el patrón, además de un par de carpetas auxiliares.\\
+A la hora de organizar el código de nuestra aplicación, nos hemos decantado por el \textbf{patrón MVC (Modelo-Vista-Controlador)} debido a su utilidad en el desarrollo y mantenimiento de aplicaciones web. Por ello, la lógica de nuestra aplicación se encuentra dividida en diferentes carpetas según el patrón, además de un par de carpetas auxiliares.\\
 
-La carpeta model contiene todo lo necesario para el Modelo, incluyendo la librería anteriormente mencionada y las distintas clases empleadas en la aplicación, que pasaremos a explicar a continuación.\\
+La carpeta \textbf{model} contiene todo lo necesario para el Modelo, incluyendo la librería anteriormente mencionada y las distintas clases empleadas en la aplicación, que pasaremos a explicar a continuación.\\
 
-La clase principal del modelo de la aplicación es getInfoSongs. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
+La clase principal del modelo de la aplicación es \textbf{getInfoSongs}. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
 
-La clase Properties se encarga de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instancia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuentan con las propiedades que hemos estudiado y probado aunque tienen la posibilidad de expandirse añadiendo nuevas propiedades, siempre que respeten la sintaxis de Wikidata. \\
+La clase \textbf{Properties} se encarga de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instancia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuentan con las propiedades que hemos estudiado y probado aunque tienen la posibilidad de expandirse añadiendo nuevas propiedades, siempre que respeten la sintaxis de Wikidata. \\
 
-Para terminar con el modelo tenemos el módulo dataOperations, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los distintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
+Para terminar con el modelo tenemos el módulo \textbf{dataOperations}, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los distintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
 
 \begin{figure}[h!]
 	\centering
@@ -59,10 +59,10 @@ Para terminar con el modelo tenemos el módulo dataOperations, el cual es utiliz
 	\label{fig:sampleImage}
 \end{figure}
 
-Por otra parte tenemos la carpeta view, donde se encuentran las Vistas de la aplicación. Aquí es donde almacenamos el código HTML de la interfaz, aunque esta no estaría completa sin el contenido de la carpeta static, que es donde se recogen todos los recursos estáticos de la aplicación, como lo son el código CSS para dar formato a la vista o el JavaScript para aportarle funcionalidad. \\
+Por otra parte tenemos la carpeta \textbf{view}, donde se encuentran las Vistas de la aplicación. Aquí es donde almacenamos el código HTML de la interfaz, aunque esta no estaría completa sin el contenido de la carpeta \textbf{static}, que es donde se recogen todos los recursos estáticos de la aplicación, como lo son el código CSS para dar formato a la vista o el JavaScript para aportarle funcionalidad. \\
 
-A continuación está la carpeta controller, que contiene todas las rutas de la aplicación. El controlador actúa como intermediario entre el modelo y la vista, es el encargado de reaccionar a las acciones del usuario en la interfaz y hacer peticiones al modelo para obtener la información que se necesite mostrar en cada momento. \\
+A continuación está la carpeta \textbf{controller}, que contiene todas las rutas de la aplicación. El controlador actúa como intermediario entre el modelo y la vista, es el encargado de reaccionar a las acciones del usuario en la interfaz y hacer peticiones al modelo para obtener la información que se necesite mostrar en cada momento. \\
 
-Por último hay una carpeta adicional llamada helpers. En ella se recogen las funciones necesarias para tratar los datos obtenidos del modelo y elaborar a partir de ellos la representación gráfica que se muestra en la interfaz. Dicho de otra forma, es la parte responsable de generar los grafos de explicaciones. Para esto hacemos uso de vis.js, una librería de JavaScript para visualización de datos. \\
+Por último hay una carpeta adicional llamada \textbf{helpers}. En ella se recogen las funciones necesarias para tratar los datos obtenidos del modelo y elaborar a partir de ellos la representación gráfica que se muestra en la interfaz. Dicho de otra forma, es la parte responsable de generar los grafos de explicaciones. Para esto hacemos uso de vis.js, una librería de JavaScript para visualización de datos. \\
 
 
