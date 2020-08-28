@@ -37,7 +37,7 @@ Aquí se encuentran las explicaciones basadas en propiedades del objeto canción
 
 El artista es una de las explicaciones más obvias pero también es una de las más importantes. Esta explicación hace referencia a cuando dos temas son interpretados por el mismo artista, por lo que tienen una clara relación directa ya que suele existir similitud entre las canciones de un artista. Además, a partir del artista podemos obtener otras relaciones más complejas en función de los datos de este mismo.\\
 
-Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Get Lucky}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.\\
+Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Something About Us}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.\\
 
 Para esta explicación utilizamos la propiedad ``performer''~(intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}).\\
 
@@ -52,9 +52,9 @@ Para esta explicación utilizamos la propiedad ``performer''~(intérprete) de Wi
 
 Una explicación muy potente será que ambas canciones pertenezcan al mismo álbum. A menudo esta explicación aparecerá acompañada de la explicación del artista y, en cualquier caso, la relación que existe entre dos temas del mismo álbum suele ser más estrecha debido a que poseen más puntos en común, como puede ser el género, la fecha o la temática.\\
 
-Tomemos como ejemplo \textit{Smells Like Teen Spirit} y \textit{Come as You Are}. Estas dos canciones son muy cercanas porque tienen varios puntos en común, pero una de las explicaciones que podemos ofrecer es que ambas pertenecen al álbum \textit{Nevermind}, de \textbf{Nirvana}. \textit{About a Girl} es otro tema que se podría recomendar a raíz de \textit{Smells Like Teen Spirit}, pero es una peor elección que \textit{Come as You Are} porque pertenece a un álbum diferente.\\
+Tomemos como ejemplo \textit{Today} y \textit{Disarm}. Estas dos canciones son muy cercanas porque tienen varios puntos en común, pero una de las explicaciones que podemos ofrecer es que ambas pertenecen al álbum \textit{Siamese Dream}, de \textbf{The Smashing Pumpkins}. \textit{1979} es otro tema que se podría recomendar a raíz de \textit{Today}, pero es una peor elección que \textit{Disarm} porque pertenece a un álbum diferente.\\
 
-Volvemos a utilizar Wikidata para obtener esta explicación, concretamente la propiedad ``part of''~(parte de). Esta propiedad se utiliza para varias cosas, entre ellas indicar los álbumes a los que pertenecen las canciones. Así obtenemos que \textit{Smells Like Teen Spirit} es ``parte de'' \textit{Nevermind}.\\
+Volvemos a utilizar Wikidata para obtener esta explicación, concretamente la propiedad ``part of''~(parte de). Esta propiedad se utiliza para varias cosas, entre ellas indicar los álbumes a los que pertenecen las canciones. Así obtenemos que \textit{Today} es ``parte de'' \textit{Siamese Dream}.\\
 
 \begin{figure}[h!]
 	\centering
@@ -82,9 +82,9 @@ Para obtener esta explicación, emplearemos la propiedad ``publication date''~(f
 
 Existe también una cierta relación entre aquellos temas que sean singles (o sencillos), así que consideramos esto como una explicación más. El razonamiento para esta decisión es que los singles son canciones que se publican de forma independiente por razones promocionales, por lo que suelen convertirse en los temas más populares y representativos del trabajo del artista. Por ello, pueden poseer más valor para el recomendador que otras canciones porque los singles tienen más probabilidades de coincidir con los gustos del usuario.\\
 
-El tema \textit{Bad Guy} de \textbf{Billie Eilish} es un single, así que podemos decir que tiene cierta relación con \textit{Shallow} de \textbf{Lady Gaga} y \textbf{Bradley Cooper}, que también es un single.\\
+El tema \textit{Hung Up} de \textbf{Madonna} es un single, así que podemos establecer cierta relación con \textit{Feel Good Inc.} de \textbf{Gorillaz}, que también es un single.\\
 
-Para esta explicación emplearemos la propiedad ``instance of''~(instancia de) en Wikidata y su valor ``single''. De esta forma comprobaremos que tanto \textit{Bad Guy} como \textit{Shallow} son ``instancia de'' ``single''.\\
+Para esta explicación emplearemos la propiedad ``instance of''~(instancia de) en Wikidata y su valor ``single''. De esta forma comprobaremos que tanto \textit{Hung Up} como \textit{Feel Good Inc.} son ``instancia de'' ``single''.\\
 
 \begin{figure}[h!]
 	\centering
