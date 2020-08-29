@@ -17,7 +17,9 @@ El framework seleccionado para desarrollar nuestra aplicación. Es un framework 
 
 \subsection*{Jinja2}
 
-Un motor de plantillas para Python basado en el sistema de plantillas de Django. Permite trabajar con documentos HTML con marcadores de posición que son llenados por lo que se le indica desde el código Python, permitiendo así utilizar variables en las vistas. Es necesario en nuestro proyecto para tratar correctamente documentos cuyo título depende de la fecha y hora de su creación.
+Un motor de plantillas para Python basado en el sistema de plantillas de Django. Permite trabajar con documentos HTML con marcadores de posición que son llenados por lo que se le indica desde el código Python, permitiendo así utilizar variables en las vistas.\\
+
+Esta función se utilizaba en una versión antigua de nuestro proyecto para tratar correctamente documentos cuyo título depende de la fecha y hora de su creación. Más adelante se cambió la forma en que se trataban estos documentos, pero seguimos utilizando Jinja2 para el formato de uso de las plantillas.
 
 \subsection*{SPARQLWrapper}
 
@@ -71,6 +73,12 @@ Esta es una colección de librerías Java y herramientas de línea de comandos p
 
 
 Esta fue una de las opciones que barajamos para hacer consultas SPARQL desde nuestro código, pero acabamos decidiendo usar SPARQLWrapper en su lugar debido a que RDFstarTools es una colección de librerías de las cuales solo nos haría falta una pequeña parte. Tomando en consideración ambas opciones, nos pareció más adecuado utilizar Python junto con SPARQLWrapper debido ya que era más conciso y sencillo de implementar.
+
+\subsection*{Java}
+
+Uno de los lenguajes de programación de programación más extendidos y populares, especializado en la programación orientada a objetos. Al principio del proyecto nos planteamos utilizarlo como lenguaje principal para el back end de nuestra aplicación, sin embargo finalmente nos decantamos por Python.\\
+
+Como ya hemos comentado antes, al decidir usar SPARQLWrapper para nuestras consultas SPARQL en lugar de RDFstarTools también nos pareció más adecuado descartar Java en favor de Python, aunque ambos habrían sido elecciones viables. 
 
 \subsection*{Alchemy.js}
 
