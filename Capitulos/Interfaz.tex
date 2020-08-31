@@ -83,3 +83,77 @@ Por último, cabe destacar las pestañas que se ven justo encima del marco para 
 En la Figura 4.4 se ve el llamado ``grafo de explicaciones lejanas'', con el que se ve mejor la diferencia. Al contrario del ``grafo de explicaciones cercanas'', aquí solo se muestran las explicaciones existentes entre elementos que pertenecen a estudios diferentes. De esta forma, en este grafo se ve la relación entre el artista \textbf{The Rolling Stones}, autor de la primera canción, y el género \textbf{pop rock} obtenido de la segunda canción.\\
 
 El usuario podrá cambiar de vista libremente para consultar ambos grafos haciendo click en las pestañas anteriormente mencionadas. Todas las funciones explicadas en esta sección aparecen en ambos grafos.\\
+
+\section{Estado final del sistema}
+
+Tras hacer una serie de cambios respecto a la versión anterior, alcanzamos la versión final de la interfaz. Aprovecharemos este apartado para hacer una demostración paso a paso del uso de la aplicación y comentaremos los cambios realizados a medida que vayan apareciendo.\\
+
+Al abrir la aplicación, nos encontramos con la pantalla inicial que aparece en la figura 5.5. Al igual que en versiones anteriores, en este estado inicial tenemos dos listas a ambos lados para seleccionar las canciones a comparar, un botón en la parte superior para confirmar nuestra selección, un espacio central en blanco que será donde se dibuje el grafo y dos botones sobre dicho espacio para cambiar el grafo mostrado.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla inicial.png}
+	\caption{Estado inicial de la interfaz}
+	\label{fig:sampleImage}
+\end{figure}
+
+Aunque la estructura es la misma, el aspecto visual de casi todos los elementos ha cambiado con el objetivo de hacerlos más claros y agradables para los usuarios. Además, hemos decidido cambiar el idioma de todos los elementos al inglés, pues nos parece un lenguaje más universal.\\
+
+La terminología utilizada para referirnos a los dos grafos mostrados también ha cambiado, como se puede ver en los botones relacionados. El que anteriormente llamábamos ``grafo de explicaciones cercanas'' ahora pasa a ser el ``grafo de explicaciones de la misma categoría''~(Same category explanations), mientras que el ``grafo de explicaciones lejanas'' se convierte en ``grafo de explicaciones de categorías distintas''~(Different category explanations). Su funcionalidad y forma de construirlos es la misma, pero decidimos cambiar los términos para intentar hacerlo más comprensible.\\
+
+Somos conscientes de que la diferencia entre ambos grafos puede ser confusa para un usuario recién llegado a la aplicación, por eso hemos incorporado un botón de ayuda en la parte superior, reconocible por su forma de interrogación.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla modal.png}
+	\caption{Ventana de ayuda}
+	\label{fig:sampleImage}
+\end{figure}
+
+Al pulsar ese botón, se despliega la ventana mostrada en la Figura 5.6. En ella viene explicada la diferencia entre los dos grafos con la ayuda de imágenes y texto. Se puede cerrar esta ventana con la hélice de la esquina superior derecha o simplemente haciendo click fuera del marco.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla seleccion.png}
+	\caption{Ejemplo de selección de dos canciones}
+	\label{fig:sampleImage}
+\end{figure}
+
+Para continuar es necesario seleccionar dos canciones, una de cada lista. Para ello es posible hacer scroll en las listas hasta encontrar la canción deseada o también se puede utilizar el buscador que hay sobre ellas para filtrarlas. Una vez se han seleccionado ambas canciones, se puede hacer click sobre el botón ``COMPARE'' para visualizar las explicaciones. Si se intenta proceder sin seleccionar dos canciones diferentes, el usuario recibirá un aviso.\\
+
+Tras un pequeño tiempo de carga, el grafo de explicaciones que relaciona ambas canciones aparecerá en el espacio reservado del centro de la pantalla. Este grafo tiene la misma forma que en la última versión, con colores distinguiendo las distintas categorías (azul para las canciones, verde para los géneros, rojo para los artistas y morado para los miembros de los artistas).\\
+
+\clearpage
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla same graph.png}
+	\caption{Grafo de explicaciones de la misma categoría}
+	\label{fig:sampleImage}
+\end{figure}
+
+En esta versión final hemos cambiado el color de los nodos centrales por un tono amarillo para diferenciarlos del resto. En esta columna central aparecen los nodos que representan realmente las explicaciones que relacionan las canciones.\\
+
+También hemos cambiado el tamaño y color de la fuente para los nodos de canciones y de artistas para que sea más fácil identificarlos a simple vista. Esto es importante debido a que esos son los datos que el usuario introduce a la aplicación y debería ser capaz de reconocerlos rápidamente.\\
+
+Por último hemos añadido una etiqueta desplegable en los nodos, de forma que se puede colocar la flecha del ratón sobre ellos para saber qué tipo de elemento es.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla different graph.png}
+	\caption{Grafo de explicaciones de distinta categoría}
+	\label{fig:sampleImage}
+\end{figure}
+
+Al pulsar la otra pestaña, ``Different category explanations'', se muestra el grafo alternativo. Este grafo no ha sufrido cambios notables desde su última versión más allá de los ya comentados en este mismo apartado.\\
+
+Hay que mencionar que se puede interactuar con los grafos en cualquier momento. Si se sitúa la flecha del ratón dentro del marco blanco, la rueda sirve para ajustar el zoom. Además, se puede pinchar y arrastrar cualquiera de los nodos para resaltarlos y moverlos verticalmente. Estas acciones pueden resultar de gran ayuda, especialmente cuando el grafo es muy grande y resulta difícil ver todas las conexiones al mismo tiempo.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla tabla.png}
+	\caption{Tabla de datos adicionales}
+	\label{fig:sampleImage}
+\end{figure}
+
+Por último, al hacer click en alguno de los nodos de canciones o artistas se despliega una tabla en la parte inferior de la pantalla. En ella se puede consultar una serie de datos adicionales que, si bien no todos forman parte de las explicaciones mostradas, pueden servir para que el usuario tenga un mejor entendimiento de ambas canciones y los artistas que las interpretan.\\
