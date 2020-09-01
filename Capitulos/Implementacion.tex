@@ -21,7 +21,7 @@ Nuestra aplicación final funciona con este dataset limitado pero que cuenta con
 
 \section{Estudio del dataset}
 
-Para poder comprender mejor el dataset obtenido con el objetivo de tener conocimiento de cuan diferente o similar era el dataset, musicalmente hablando. Objetivamente no es igual de complejo poder relacionar dos géneros dispares como podrían serlo Folk y Electrónica que otros dos géneros que pueda ser parejos en algunos aspectos musicales, sociales etc... como lo son el Rock y el Heavy Metal.\\
+Para poder comprender mejor el dataset obtenido, estudiamos el género de todas las canciones de la muestra con el objetivo de tener conocimiento de cuán diferente o similar era el dataset, musicalmente hablando. Objetivamente no es igual de complejo poder relacionar dos géneros dispares como podrían serlo Folk y Electrónica que otros dos géneros que pueda ser parejos en algunos aspectos musicales, sociales etc... como lo son el Rock y el Heavy Metal.\\
 
 Con el género queremos demostrar la variedad de la muestra y cómo de posible es relacionar canciones de distinto género entre sí. Si hubiésemos obtenido muy pocos géneros similares entre sí, la muestra no tendría un gran valor desde el punto de vista de esta explicación, pues no habríamos llegado a un resultado realmente interesante. Cabe destacar que no es un conteo exacto, ya que una canción puede tener más de un género o ninguno (por falta de documentación, no es posible catalogarlo en una categoría exacta, etc.). Sin embargo, el componente de variedad y representación musical no se ve afectado.
 
@@ -36,9 +36,9 @@ En total hemos obtenido 81 géneros distintos para las canciones, entre los que 
 
 Sin embargo, también encontramos otros géneros más distantes a los anteriores, como por ejemplo \textbf{rhythm \& blues}, \textbf{soul}, \textbf{reggae}, \textbf{jazz} o \textbf{house music}. Todos estos son estilos dispares entres sí, lo que nos da la posibilidad de ver cómo de potentes pueden ser las relaciones y explicaciones que hemos obtenido y probar nuestro sistema para ver si es capaz de relacionar canciones muy diferentes o incluso opuestas.\\
 
-Por último hemos querido representar una red de toda nuestra lista. Para ello hemos establecido las canciones como nodos y las aristas como relaciones que se establecen en función de si podemos encontrar al menos 3 explicaciones de relación(musical) entre dos nodos de nuestra lista. El objetivo es conocer mejor nuestro dataset de canciones y ver como de relacionadas están entre ellas y cuales son los nodos centrales de toda la lista.
+Por último hemos querido representar una red de toda nuestra lista. Para ello hemos establecido las canciones como nodos y las aristas como relaciones que se establecen en función de si podemos encontrar al menos 3 explicaciones de relación~(musical) entre dos nodos de nuestra lista. El objetivo es conocer mejor nuestro dataset de canciones y ver cómo de relacionadas están entre ellas y cuáles son los nodos centrales de toda la lista.\\
 
-//(IMAGEN)
+(AQUÍ FALTA AÑADIR UNA IMAGEN. ESTARÁ LISTA EN LOS PRÓXIMOS DÍAS)
 
 \section{Arquitectura de la aplicación}
 
@@ -71,11 +71,12 @@ Por último hay una carpeta adicional llamada \textbf{helpers}. En ella se recog
 
 \section{Extensibilidad de la aplicación}
 
-Se ha intentado dar un efoque lo más aproximado posible a una estructura MVC(Modelo-Vista-Controlador), con tal de poder hacer una aplicación lo más reutilizable posible y atenta a posibles cambios y modificaciones.
-Para empezar, todas las propiedades y sus códigos para consultas están incluidas en diccionarios que son usados por el modelo. En un inicio creabamos queries con unos valores estáticos predeterminados pero nos dimos cuenta que ese código no iba a poder ser reutilizable y era muy poco práctico. Poniendo un ejemplo, imaginemos que Wikidata implementa nuevas propiedades o nueva información en la base de datos de los artistas que añadir a nuestro estudio, contamos con métodos de adición con tan solo obtener el nombre y el código de esa nueva propiedad. El modelo no sufríria cambios en el código, ya que importa cada lanzamiento todos estos diccionarios estáticos. De hecho, Wikidata es una base de datos que cambia constantemente por acción de diversos usuarios que completan y actualizan documentos constantemente así que no es de extrañar que en cierto tiempo, las explicaciones y por ende las propiedades activas, se quedasen obsoletas.
+Se ha intentado dar un enfoque lo más aproximado posible a una estructura MVC~(Modelo-Vista-Controlador), con tal de poder hacer una aplicación lo más reutilizable posible y atenta a posibles cambios y modificaciones.\\
 
-También como resultado final del modelo se proporciona un dataset en forma de json que contienen todas las relaciones con sus repectivos objetos y 4 datasets que representan información extra de las dos duplas canción/artista, de forma que son archivos estáticos y únicos en cada lanzamiento, nunca va a enviarse un número distinto de archivos.
+Para empezar, todas las propiedades y sus códigos para consultas están incluidas en diccionarios que son usados por el modelo. En un inicio creábamos queries con unos valores estáticos predeterminados pero nos dimos cuenta de que ese código no iba a poder ser reutilizable y era muy poco práctico. Poniendo un ejemplo, imaginemos que Wikidata implementa nuevas propiedades o nueva información en la base de datos de los artistas que añadir a nuestro estudio, contamos con métodos de adición con tan solo obtener el nombre y el código de esa nueva propiedad. El modelo no sufriría cambios en el código, ya que importa en cada lanzamiento todos estos diccionarios estáticos. De hecho, Wikidata es una base de datos que cambia constantemente por acción de diversos usuarios que completan y actualizan documentos constantemente, así que no es de extrañar que en cierto tiempo las explicaciones y por ende las propiedades activas, se queden obsoletas.\\
 
-En cuanto a la extensibilidad del DataSource de canciones y artistas, se trata de un módulo separado el cual utiliza como fuente el DataSet original de lastFM. El módulo se encarga de parsear los strings y procesarlo como hemos exlicado en la sección de Preprocesamiento. No es una función que se pueda lanzar desde el main de la aplicación porque no está pensada para añadir canciones a voluntad por motivos de compatibilidad con la sintaxis y el manejo de Wikidata.
+También como resultado final del modelo se proporciona un dataset en forma de archivos .json que contienen todas las relaciones con sus respectivos objetos y 4 datasets que representan información extra de las dos duplas canción/artista, de forma que son archivos estáticos y únicos en cada lanzamiento, nunca va a enviarse un número distinto de archivos.\\
+
+En cuanto a la extensibilidad del DataSource de canciones y artistas, se trata de un módulo separado el cual utiliza como fuente el DataSet original de lastFM. El módulo se encarga de parsear los strings y procesarlo como hemos explicado en la sección de Preprocesamiento. No es una función que se pueda lanzar desde el main de la aplicación porque no está pensada para añadir canciones a voluntad por motivos de compatibilidad con la sintaxis y el manejo de Wikidata.
 
 
