@@ -77,6 +77,94 @@ Para empezar, todas las propiedades y sus códigos para consultas están incluid
 
 También como resultado final del modelo se proporciona un dataset en forma de archivos .json que contienen todas las relaciones con sus respectivos objetos y 4 datasets que representan información extra de las dos duplas canción/artista, de forma que son archivos estáticos y únicos en cada lanzamiento, nunca va a enviarse un número distinto de archivos.\\
 
-En cuanto a la extensibilidad del DataSource de canciones y artistas, se trata de un módulo separado el cual utiliza como fuente el DataSet original de lastFM. El módulo se encarga de parsear los strings y procesarlo como hemos explicado en la sección de Preprocesamiento. No es una función que se pueda lanzar desde el main de la aplicación porque no está pensada para añadir canciones a voluntad por motivos de compatibilidad con la sintaxis y el manejo de Wikidata.
+En cuanto a la extensibilidad del DataSource de canciones y artistas, se trata de un módulo separado el cual utiliza como fuente el DataSet original de lastFM. El módulo se encarga de parsear los strings y procesarlo como hemos explicado en la sección de Preprocesamiento. No es una función que se pueda lanzar desde el main de la aplicación porque no está pensada para añadir canciones a voluntad por motivos de compatibilidad con la sintaxis y el manejo de Wikidata.\\
+
+\section{Tecnologías y Herramientas utilizadas}
+\label{sec:tecnologias}
 
 
+
+\subsection{Programación}
+
+\subsection*{Python}
+
+Ha sido el lenguaje de programación principal, al menos en la parte del backend tanto para el núcleo del código que obtiene y relaciona los datos como para la creación de distintos scripts de ayuda, además de numerosas funciones para tratar los datos a representar en los grafos finales. Lo hemos escogido debido a su versatilidad y a su gran adaptación debido a la cantidad de librerías con las que cuenta.
+
+\subsection*{Pandas y Numpy}
+
+Dos librerías propias de Python, especializadas en el manejo y procesamiento de datos. Han sido de una utilidad vital ya que en gran parte del trabajo trabajamos con numerosos datasets y estas librerías nos proporcionan todo lo necesario para tratarlos, pudiendo así trabajar con ellos más fácilmente.
+
+\subsection*{Sanic}
+
+El framework seleccionado para desarrollar nuestra aplicación. Es un framework web asíncrono para Python cuyo objetivo es proporcionar una forma de crear un servidor que sea rápido y fácil de usar. Su sencillez para empezar a utilizarlo es uno de los principales factores que nos hizo decantarnos por él en lugar de otras opciones.
+
+\subsection*{Jinja2}
+
+Un motor de plantillas para Python basado en el sistema de plantillas de Django. Permite trabajar con documentos HTML con marcadores de posición que son llenados por lo que se le indica desde el código Python, permitiendo así utilizar variables en las vistas.\\
+
+Esta función se utilizaba en una versión antigua de nuestro proyecto para tratar correctamente documentos cuyo título depende de la fecha y hora de su creación. Más adelante se cambió la forma en que se trataban estos documentos, pero seguimos utilizando Jinja2 para el formato de uso de las plantillas.
+
+\subsection*{SPARQLWrapper}
+
+Un wrapper para Python que permite ejecutar consultas SPARQL de forma remota. Proporciona una funcionalidad esencial para nuestro trabajo, pues es lo que utilizamos para obtener la información de Wikidata desde nuestra aplicación.
+
+\subsection*{HTML y CSS}
+
+Dos lenguajes fundamentales para la programación web. Debido a la naturaleza de nuestra aplicación hemos recurrido a estos lenguajes para darle forma y estilo a la interfaz de explicaciones, aquella parte de nuestro proyecto con la que interactuarán los usuarios.
+
+\subsection*{Javascript}
+
+Al igual que los anteriores, este es un lenguaje de programación muy importante para el desarrollo web. Javascript es una parte integral de nuestro proyecto, pues es el lenguaje en el que se ha desarrollado la parte encargada de dibujar los grafos de explicaciones, además de otras funciones necesarias para el funcionamiento de la interfaz.
+
+\subsection*{vis.js}
+
+Esta es una librería de Javascript para visualización de datos. Permite diversas representaciones gráficas, pero nosotros hemos empleado el componente Network para dibujar nuestros grafos de explicaciones. Es una librería bastante completa y con una documentación bien organizada, así que fue muy útil a la hora de plasmar en pantalla el resultado de nuestra investigación.
+
+\subsection*{Jupyter-Notebooks}
+
+Es un entorno informático interactivo basado en la web. Fue un entorno apropiado para realizar la prueba de scripts que nos ayudaron a limpiar y probar el dataset original.
+
+\subsection{Organización}
+
+\subsection*{Github}
+
+Para poder almacenar y organizar todo el código en el que hemos trabajado conjuntamente. Nos ha permitido llevar un historial de versiones y actualizaciones de cada módulo del código. Github ha sido una herramienta apropiada no solo para llevar un control del código de la aplicación, sino también para la construcción de este mismo documento.
+
+\subsection*{Google Drive}
+
+Empleamos el servicio de alojamiento de archivos en la nube de Google para recoger y poner en común todos los documentos relacionados con la investigación previa al inicio del trabajo, además de para compartir recursos durante la realización del mismo. Su importancia quedó relegada a un segundo plano a medida que avanzaba el proyecto debido a que comenzamos a utilizar Github, pero cabe resaltar su utilidad durante las primeras fases.
+
+\subsection*{Google Meet}
+
+La aplicación de videoconferencias de Google fue una herramienta clave para mantener el contacto tanto con los directores del TFG como entre los miembros del equipo. Cuando las reuniones presenciales dejaron de ser posibles por motivos ajenos a nuestro control, se hizo necesario el uso de un servicio como este.
+
+\subsection{Memoria}
+
+\subsection*{LaTeX}
+
+Este ha sido el procesador de textos elegido para la realización de este documento: la Memoria del TFG. Nos decantamos por este en lugar de otros procesadores como Word debido a las muchas posibilidades que tiene para generar documentos de calidad. Puntos como la estructura de capítulos, la estandarización de títulos o la forma de mostrar figuras (tanto imágenes como fragmentos de código), han hecho que nos resulte más sencilla la tarea de desarrollar esta memoria.
+
+\subsection*{TeXiS}
+
+TeXiS es una plantilla de LaTeX para Tesis, Trabajos de Fin de Máster y otros documentos desarrollada por Marco Antonio y Pedro Pablo Gómez Martín. Es la plantilla que se ha usado como base para construir este documento y ha resultado de gran ayuda tanto para cuestiones de organización como para aprender a usar varias funcionalidades de LaTeX, lo cual ha sido muy importante debido a nuestra falta de experiencia previa a este proyecto.
+
+\subsection{Tecnologías y herramientas descartadas}
+
+\subsection*{RDFstarTools}
+
+Esta es una colección de librerías Java y herramientas de línea de comandos para procesar datos RDF* y consultas SPARQL*. Proporciona varias funcionalidades, pero la verdaderamente relevante para nuestro proyecto es SPARQL* Parser, que sirve para hacer consultas SPARQL. Este parser está implementado sobre el framework Apache Jena.\\
+
+
+Esta fue una de las opciones que barajamos para hacer consultas SPARQL desde nuestro código, pero acabamos decidiendo usar SPARQLWrapper en su lugar debido a que RDFstarTools es una colección de librerías de las cuales solo nos haría falta una pequeña parte. Tomando en consideración ambas opciones, nos pareció más adecuado utilizar Python junto con SPARQLWrapper debido ya que era más conciso y sencillo de implementar.
+
+\subsection*{Java}
+
+Uno de los lenguajes de programación de programación más extendidos y populares, especializado en la programación orientada a objetos. Al principio del proyecto nos planteamos utilizarlo como lenguaje principal para el backend de nuestra aplicación, sin embargo finalmente nos decantamos por Python.\\
+
+Como ya hemos comentado antes, al decidir usar SPARQLWrapper para nuestras consultas SPARQL en lugar de RDFstarTools también nos pareció más adecuado descartar Java en favor de Python, aunque ambos habrían sido elecciones viables. 
+
+\subsection*{Alchemy.js}
+
+Alchemy.js es una aplicación de visualización de grafos para la web. Está escrita en JavaScript con la librería D3.js como base y ofrece una manera sencilla y rápida de generar grafos. La mayoría de su personalización se lleva a cabo sobrescribiendo sus configuraciones por defecto, por lo que no requiere apenas implementar código JavaScript adicional.\\
+
+Fue la primera opción contemplada para representar los grafos de nuestro proyecto debido a su sencillez de manejo y a su uso de archivos JSON para aportar los datos, algo que resultaba atractivo en un principio. Tras trabajar con ella durante un tiempo fue necesario descartarla por ciertas limitaciones a la hora de personalizar la representación según nuestro diseño, además de la falta de soporte por tratarse de un proyecto actualmente abandonado.
