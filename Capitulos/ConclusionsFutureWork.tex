@@ -1,6 +1,33 @@
 \chapter{Conclusions and Future Work}
 \label{cap:conclusions}
 
-Conclusions and future lines of work. This chapter contains the translation of Chapter \ref{cap:conclusiones}.
+In this chapter we expose our reflections on the work done throughout the project and the next steps to take if we were to continue working on it.\\
 
 
+\section{Conclusions}
+
+After working with the Semantic Web and Linked Data, we have been able to verify that they are methods of data management with lots of potential that we could all benefit from if we explore beyond its current state. Its main drawback is perhaps precisely that its usefulness depends to a large extent on how widespread its use is and, unfortunately, it is currently not as standardised as we would like it to be.\\
+
+Taking as an example the domain on which we have focused our project we can see these limitations. Thanks to Linked Data and the RDF format we have been able to obtain a good amount of information that allowed us to generate explanations for the relationship between many different songs, however this work is not enough to apply the same treatment to all existing musical works, not even on the platform we have chosen for data collection.\\
+
+We chose the Wikidata website to study the songs because of its size and because it uses the linked data model effectively. However, this platform is far from perfect because it does not host the same amount of information from all its elements even though that information exists, so there are songs that we have been able to explore in more depth than others. On the other hand there are also cases of unreliable or outright incorrect information, a problem that we have encountered on occasion and which causes that our application cannot be used correctly in such cases.\\
+
+Despite the problems mentioned, Wikidata is still the best option we have found for hosting music information. Other platforms do not use Linked Data or do so in such a way that it is very difficult to establish relationships between its elements because they are excessively concrete, to the point of having many different entries for elements that are identical in essence. Projects like ours would benefit from a greater variety in the supply of knowledge bases that take advantage of the advantages of the Semantic Web.\\
+
+Focusing more on our project, we believe that we have achieved most of our set objectives. Thanks to our research in the Semantic Web and Linked Data, in addition to other technologies, we have reached the conclusions mentioned above. We have also developed a functional application prototype to show the result of applying those techniques to a recommender’s explanations. We could still continue working to improve and complete our project, but we are satisfied with the result achieved.\\
+
+\section{Future work}
+
+Given that one of our objectives is to provide an understandable justification for the recommendations of a recommender system, user evaluation would be very useful in determining whether this goal has been achieved or not. We have not been able to do it in this version of the project due to lack of time and complications related to the extraordinary situation of this year, but it would be the first step to further improve our project.\\
+
+The RDF scheme and the use of SPARQL for its use and analysis can be very powerful and encompass large amounts of data. In our case we have focused on working with the Wikidata tool and data for a matter of amount of information, reliability and results obtained. With Wikidata we have been able to establish connections between songs with as much information as possible on each of their respective descriptive pages. However there are more options to gather from more information about songs and artists.\\
+
+We originally tried to get information that was a little bit further away from what we created, which is a musical analysis. There are other options and data that can be taken from songs, such as movies or series in which they appear as soundtrack, or also songs that have been broadcast during major events such as the Superbowl. The problem we had was that the project at that point deviated from its original direction, because on Wikidata there was no data so specific for the vast majority of songs and we had to resort to other sources.\\
+
+The problem with other alternative databases is that they do not have such detailed information either, do not follow the RDF data model or have the information only in very specific cases and without an effective way to access it from our dataset, as we found when studying the possibility of using \textbf{MusicBrainz}~\cite{musicbrainz} to obtain the soundtracks in which a song appears.\\
+
+Another aspect in which we can work to get a more complete work and be able to get an explanation of the relationship of two songs would be a user-level study. In our project we have made an advanced analysis of the relationships that the entities have in a musical field. However, there is another possible study that is the analysis of users who have listened to those songs. We start from the basis that two people who listen to the same song can share part of their musical preferences, and we can recommend and create relationships according to their history.\\
+
+Each user has a listened tracks history, in fact one of the datasets we got at the beginning of the project was of this type. If we were to do an individual study of a user, we could analyze their musical tastes, most popular songs, latest popular genres, etc.\\
+
+As an example we can select a user whose most listened songs belong to the pop genre, but also has some belonging to the indie genre during the last months. If a similar trend is found among a significant number of users, we could draw an explanation that establishes a relationship between a pop track and another indie track because of the frequency in which these genres appear together among the lists of listened songs from these users mentioned.\\
