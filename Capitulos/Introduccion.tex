@@ -5,71 +5,45 @@ Desde el desarrollo de Internet como una red global, siempre ha albergado grande
 
 Básicamente, la Web Semántica trata de enlazar toda esa información con tal de darle contexto y accesibilidad. Para ello adopta el método de Linked Data, el cual haciendo referencia a su propio nombre, conecta o une distintos datos estableciendo una relación. El principal objetivo de todo esto es que los ordenadores puedan navegar y acceder a la mayor parte de los datos almacenados en Internet para que estos sean útiles y no queden perdidos en un mar de información.\\
 
-Hay varias maneras de poder organizar y conectar todo ese contenido conocidas como sistemas ontológicos. La ontología es una rama filosófica que estudia los entes y sus conexiones y aquí es aplicada en su punto más técnico. El método ontológico que nosotros usaremos es el modelo RDF, uno de los más usados y extendidos.\\
-
 Es mediante este concepto como los motores de búsqueda pueden ser ayudados por esta tecnología, ya que dotamos a las máquinas de la capacidad para navegar sobre esas relaciones y entender datos que nosotros requerimos o que podrían sernos útiles.\\
+
+En este trabajo trataremos de emplear la tecnología de Linked Data para enriquecer un sistema de recomendación de música, proporcionándole explicaciones que justifiquen sus recomendaciones.\\
 
 \section{Motivación}
 
-La razón de ser de este proyecto consiste en dar explicaciones a un recomendador de música. Partimos de un recomendador de música que proporciona dos canciones, las cuales tienen algún tipo de relación entre ellas. Utilizando esa premisa como base, queremos explicar \textbf{por qué} esas dos canciones están relacionadas o, dicho de otra forma, en qué se parecen. Para alcanzar esa meta haremos uso de la web semántica.\\
+La razón de ser de este proyecto consiste en dar explicaciones a un recomendador de música. Partimos de un recomendador de música que proporciona una canción al usuario en base a otra canción que haya escuchado, supuestamente porque tienen algún tipo de relación entre ellas. Utilizando esa premisa como base, queremos explicar \textbf{por qué} esas dos canciones están relacionadas o, dicho de otra forma, en qué se parecen. Para alcanzar esa meta haremos uso de la web semántica.\\
 
-Como ya hemos comentado, la Web Semántica es una manera de mejorar la conexión entre los datos guardados en la red, haciendo que Internet sea más útil y accesible para las personas. Se trata de un método que permite que navegar por la red sea más intuitivo y reduce la cantidad de información que acaba volviéndose inaccesible para aquellos usuarios para los que resulta relevante.\\
-
-El problema es que es una práctica que aún no está lo bastante extendida para que suponga un verdadero avance en nuestra forma de relacionarnos con la red, pues requiere hacer cambios en la forma en que se almacena la información. En este trabajo intentaremos mostrar el potencial de la Web Semántica.\\
+Como ya hemos comentado, la Web Semántica es una manera de mejorar la conexión entre los datos guardados en la red, haciendo que Internet sea más útil y accesible para las personas. El problema es que es una práctica que aún no está lo bastante extendida para que suponga un verdadero avance en nuestra forma de relacionarnos con la red, pues requiere hacer cambios en la forma en que se almacena la información. En este trabajo intentaremos mostrar el potencial de la Web Semántica.\\
 
 La idea principal es poder recoger todas las conexiones que aparezcan entre toda la información que podamos recoger sobre cada uno de los dos temas musicales o canciones. Para ello, deberemos estudiar ese ente y todos los relacionados: artista que interpreta la canción, su género musical, los integrantes de su grupo, su sello discográfico, etc. y a su vez las relaciones entre estos, hasta disponer de suficientes conexiones que nos puedan asegurar que esas dos canciones tienen o no algo que ver.\\
+
+Las conexiones obtenidas serán explicaciones, que justifican la relación entre dos entidades establecida por el sistema.\\
 
 \section{Objetivos}
 
 Los objetivos principales de este trabajo son los siguientes:\\
 
 \begin{itemize}
-\item Hacer un estudio sobre la Web Semántica y los modelos de datos que la permiten, desarrollando más tarde una aplicación que ejemplifique las aplicaciones prácticas que puede tener esta Web Semántica.\\
+\item Hacer un estudio sobre la Web Semántica y los modelos de datos que la permiten, con el objetivo de desarrollar más tarde una aplicación que ejemplifique las aplicaciones prácticas que puede tener esta Web Semántica.\\
 
-\item Establecer una relación entre dos canciones que, a priori, una persona no podría obtener sin hacer un estudio amplio de ello, empleando para ello explicaciones propias que compartan esas dos canciones. Y, sobre todo, intentar relacionar canciones que no sean tan parecidas musicalmente pero compartan otros elementos que puedan causar más curiosidad.\\
-
-\item Determinar qué propiedades pueden llegar a ser más útiles para establecer explicaciones para la relación entre dos canciones proporcionadas. Esta es la premisa de nuestro trabajo y, gracias a nuestro estudio, podremos determinar qué propiedades son más importantes a la hora de obtener explicaciones significativas en el dominio.\\
+\item Determinar qué propiedades pueden llegar a ser más útiles para establecer explicaciones para la relación entre dos canciones proporcionadas, incluso si no son muy parecidas musicalmente pero comparten otros elementos interesantes. Esta es la premisa de nuestro trabajo y, gracias a nuestro estudio, podremos determinar qué propiedades son más importantes a la hora de obtener explicaciones significativas en el dominio.\\
 
 \item Estudiar diferentes tecnologías que nos ayuden en la elaboración de la aplicación mencionada, además de ampliar nuestros conocimientos en áreas de la informática que no hemos explorado necesariamente durante el grado.\\
 
-\item Crear distintos diseños para la interfaz de nuestra aplicación hasta llegar al diseño final, utilizando un desarrollo iterativo que nos permita obtener un resultado satisfactorio.\\
+\item Diseñar una interfaz visual de explicaciones, utilizando un desarrollo iterativo que nos permita obtener un resultado satisfactorio. Este desarrollo incluye la implementación del diseño en nuestra aplicación.\\
 
-\item Una vez terminado, extraer conclusiones sobre el trabajo realizado tanto a nivel del estudio de las canciones como sobre el proceso de desarrollo y la utilidad de la Web Semántica.\\
+\item Una vez terminado, extraer conclusiones sobre el trabajo realizado y establecer tareas a realizar en un desarrollo futuro.\\
 \end{itemize}
 
 
 \section{Plan de trabajo}
 
-El punto de partida para el proyecto es estudiar todas las nuevas tecnologías y herramientas que vamos a necesitar, al menos, para el proceso de obtención y estudio de los datos.\\
+Tras haber explicado la motivación de este trabajo y los objetivos propuestos para el mismo, pasamos a detallar las etapas atravesadas en el proceso de desarrollo.\\
 
-Partimos de un dataset de canciones determinado, así que antes de proseguir debemos hacer una pequeña limpieza del mismo ya que contiene valores sucios y nulos. También decidimos hacer unas pequeñas agrupaciones por popularidad y por género. La popularidad se debe a que las canciones más populares son las que tienen más probabilidades de estar mejor documentadas en Wikidata y el género es porque queremos saber qué tipo de canciones predominan en nuestra muestra.\\
+Inicialmente nos hemos familiarizado con la web semántica y Linked Data, así como con algunas de las tecnologías relacionadas. Este estudio se ha detallado en el Capítulo~\ref{cap:estadoDeLaCuestion}.\\
 
-Aparte del estudio del dataset y como parte de la exploración de tecnologías, ejecutaremos pequeñas consultas con formato RDF en la herramienta propia de Wikidata. Gracias a esta experimentación podremos hacernos una idea de en qué se diferencian las consultas que más tarde usaremos en nuestra librería de SPARQL, además de la cantidad de información que seremos capaces de obtener con cada una de esas consultas.\\
+A continuación establecimos la lista de explicaciones que utilizaríamos en la versión final de la aplicación, la cual viene recogida y explicada en el Capítulo~\ref{cap:explicaciones}.\\
 
-El siguiente paso tras acumular cierta experiencia con Wikidata, SPARQL y el formato RDF es buscar una librería lo suficientemente completa y potente que pueda servirnos para ejecutar las consultas deseadas en un tiempo aceptable. Esto también se verá afectado por el lenguaje de programación que decidamos utilizar para el código de nuestra aplicación.\\
+Posteriormente iniciamos el desarrollo de la aplicación, empezando con el diseño de la interfaz de explicaciones (documentado en el Capítulo~\ref{cap:interfaz}) y continuando con la implementación, incluyendo su arquitectura y funcionalidad. Este proceso está explicado en el Capítulo~\ref{cap:implementacion}.\\
 
-Una vez tomadas las decisiones previas, será el momento de comenzar el desarrollo del código de nuestra aplicación. Esto abarca la estructura de clases, el desarrollo de las librerías necesarias para la obtención de datos y la creación de algoritmos que sirvan para establecer relaciones entre canciones (que llamamos explicaciones) y representarlas gráficamente para comprensión del usuario. Este será un proceso iterativo en el que vayamos agregando las funcionalidades necesarias además de ir depurando todos los errores que vayan apareciendo hasta llegar a una versión final.\\
-
-Por último, haremos una reflexión sobre el trabajo realizado teniendo en cuenta lo aprendido a lo largo del proceso, las dificultades que puedan surgir durante su desarrollo y aquellas cosas que pueden mejorarse o incluir en una hipotética versión actualizada del proyecto.\\
-
-De forma simultánea a todo lo anteriormente explicado, elaboraremos gradualmente la memoria recogida en este documento. Esta memoria será compuesta en LaTeX para facilitar el trabajo de edición y beneficiarnos de sus funciones, y en ella se explicará en detalle todo el proceso de este TFG.\\
-
-\clearpage
-
-La memoria está dividida en varios capítulos que exploran distintas facetas del proyecto: \\
-
-\begin{itemize}
-\item El primero es un capítulo de introducción. Aquí es donde nos encontramos ahora y donde se recogen las previsiones y objetivos a cumplir en el trabajo. \\
-
-\item El segundo capítulo, “Estado de la Cuestión”, representa el estudio realizado sobre el ámbito de nuestro trabajo. Aquí se recogerá la información relacionada con conceptos como la Web Semántica, Linked Data o el formato RDF, entre otros. \\
-
-\item El tercer capítulo será una recopilación de todas las tecnologías utilizadas a lo largo del proyecto con sus principales características y ventajas. De la misma forma, aquí se recogerán tecnologías o herramientas que estudiemos pero decidamos descartar o sustituir por algún motivo. \\
-
-\item El capítulo cuatro será uno de los más importantes del documento. En él definiremos qué entendemos como una “explicación” en el ámbito de nuestro trabajo, además de enumerar todas las explicaciones diferentes que usaremos en la versión final de la aplicación. Se proporcionarán todas las descripciones y ejemplos necesarios para que se entiendan correctamente estos conceptos. \\
-
-\item A continuación seguiremos hablando de la aplicación con un capítulo dedicado al diseño de la interfaz. En él documentaremos el proceso de desarrollo para la interfaz, examinando las iteraciones más importantes y explicando las decisiones que se hayan tomado en cada caso. Finalmente se dedicará un apartado a examinar la versión final, que será con la que se podrá interactuar en la aplicación terminada. \\
-
-\item El sexto capítulo será dedicado a la implementación de la aplicación. Servirá para exponer la arquitectura elegida para organizar el código y otros aspectos como la parte técnica del estudio del dataset o la extensibilidad de la aplicación. \\
-
-\item El último capítulo está reservado para hablar de conclusiones y trabajo futuro. Después de terminar el desarrollo de la aplicación, reflexionaremos sobre el mismo y también sobre el ámbito tratado. Hablaremos sobre contratiempos que hayamos podido encontrar a lo largo del camino y también de aquellas funciones o mejoras que nos gustaría incorporar al proyecto  si tuviéramos la oportunidad de seguir trabajando en él en un futuro. \\
-\end{itemize}
+Por último, dedicamos un tiempo a reflexionar sobre el trabajo realizado y el ámbito estudiado a lo largo del proyecto. Estas conclusiones están anotadas en el Capítulo~\ref{cap:conclusiones}, al igual que el trabajo futuro que deberíamos realizar si continuásemos con el desarrollo de la aplicación.\\
