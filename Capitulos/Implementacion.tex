@@ -1,6 +1,11 @@
 \chapter{Implementación}
 \label{cap:implementacion}
 
+Una de las partes más importantes de nuestro proyecto es el desarrollo del prototipo para una aplicación de explicaciones que haga uso de los diferentes conceptos que hemos estudiado en las fases iniciales del trabajo. En el capítulo anterior mostramos el proceso de diseño de su interfaz, así que ahora procederemos a detallar la parte de la implementación de la aplicación.\\
+
+El código fuente de la aplicación está alojado en el siguiente repositorio de Github: \url{https://github.com/Adrigarr/TFG-2020-Code}. Sin embargo, para poder probar esta aplicación hay que usar este enlace: \url{https://explicaciones.herokuapp.com/}.\\
+
+
 \section{Procesamiento y manejo de la muestra}
 
 Partimos de una muestra (o \textbf{dataset}) de alrededor de 19 millones de líneas, obtenido a partir de la API de \textbf{Last.fm} \cite{lastfm}, una plataforma que almacena y proporciona mucho contenido musical. Constaba de los siguientes campos: \textbf{<user, timestamp, artist, song>}, los cuales hacen referencia al usuario que ha escuchado la canción, la fecha en la que fue escuchada, el nombre del artista y el título de la canción respectivamente.\\
@@ -19,55 +24,35 @@ Empezamos con un dataset de las 2500 canciones más populares y fuimos capaces d
 
 Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban. a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.
 
-\section{Estudio del dataset}
-
-Para poder comprender mejor el dataset obtenido, estudiamos el género de todas las canciones de la muestra con el objetivo de tener conocimiento de cuán diferente o similar era el dataset, musicalmente hablando. Objetivamente no es igual de complejo poder relacionar dos géneros dispares como podrían serlo Folk y Electrónica que otros dos géneros que pueda ser parejos en algunos aspectos musicales, sociales etc... como lo son el Rock y el Heavy Metal.\\
-
-Con el género queremos demostrar la variedad de la muestra y cómo de posible es relacionar canciones de distinto género entre sí. Si hubiésemos obtenido muy pocos géneros similares entre sí, la muestra no tendría un gran valor desde el punto de vista de esta explicación, pues no habríamos llegado a un resultado realmente interesante. Cabe destacar que no es un conteo exacto, ya que una canción puede tener más de un género o ninguno (por falta de documentación, no es posible catalogarlo en una categoría exacta, etc.). Sin embargo, el componente de variedad y representación musical no se ve afectado.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.75\textwidth]{Imagenes/Bitmap/estudioGeneros.png}
-	\caption{Gráfico resultado del estudio de géneros}
-	\label{fig:sampleImage}
-\end{figure}
-
-En total hemos obtenido 81 géneros distintos para las canciones, entre los que destacan en gran principalmente subgéneros o géneros derivados del rock. El estilo más popular es \textbf{alternative rock}, el cual cuenta con un 22\% sobre el total, lo cual es una cantidad bastante alta en comparación con el resto. Le siguen \textbf{indie rock} y \textbf{rock music} con un 8,3\% y 3,9\% respectivamente.\\
-
-Sin embargo, también encontramos otros géneros más distantes a los anteriores, como por ejemplo \textbf{rhythm \& blues}, \textbf{soul}, \textbf{reggae}, \textbf{jazz} o \textbf{house music}. Todos estos son estilos dispares entres sí, lo que nos da la posibilidad de ver cómo de potentes pueden ser las relaciones y explicaciones que hemos obtenido y probar nuestro sistema para ver si es capaz de relacionar canciones muy diferentes o incluso opuestas.\\
-
-Por último hemos querido representar una red de toda nuestra lista. Para ello hemos establecido las canciones como nodos y las aristas como relaciones que se establecen en función de si podemos encontrar al menos 3 explicaciones de relación~(musical) entre dos nodos de nuestra lista. El objetivo es conocer mejor nuestro dataset de canciones y ver cómo de relacionadas están entre ellas y cuáles son los nodos centrales de toda la lista.\\
-
-(AQUÍ FALTA AÑADIR UNA IMAGEN. ESTARÁ LISTA EN LOS PRÓXIMOS DÍAS)
 
 \section{Arquitectura de la aplicación}
 
-Como punto inicial hemos utilizado varios scripts que nos ayudaron a organizar y manejar mucho mejor los datos iniciales que nos fueron proporcionados, como por ejemplo el script de limpieza y organización del dataset que, como ya hemos explicado antes, elimina cualquier tipo de valor nulo y lo ordena por popularidad, o el script de parseo, que nos permite acercarnos más a la sintaxis gramatical de Wikidata.\\
+Nuestra aplicación adopta una arquitectura cliente-servidor. En esta arquitectura, las tareas se reparten entre los proveedores de servicios, llamadas servidores, y los demandantes de esos servicios, llamados clientes. Por esto mismo, el servidor es el encargado de realizar todas las gestiones mientras que los clientes se limitan a hacer peticiones al servidor y recibir los resultados de esas gestiones \cite{reese2000}.\\
 
-Como punto troncal, hemos desarrollado una librería que nos permite trabajar con la API de Wikidata. Hace uso de SparQL Library, la cual nos permite hacer uso del lenguaje SPARQL y hacer todo tipo de consultas a un punto. Esta librería se encarga de crear un punto de conexión a la API de Wikidata y de crear y ejecutar queries de consulta u obtención de datos hacia ese punto, el cual debe permitir el intercambio de datos en formato RDF. Además nos proporciona un objeto respuesta, el cual puede devolverse en distintos formatos.\\
-
-A la hora de organizar el código de nuestra aplicación, nos hemos decantado por el \textbf{patrón MVC (Modelo-Vista-Controlador)} debido a su utilidad en el desarrollo y mantenimiento de aplicaciones web. Por ello, la lógica de nuestra aplicación se encuentra dividida en diferentes carpetas según el patrón, además de un par de carpetas auxiliares.\\
-
-La carpeta \textbf{model} contiene todo lo necesario para el Modelo, incluyendo la librería anteriormente mencionada y las distintas clases empleadas en la aplicación, que pasaremos a explicar a continuación.\\
-
-La clase principal del modelo de la aplicación es \textbf{getInfoSongs}. Esta clase hace uso de una instancia de la librería SPARQL e inicia una cadena de métodos los cuales obtienen información de distintos ámbitos de una canción proporcionada como entrada.\\
-
-La clase \textbf{Properties} se encarga de establecer y configurar todas las propiedades que se van a estudiar sobre cada canción. Al crear una instancia de la clase, importa una serie de diccionarios que son almacenados. Cabe destacar que estos diccionarios son inicialmente estáticos ya que en un principio cuentan con las propiedades que hemos estudiado y probado aunque tienen la posibilidad de expandirse añadiendo nuevas propiedades, siempre que respeten la sintaxis de Wikidata. \\
-
-Para terminar con el modelo tenemos el módulo \textbf{dataOperations}, el cual es utilizado a modo auxiliar para poder convertir y hacer operaciones con los distintos dataFrames de información que se van creando continuamente al hacer un estudio de una canción.\\
+Además, en nuestro caso el servidor no almacena todos los datos y recursos necesarios para el funcionamiento de la aplicación. Para poder gestionar apropiadamente las peticiones de los clientes, nuestro servidor debe ponerse en contacto con Wikidata, de donde obtendrá la información vital a procesar para obtener los resultados que se envían posteriormente al cliente que haya hecho la petición. En la Figura~\ref{fig:diagramaCS} se ve una representación de nuestra arquitectura.\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/class-diagram.png}
-	\caption{Diagrama de clases sobre el modelo de datos}
-	\label{fig:sampleImage}
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Diagrama cliente servidor.png}
+	\caption{Diagrama de la arquitectura cliente-servidor de la aplicación}
+	\label{fig:diagramaCS}
 \end{figure}
 
-Por otra parte tenemos la carpeta \textbf{view}, donde se encuentran las Vistas de la aplicación. Aquí es donde almacenamos el código HTML de la interfaz, aunque esta no estaría completa sin el contenido de la carpeta \textbf{static}, que es donde se recogen todos los recursos estáticos de la aplicación, como lo son el código CSS para dar formato a la vista o el JavaScript para aportarle funcionalidad. \\
+Para explicar mejor su funcionamiento, estudiaremos cada una de las partes de la arquitectura por separado.\\
 
-A continuación está la carpeta \textbf{controller}, que contiene todas las rutas de la aplicación. El controlador actúa como intermediario entre el modelo y la vista, es el encargado de reaccionar a las acciones del usuario en la interfaz y hacer peticiones al modelo para obtener la información que se necesite mostrar en cada momento. \\
+\subsection{Cliente}
 
-Por último hay una carpeta adicional llamada \textbf{helpers}. En ella se recogen las funciones necesarias para tratar los datos obtenidos del modelo y elaborar a partir de ellos la representación gráfica que se muestra en la interfaz. Dicho de otra forma, es la parte responsable de generar los grafos de explicaciones. Para esto hacemos uso de vis.js, una librería de JavaScript para visualización de datos. \\
+El cliente es la parte con la que interactúan los usuarios de la aplicación. Como la nuestra es una aplicación web, el cliente es la parte del navegador y la interfaz visual que se muestra en el mismo. Se corresponde con la Vista en el patrón MVC~(Modelo-Vista-Controlador).\\
+
+En la interfaz se muestra la lista de canciones a elegir, la cual recibe desde el servidor mediante un archivo de formato CSV. Una vez el usuario escoja dos de esas canciones y confirme la selección, el cliente enviará una petición al servidor. El servidor realizará una serie de operaciones para comparar las canciones y obtener los grafos de explicaciones deseados.\\
+
+Cuando el servidor haya completado su parte, devolverá al cliente un archivo de formato JavaScript donde están contenidas las estructuras de datos necesarias para dibujar los grafos. Empleando la librería vis.js, el cliente dibujará dos grafos y los mostrará por pantalla para que el usuario pueda verlos.\\
+
+\subsection{Servidor}
+
+
+\subsection{Comunicación}
+
 
 \section{Extensibilidad de la aplicación}
 
