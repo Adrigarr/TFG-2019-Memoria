@@ -67,7 +67,9 @@ En cuanto a la extensibilidad del DataSource de canciones y artistas, se trata d
 \section{Tecnologías y Herramientas utilizadas}
 \label{sec:tecnologias}
 
+Para la elaboración de este proyecto hemos tenido que estudiar numerosas tecnologías y herramientas diferentes. Algunas de ellas son viejas conocidas mientras que otras son completamente nuevas para nosotros y hemos tenido que familiarizarnos con ellas para poder trabajar con ellas.\\
 
+A continuación haremos un repaso a las más relevantes para el desarrollo del proyecto, separándolas en distintos ámbitos para mayor comodidad.\\
 
 \subsection{Programación}
 
@@ -81,7 +83,7 @@ Dos librerías propias de Python, especializadas en el manejo y procesamiento de
 
 \subsection*{Sanic}
 
-El framework seleccionado para desarrollar nuestra aplicación. Es un framework web asíncrono para Python cuyo objetivo es proporcionar una forma de crear un servidor que sea rápido y fácil de usar. Su sencillez para empezar a utilizarlo es uno de los principales factores que nos hizo decantarnos por él en lugar de otras opciones.
+El framework seleccionado para desarrollar nuestra aplicación. Es un framework web asíncrono para Python cuyo objetivo es proporcionar una forma de crear un servidor que sea rápido y fácil de usar \cite{sanic}. Su sencillez para empezar a utilizarlo es uno de los principales factores que nos hizo decantarnos por él en lugar de otras opciones.
 
 \subsection*{Jinja2}
 
@@ -91,7 +93,7 @@ Esta función se utilizaba en una versión antigua de nuestro proyecto para trat
 
 \subsection*{SPARQLWrapper}
 
-Un wrapper para Python que permite ejecutar consultas SPARQL de forma remota. Proporciona una funcionalidad esencial para nuestro trabajo, pues es lo que utilizamos para obtener la información de Wikidata desde nuestra aplicación.
+Un wrapper para Python que permite ejecutar consultas SPARQL de forma remota \cite{sparqlwrapper}. Proporciona una funcionalidad esencial para nuestro trabajo, pues es lo que utilizamos para obtener la información de Wikidata desde nuestra aplicación.
 
 \subsection*{HTML y CSS}
 
@@ -103,7 +105,7 @@ Al igual que los anteriores, este es un lenguaje de programación muy importante
 
 \subsection*{vis.js}
 
-Esta es una librería de Javascript para visualización de datos. Permite diversas representaciones gráficas, pero nosotros hemos empleado el componente Network para dibujar nuestros grafos de explicaciones. Es una librería bastante completa y con una documentación bien organizada, así que fue muy útil a la hora de plasmar en pantalla el resultado de nuestra investigación.
+Esta es una librería de Javascript para visualización de datos  \cite{visjs}. Permite diversas representaciones gráficas, pero nosotros hemos empleado el componente Network para dibujar nuestros grafos de explicaciones. Es una librería bastante completa y con una documentación bien organizada, así que fue muy útil a la hora de plasmar en pantalla el resultado de nuestra investigación.
 
 \subsection*{Jupyter-Notebooks}
 
@@ -137,7 +139,7 @@ TeXiS es una plantilla de LaTeX para Tesis, Trabajos de Fin de Máster y otros d
 
 \subsection*{RDFstarTools}
 
-Esta es una colección de librerías Java y herramientas de línea de comandos para procesar datos RDF* y consultas SPARQL*. Proporciona varias funcionalidades, pero la verdaderamente relevante para nuestro proyecto es SPARQL* Parser, que sirve para hacer consultas SPARQL. Este parser está implementado sobre el framework Apache Jena.\\
+Esta es una colección de librerías Java y herramientas de línea de comandos para procesar datos RDF* y consultas SPARQL* \cite{rdfstartools}. Proporciona varias funcionalidades, pero la verdaderamente relevante para nuestro proyecto es SPARQL* Parser, que sirve para hacer consultas SPARQL. Este parser está implementado sobre el framework Apache Jena.\\
 
 
 Esta fue una de las opciones que barajamos para hacer consultas SPARQL desde nuestro código, pero acabamos decidiendo usar SPARQLWrapper en su lugar debido a que RDFstarTools es una colección de librerías de las cuales solo nos haría falta una pequeña parte. Tomando en consideración ambas opciones, nos pareció más adecuado utilizar Python junto con SPARQLWrapper debido ya que era más conciso y sencillo de implementar.
@@ -150,6 +152,6 @@ Como ya hemos comentado antes, al decidir usar SPARQLWrapper para nuestras consu
 
 \subsection*{Alchemy.js}
 
-Alchemy.js es una aplicación de visualización de grafos para la web. Está escrita en JavaScript con la librería D3.js como base y ofrece una manera sencilla y rápida de generar grafos. La mayoría de su personalización se lleva a cabo sobrescribiendo sus configuraciones por defecto, por lo que no requiere apenas implementar código JavaScript adicional.\\
+Alchemy.js es una aplicación de visualización de grafos para la web \cite{alchemyjs}. Está escrita en JavaScript con la librería D3.js como base y ofrece una manera sencilla y rápida de generar grafos. La mayoría de su personalización se lleva a cabo sobrescribiendo sus configuraciones por defecto, por lo que no requiere apenas implementar código JavaScript adicional.\\
 
 Fue la primera opción contemplada para representar los grafos de nuestro proyecto debido a su sencillez de manejo y a su uso de archivos JSON para aportar los datos, algo que resultaba atractivo en un principio. Tras trabajar con ella durante un tiempo fue necesario descartarla por ciertas limitaciones a la hora de personalizar la representación según nuestro diseño, además de la falta de soporte por tratarse de un proyecto actualmente abandonado.
