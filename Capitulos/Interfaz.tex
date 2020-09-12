@@ -1,7 +1,7 @@
 \chapter{Diseño de la interfaz de explicaciones}
 \label{cap:interfaz}
 
-El objetivo de nuestro proyecto, como ya hemos expresado anteriormente en este documento, consiste en proporcionar explicaciones que justifiquen la relación existente entre dos canciones proporcionadas por un recomendador de música. Una vez realizado el estudio de las canciones y las distintas explicaciones posibles, es necesario mostrar el resultado de nuestro estudio de una forma gráfica, comprensible para un usuario humano.\\
+El objetivo de nuestro proyecto, como ya hemos expresado anteriormente en este documento, consiste en enriquecer las explicaciones que justifican la relación existente entre dos canciones obtenidas de un recomendador de música, una de ellas es la recomendación para el usuario y la otra es la que se ofrece como explicación para justificar esa recomendación. Una vez realizado el estudio de las canciones y las distintas explicaciones posibles, es necesario mostrar el resultado de nuestro estudio de una forma comprensible para un usuario humano. Hay distintas maneras de lograr esto último, pero nosotros nos hemos decantado por una representación visual.\\
 
 Los datos que manejamos en nuestro estudio consisten en objetos y las relaciones que existen entre ellos, pues siguen el modelo de datos RDF. Necesitamos representar todos los caminos que se forman entre las dos canciones iniciales, mostrando las conexiones existentes entre los objetos intermedios. Por estos motivos hemos decidido llevar a cabo la visualización mediante un grafo porque consideramos que se adecúa mejor a nuestras necesidades.\\
 
@@ -13,12 +13,12 @@ Es importante que la interfaz sea fácil de entender y usar, así que siempre tr
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/InterfaceResult.png}
 	\caption{Primer diseño de la interfaz web}
-	\label{fig:sampleImage}
+	\label{fig:primerDiseño}
 \end{figure}
 
-En la Figura 4.1 se puede observar la primera iteración de nuestro diseño. En ella se ve un ejemplo de grafo donde los nodos son los distintos sujetos y objetos (según el modelo RDF), mientras que las aristas representan los predicados que relacionan a esos nodos.\\
+En la Figura~\ref{fig:primerDiseño} se puede observar la primera iteración de nuestro diseño. En ella se ve un ejemplo de grafo donde los nodos son los distintos sujetos y objetos (según el modelo RDF), mientras que las aristas representan los predicados que relacionan a esos nodos.\\
 
-Los nodos están coloreados de manera diferente en función de su categoría. El color rojo está asociado a los nodos de las \textbf{canciones}, el naranja a los nodos de los \textbf{artistas} y el morado a los nodos de los \textbf{miembros} de esos artistas (en el caso de que estos artistas sean agrupaciones musicales). Los nodos centrales, correspondientes a los objetos de las explicaciones, tienen los mismos colores que los nodos de los que proceden pero con un tono más suave para diferenciarlos.\\
+Los nodos están coloreados de manera diferente en función de su categoría. El color rojo está asociado a los nodos de las canciones, el naranja a los nodos de los artistas y el morado a los nodos de los miembros de esos artistas (en el caso de que estos artistas sean agrupaciones musicales). Los nodos centrales, correspondientes a los objetos de las explicaciones, tienen los mismos colores que los nodos de los que proceden pero con un tono más suave para diferenciarlos.\\
 
 Los nodos rojos posicionados a ambos extremos son las canciones sobre las que estamos realizando el estudio. A partir de ellas parten todas las explicaciones. En el centro se puede ver también un nodo coloreado de un rojo más suave, este representa al objeto de una explicación directa (en este caso la explicación ``Idioma'').\\
 
@@ -32,7 +32,7 @@ Esta función no es integral para el objetivo de nuestro proyecto, tan solo es u
 
 \section{Diseño básico de la interfaz}
 
-Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura 4.2. En esta iteración, el diseño del grafo se mantiene intacto salvo un par de excepciones:
+Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura~\ref{fig:segundoDiseño}. En esta iteración, el diseño del grafo se mantiene intacto salvo un par de excepciones:
 
 \begin{itemize}
 \item Se han cambiado los colores que muestran las distintas categorías de los nodos. Ahora los nodos de las canciones y las explicaciones directas entre ellas son de color azul, los correspondientes a los artistas son de color rojo y los nodos de los miembros de los artistas son de color violeta. La decisión de cambiar estos colores se tomó para mejorar la visibilidad y obtener un grafo con mejor estética.\\
@@ -45,10 +45,10 @@ Pasaremos ahora a explicar el resto de la interfaz con la ayuda de la Figura 4.2
 	\centering
 	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Segunda Interfaz.jpg}
 	\caption{Segundo diseño de la interfaz web}
-	\label{fig:sampleImage}
+	\label{fig:segundoDiseño}
 \end{figure}
 
-El resto de la interfaz consiste en los elementos con los que interactuará el usuario antes de generar el grafo de explicaciones. A ambos lados de la pantalla se sitúan los campos a rellenar con los datos básicos de las canciones. Para identificar la canción deseada es necesario escribir en ellos el título de la canción y el nombre de su artista, separados por una coma. En realidad este campo de entrada es un buscador que mostrará en un desplegable la lista de canciones que coinciden con el texto introducido y el usuario deberá seleccionar la que está buscando. Si intenta comparar una canción no contemplada por el sistema, aparecerá un mensaje de error.\\
+El resto de la interfaz consiste en los elementos con los que interactuará el usuario antes de generar el grafo de explicaciones. A ambos lados de la pantalla se sitúan los campos a rellenar con los datos básicos de las canciones. Para identificar la canción deseada es necesario escribir en ellos el título de la canción y el nombre de su artista, separados por una coma. Para facilitar la tarea, este campo de entrada es un buscador que mostrará en un desplegable la lista de canciones que coinciden con el texto introducido y el usuario deberá seleccionar la que está buscando. Si intenta comparar una canción no contemplada por el sistema, aparecerá un mensaje de error.\\
 
 La decisión de limitar las posibles entradas ha sido tomada por motivos prácticos. En Wikidata hay una cantidad ingente de temas musicales registrados, sin embargo los datos de cada canción concreta no siempre son tan completos como cabría esperar. A menudo falta información o la que hay no aparece siguiendo los mismos estándares que el resto, especialmente cuando se trata de canciones menos populares. Por ello hemos elaborado una lista de canciones que poseen información útil en Wikidata y que podemos tratar en nuestra aplicación sin problemas.\\
 
@@ -60,7 +60,7 @@ Por último, en la parte inferior de la pantalla hay un botón para ``COMPARAR�
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Tercera Interfaz.png}
 	\caption{Tercer diseño de la interfaz web}
-	\label{fig:sampleImage}
+	\label{fig:tercerDiseño}
 \end{figure}
 
 Partiendo de la base establecida en los apartados anteriores, hicimos un diseño más completo de la interfaz para nuestra aplicación. Aquí se puede ver el regreso de la sección inferior con datos adicionales de los artistas y las canciones, esta vez en forma de tabla para que sea más legible para el usuario.\\
@@ -71,16 +71,16 @@ En esta iteración se hacen algunos cambios al grafo de explicaciones. Para empe
 
 De la misma forma se colapsan los nodos de los miembros de los artistas, reduciéndolos a un solo nodo por artista. Para expresar cuántos integrantes se ven involucrados en cada explicación, el grosor de la arista que los une varía en función del número de miembros que participan en esa explicación concreta. Además, al colocar el ratón sobre esas aristas aparece una etiqueta donde figuran los nombres de esos miembros. Este cambio se propuso para reducir el número de nodos y aristas, pues en ciertos casos podía ser abrumador a la vista.\\
 
-Por último, cabe destacar las pestañas que se ven justo encima del marco para el grafo. Para tratar de mejorar la legibilidad lo máximo posible decidimos hacer dos grafos diferentes, siendo el que vemos en la Figura 4.3 el de ``explicaciones cercanas''. Este grafo muestra solamente las explicaciones existentes entre elementos del mismo ``nivel de estudio''. Esto quiere decir que, por ejemplo, el género de una canción solo podrá relacionarse con un género de la otra canción, pues corresponden al mismo estudio o categoría. Por el contrario, no se verán relaciones existentes entre ese género y otro elemento, como una canción, artista o miembro.\\
+Por último, cabe destacar las pestañas que se ven justo encima del marco para el grafo. Para tratar de mejorar la legibilidad lo máximo posible decidimos hacer dos grafos diferentes, siendo el que vemos en la Figura~\ref{fig:tercerDiseño} el de ``explicaciones cercanas''. Este grafo muestra solamente las explicaciones existentes entre elementos de la misma categoría. Esto quiere decir que, por ejemplo, el género de una canción solo podrá relacionarse con un género de la otra canción, pues corresponden a la misma categoría. Por el contrario, no se verán relaciones existentes entre ese género y otro elemento, como una canción, artista o miembro.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Tercera Interfaz (Alternativa).png}
 	\caption{Grafo de explicaciones lejanas}
-	\label{fig:sampleImage}
+	\label{fig:grafoLejano}
 \end{figure}
 
-En la Figura 4.4 se ve el llamado ``grafo de explicaciones lejanas'', con el que se ve mejor la diferencia. Al contrario del ``grafo de explicaciones cercanas'', aquí solo se muestran las explicaciones existentes entre elementos que pertenecen a estudios diferentes. De esta forma, en este grafo se ve la relación entre el artista \textbf{The Rolling Stones}, autor de la primera canción, y el género \textbf{pop rock} obtenido de la segunda canción.\\
+En la Figura~\ref{fig:grafoLejano} se ve el llamado ``grafo de explicaciones lejanas'', con el que se ve mejor la diferencia. Al contrario del ``grafo de explicaciones cercanas'', aquí solo se muestran las explicaciones existentes entre elementos que pertenecen a estudios diferentes. De esta forma, en este grafo se ve la relación entre el artista \textbf{The Rolling Stones}, autor de la primera canción, y el género \textbf{pop rock} obtenido de la segunda canción.\\
 
 El usuario podrá cambiar de vista libremente para consultar ambos grafos haciendo click en las pestañas anteriormente mencionadas. Todas las funciones explicadas en esta sección aparecen en ambos grafos.\\
 
@@ -88,40 +88,40 @@ El usuario podrá cambiar de vista libremente para consultar ambos grafos hacien
 
 Tras hacer una serie de cambios respecto a la versión anterior, alcanzamos la versión final de la interfaz. Aprovecharemos este apartado para hacer una demostración paso a paso del uso de la aplicación y comentaremos los cambios realizados a medida que vayan apareciendo.\\
 
-Al abrir la aplicación, nos encontramos con la pantalla inicial que aparece en la figura 5.5. Al igual que en versiones anteriores, en este estado inicial tenemos dos listas a ambos lados para seleccionar las canciones a comparar, un botón en la parte superior para confirmar nuestra selección, un espacio central en blanco que será donde se dibuje el grafo y dos botones sobre dicho espacio para cambiar el grafo mostrado.\\
+Al abrir la aplicación, nos encontramos con la pantalla inicial que aparece en la Figura~\ref{fig:estadoInicial}. Al igual que en versiones anteriores, en este estado inicial tenemos dos listas a ambos lados para seleccionar las canciones a comparar, un botón en la parte superior para confirmar nuestra selección, un espacio central en blanco que será donde se dibuje el grafo y dos botones sobre dicho espacio para cambiar el grafo mostrado.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla inicial.png}
 	\caption{Estado inicial de la interfaz}
-	\label{fig:sampleImage}
+	\label{fig:estadoInicial}
 \end{figure}
 
 Aunque la estructura es la misma, el aspecto visual de casi todos los elementos ha cambiado con el objetivo de hacerlos más claros y agradables para los usuarios. Además, hemos decidido cambiar el idioma de todos los elementos al inglés, pues nos parece un lenguaje más universal.\\
 
 La terminología utilizada para referirnos a los dos grafos mostrados también ha cambiado, como se puede ver en los botones relacionados. El que anteriormente llamábamos ``grafo de explicaciones cercanas'' ahora pasa a ser el ``grafo de explicaciones de la misma categoría''~(Same category explanations), mientras que el ``grafo de explicaciones lejanas'' se convierte en ``grafo de explicaciones de categorías distintas''~(Different category explanations). Su funcionalidad y forma de construirlos es la misma, pero decidimos cambiar los términos para intentar hacerlo más comprensible.\\
 
-Somos conscientes de que la diferencia entre ambos grafos puede ser confusa para un usuario recién llegado a la aplicación, por eso hemos incorporado un botón de ayuda en la parte superior, reconocible por su forma de interrogación.\\
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla modal.png}
 	\caption{Ventana de ayuda}
-	\label{fig:sampleImage}
+	\label{fig:ayuda}
 \end{figure}
 
-Al pulsar ese botón, se despliega la ventana mostrada en la Figura 5.6. En ella viene explicada la diferencia entre los dos grafos con la ayuda de imágenes y texto. Se puede cerrar esta ventana con la hélice de la esquina superior derecha o simplemente haciendo click fuera del marco.\\
+Somos conscientes de que la diferencia entre ambos grafos puede ser confusa para un usuario recién llegado a la aplicación, por eso hemos incorporado un botón de ayuda en la parte superior, reconocible por su forma de interrogación.\\
+
+Al pulsar ese botón, se despliega la ventana mostrada en la Figura~\ref{fig:ayuda}. En ella viene explicada la diferencia entre los dos grafos con la ayuda de imágenes y texto.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla seleccion.png}
 	\caption{Ejemplo de selección de dos canciones}
-	\label{fig:sampleImage}
+	\label{fig:seleccion}
 \end{figure}
 
-Para continuar es necesario seleccionar dos canciones, una de cada lista. Para ello es posible hacer scroll en las listas hasta encontrar la canción deseada o también se puede utilizar el buscador que hay sobre ellas para filtrarlas. Una vez se han seleccionado ambas canciones, se puede hacer click sobre el botón ``COMPARE'' para visualizar las explicaciones. Si se intenta proceder sin seleccionar dos canciones diferentes, el usuario recibirá un aviso.\\
+Para continuar es necesario seleccionar dos canciones, una de cada lista. Para ello es posible hacer scroll en las listas hasta encontrar la canción deseada o también se puede utilizar el buscador que hay sobre ellas para filtrarlas (Figura~\ref{fig:seleccion}). Una vez se han seleccionado ambas canciones, se puede hacer click sobre el botón ``COMPARE'' para visualizar las explicaciones. Si se intenta proceder sin seleccionar dos canciones diferentes, el usuario recibirá un aviso.\\
 
-Tras un pequeño tiempo de carga, el grafo de explicaciones que relaciona ambas canciones aparecerá en el espacio reservado del centro de la pantalla. Este grafo tiene la misma forma que en la última versión, con colores distinguiendo las distintas categorías (azul para las canciones, verde para los géneros, rojo para los artistas y morado para los miembros de los artistas).\\
+Tras un pequeño tiempo de carga, el grafo de explicaciones que relaciona ambas canciones aparecerá en el espacio reservado del centro de la pantalla, como se muestra en la Figura~\ref{fig:mismaCategoria}. Por defecto se muestra el ``grafo de explicaciones de la misma categoría''~(Same category explanations), aunque se puede alternar la vista entre ambos en cualquier momento. Este grafo tiene la misma forma que en la última versión, con colores distinguiendo las distintas categorías (azul para las canciones, verde para los géneros, rojo para los artistas y morado para los miembros de los artistas).\\
 
 \clearpage
 
@@ -129,7 +129,7 @@ Tras un pequeño tiempo de carga, el grafo de explicaciones que relaciona ambas 
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla same graph.png}
 	\caption{Grafo de explicaciones de la misma categoría}
-	\label{fig:sampleImage}
+	\label{fig:mismaCategoria}
 \end{figure}
 
 En esta versión final hemos cambiado el color de los nodos centrales por un tono amarillo para diferenciarlos del resto. En esta columna central aparecen los nodos que representan realmente las explicaciones que relacionan las canciones.\\
@@ -142,10 +142,10 @@ Por último hemos añadido una etiqueta desplegable en los nodos, de forma que s
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla different graph.png}
 	\caption{Grafo de explicaciones de distinta categoría}
-	\label{fig:sampleImage}
+	\label{fig:distintaCategoria}
 \end{figure}
 
-Al pulsar la otra pestaña, ``Different category explanations'', se muestra el grafo alternativo. Este grafo no ha sufrido cambios notables desde su última versión más allá de los ya comentados en este mismo apartado.\\
+Al pulsar la otra pestaña, ``Different category explanations'', se muestra el grafo alternativo (Figura~\ref{fig:distintaCategoria}). Este grafo no ha sufrido cambios notables desde su última versión más allá de los ya comentados en este mismo apartado.\\
 
 Hay que mencionar que se puede interactuar con los grafos en cualquier momento. Si se sitúa la flecha del ratón dentro del marco blanco, la rueda sirve para ajustar el zoom. Además, se puede pinchar y arrastrar cualquiera de los nodos para resaltarlos y moverlos verticalmente. Estas acciones pueden resultar de gran ayuda, especialmente cuando el grafo es muy grande y resulta difícil ver todas las conexiones al mismo tiempo.\\
 
@@ -153,7 +153,9 @@ Hay que mencionar que se puede interactuar con los grafos en cualquier momento. 
 	\centering
 	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Pantalla tabla.png}
 	\caption{Tabla de datos adicionales}
-	\label{fig:sampleImage}
+	\label{fig:tablaAdicional}
 \end{figure}
 
-Por último, al hacer click en alguno de los nodos de canciones o artistas se despliega una tabla en la parte inferior de la pantalla. En ella se puede consultar una serie de datos adicionales que, si bien no todos forman parte de las explicaciones mostradas, pueden servir para que el usuario tenga un mejor entendimiento de ambas canciones y los artistas que las interpretan.\\
+Por último, al hacer click en alguno de los nodos de canciones o artistas se despliega una tabla en la parte inferior de la pantalla (Figura~\ref{fig:tablaAdicional}). En ella se puede consultar una serie de datos adicionales que, si bien no todos forman parte de las explicaciones mostradas, pueden servir para que el usuario tenga un mejor entendimiento de ambas canciones y los artistas que las interpretan.\\
+
+Así concluye el desarrollo correspondiente con el diseño de la interfaz. En el siguiente capítulo pasaremos a examinar la implementación de la aplicación, por lo que trataremos aspectos más técnicos.\\
