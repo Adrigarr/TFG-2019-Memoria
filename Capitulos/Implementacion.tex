@@ -52,6 +52,18 @@ Cuando el servidor haya completado su parte, devolverá al cliente un archivo de
 
 
 \subsection{Comunicación}
+La comunicación con el servidor de Wikidata, se hace mediante el módulo modelo. Este módulo se encarga de establecer la conexión con el punto de consultas de Wikidata para poder iniciar las consultas y recoger los datos devueltos. Como punto principal, encontamos la librería que nos ha permitido todas estas funciones sparqlwrapper. Esta librería hace las funciones principales de establecer queries, crear un canal de conexión, y recibir en formato JSON, XML o CSV los datos obtenidos a partir de las mismas. 
+
+La conexión será establecida cada vez que el usuario quiera hacer una comparación entre un par de canciones, es decir el servidor hace una llamada por cada caso de uso que se quiera probar.
+
+En nuestro cóigodel modelo, hemos creado una librería propia en sí, que hace acopio de todas estas funciones y nos permite hacer un preprocesado y postprocesado de nuestros parámetros y las respuestas obtenidas. También contamos con una serie de clases, que nos permiten pasar toda esa información a dataframes para poder operar con ella más fácilmente.
+
+La entrada común para todo caso de uso en nuestro modelo de la aplicación para un determinado caso de uso, siempre es la misma: El par de canciónes y el conjunto de propiedades que se va a estudiar sobre ellas para poder hallar las explicaciones. Esta información está guardada en formatos JSON y CSV, los cuáles al inicio del proceso, serán convertidos en diccionarios para poderlos procesar con las clases del modelo en python. Por último la información obtenida en un dataset final de propiedades y relaciones, también será guardada para posteriormente poder representarla gráficamente.
+
+
+
+
+
 
 
 \section{Extensibilidad de la aplicación}
