@@ -31,6 +31,8 @@ Con este simple ejemplo ya hemos representado el hecho de que existe algo llamad
 
 Es necesario señalar que este es un ejemplo muy básico y sencillo. En la web real, existen millones de tripletas relacionadas entre sí por lo que en nuestro ejemplo tanto juan como María tendrían un número muy alto de tripletas más que representan toda la información que se tiene sobre ellos en la web.\\
 
+Cabe señalar que el sistema RDF, es un modelo de representación pero existen muchos formatos comúnmente usados que siguen la filosofía de este modelo: RDF/XML, RDFa, Turtle o N-triples. Todos ellos eficaces en cuanto al manejo de datos enlazados.
+
 A la hora de llevar esta explicación a un nivel más técnico y realista, estas expresiones no se formulan con sus nombres en lenguaje natural que hemos usado para el ejemplo. Estos tres argumentos que conforman la unidad de tripleta, se representan mediante un Identificador de Recursos: una URI~(Uniform Resource Identifier) \cite{sakr2018,berners2007}.\\
 
 Una URI~(Uniform Resource Identifier) es una cadena de caracteres que puede identificar una entidad o recurso por su nombre o bien por su ubicación, la cual muestra dónde podemos acceder a él. Siguiendo esta división, una URI puede comprender el URL~(Uniform Resource Locator) y el URN~(Uniform Resource Name). La URN identifica la entidad por su nombre, lo cual no nos proporciona su ubicación y no asegura que esta entidad esté disponible. Sin embargo, la URL nos proporciona la localización directa de la entidad y esta es la principal razón de que sea mucho más usada en la web \cite{berners1994,saint2017,sakr2018}.\\
@@ -47,6 +49,10 @@ Volviendo a lo que respecta al modelo RDF, hemos determinado el hecho de que si 
 Para una persona normal, esta puede resultar una nomenclatura poco amigable ya que las URIs pueden llegar a ser mucho más engorrosas y complejas. Más adelante explicaremos cómo hemos resuelto este problema en nuestro proyecto para que cualquiera que haga uso de nuestra interfaz pueda reconocer todos los objetos y, sobre todo, para darnos mucha más comodidad a la hora de trabajar con ellos.\\
 
 Podríamos decir que estamos estableciendo una relación entre dos objetos unidos mediante una propiedad. Esta propiedad es una ``explicación'' que nos sirve para relacionar objetos. En nuestro proyecto, estos objetos son canciones.\\
+
+
+\section{Herramientas con uso de Linked Data}
+
 
 \section{SPARQL}
 
