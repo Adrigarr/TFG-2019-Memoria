@@ -93,150 +93,9 @@ Para esta explicación emplearemos la propiedad ``instance of''~(instancia de) e
 	\label{fig:sampleImage}
 \end{figure}
 
-\section{Explicaciones compartidas por Artista y Canción}
+\section{Explicaciones del artista}
 
-En esta sección exponemos propiedades que pueden ser establecidas tanto en el nivel de estudio de la canción como en el nivel de estudio del artista.
-
-\subsection*{Premios}
-
-La siguiente explicación son los premios recibidos. Existe una variedad de premios compartidos por diferentes canciones. Algunos de estos premios son más específicos que otros, pero en cualquier caso pueden resultar una relación útil para nuestras explicaciones ya que son un reflejo de la repercusión de las canciones. El mismo caso se da para los artistas, aquellos que suelen optar al mismo premio tienen más posibilidades de tener un estilo muy similar y por ende se puede establecer una relación de cercanía.\\
-
-En esta sección hemos recogido dos propiedades: ``award received''~(premio recibido) y ``nominated for''~(nominado a). Estas categorías hacen referencia a los premios que han recibido los artistas o canciones y a los premios a los que han sido nominados respectivamente. Normalmente los premios se reparten según distintas categorías en función al estilo de música, pero también hay otros que nos aportan otro tipo de información al estudio como Grammy al Mejor Videoclip, Grammy Award a la Mejor Canción Escrita, Grammy Award a la Mejor Interpretación Rap/Sung etc...\\
-
-Basándonos en el nivel de canción tenemos como ejemplo \textit{Single Ladies (Put a Ring on It)} de \textbf{Beyoncé} y \textit{Rolling in the Deep} de \textbf{Adele}, ya que ambos temas han recibido el Premio Grammy a la canción del año. Además, como es lógico, ambas canciones fueron nominadas a ese mismo premio, así que podemos mostrar ambas propiedades en este ejemplo.\\
-
-Usaremos la propiedad ``award received''~(premio recibido) y ``nominated for''~(nominado a) encontradas en Wikidata. De esta forma, \textit{Rolling in the Deep} sería el sujeto, ``award received'' y ``nominated for'' serían los predicados y \textit{Grammy Award for Song of the Year} sería el objeto.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Premio ejemplo.png}
-	\caption{Ejemplo de explicación por premio}
-	\label{fig:sampleImage}
-\end{figure}
-
-\subsection*{Género}
-
-La explicación Género es una de las más representativas ya que las personas se guían por el género que prefieren para escuchar canciones similares, aunque en ocasiones no deba ser así. Un usuario que sea fan del jazz querrá escuchar canciones de ese mismo género o géneros similares porque todas los temas de un mismo género comparten una serie de puntos en común como la elección de los instrumentos, temáticas similares en sus letras o patrones de composición.\\
-
-Gracias al género, podemos explicar la relación entre canciones como \textit{A-Punk} de \textbf{Vampire Weekend} e \textit{Brianstorm} de \textbf{Arctic Monkeys}, que pertenecen a un subgénero muy concreto del rock conocido como \textbf{surf music}.\\
-
-Para esta relación utilizamos la propiedad ``genre''~(género) de Wikidata. Así tenemos que la canción \textit{A-Punk} pertenece al género \textbf{surf music}.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Género ejemplo.png}
-	\caption{Ejemplo de explicación por género entre canciones}
-	\label{fig:sampleImage}
-\end{figure}
-
-En este caso podríamos crear una relación del mismo tipo con los artistas, debido a que ambos artistas de las dos canciones previas también cuentan con un registro de \textbf{alternative rock} (entre otros géneros) en su propiedad de género.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Género ejemplo artistas.png}
-	\caption{Ejemplo de explicación por género entre artistas}
-	\label{fig:sampleImage}
-\end{figure}
-
-\subsection*{Idioma}
-
-La explicación Idioma denota, como su nombre sugiere, que ambas canciones están en el mismo idioma o lenguaje. Existen numerosos ejemplos de temas musicales que están escritos en un idioma que no se corresponde con la lengua materna del artista que los publican, o sencillamente están escritas en un idioma que se habla en varias partes del mundo distintas, como el inglés o el español. En ciertos casos el compartir idioma es un indicativo de otras relaciones adicionales, como puede ser el caso de canciones que pertenecen a un folclore regional determinado. En cualquier caso el compartir lenguaje ya es una relación directa en sí misma.\\
-
-Como ejemplo podemos tomar el tema \textit{Talk} de \textbf{Coldplay} y \textit{Light My Fire} de \textbf{The Doors}, los cuales están escritos en inglés.\\
-
-Para esta explicación emplearemos la propiedad ``language of work or name''~(idioma de la obra o del nombre) de Wikidata. Así tenemos que la canción \textit{Talk} tiene idioma ``inglés''.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Idioma ejemplo.png}
-	\caption{Ejemplo de explicación por idioma}
-	\label{fig:sampleImage}
-\end{figure}
-
-La misma explicación podría para relacionar dos artistas con una misma propiedad de idioma, lo que significa que ambos artistas han trabajado interpretando canciones en ese idioma.\\
-
-\section{Explicaciones compartidas por Canción, Artista y Miembro}
-
-En esta sección solo aparecen las principales propiedades que por naturaleza son exclusivas de la canción, el artista o un miembro del grupo (en caso de que el artista sea una banda compuesta por varias personas).\\
-
-\subsection*{Compañía discográfica}
-
-Record Label~(compañía discográfica) hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc. También se puede dar el caso en el que un miembro del grupo firme o haya firmado con una compañía individual, ya sea por conceptos relacionados con marcas, representantes o contratos. Además también tenemos en cuenta la compañía discográfica bajo la que se ha publicado cada canción, lo cual nos puede aportar relaciones adicionales.\\
-
-Para ilustrarlo con un ejemplo, las canciones \textit{Personal Jesus} de \textbf{Depeche Mode} y \textit{Australia} de \textbf{The Shins} pertenecen a bandas que han trabajado con el sello discográfico \textbf{Columbia Records}.\\
-
-Podemos alcanzar esta explicación gracias a la propiedad ``record label''~(sello discográfico) de Wikidata. \textit{Personal Jesus} tiene un ``record label'' cuyo nombre (o valor) es \textbf{Columbia Records}.\\\\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Discográfica ejemplo.png}
-	\caption{Ejemplo de explicación por compañía discográfica}
-	\label{fig:sampleImage}
-\end{figure}
-
-\section{Explicaciones compartidas por Género, Artista y Miembro}
-
-Estas explicaciones son compartidas por géneros, artistas y miembros, excluyendo solamente el nivel de canción.\\
-
-\subsection*{Lugar de formación}
-
-La propiedad ``location of formation''~(lugar de formación) que hace referencia a la localidad de formación del grupo o artista, puede parecer muy similar a la explicación ``country of origin'', pero esta ejerce una selección más precisa porque nos da un núcleo de población más pequeño. Un ejemplo de ello podrían ser dos míticas bandas de la ciudad de Seattle: \textbf{Pearl Jam} y \textbf{Foo Fighters}. Creemos que la unión de la ciudad natal con la música puede hacer a un usuario el escuchar grupos de su misma ciudad o estado. En cuanto a la relación referente a un miembro del grupo, se trataría del lugar donde ese miembro se inició como músico ya sea como artista en solitario o en su grupo original.\\
-
-De esta forma podemos explicar la relación existente entre sus temas \textit{Black} y \textit{Everlong}, respectivamente.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/LocationOfFormation.png}
-	\caption{Ejemplo de explicación por lugar de formación}
-	\label{fig:sampleImage}
-\end{figure}
-
-\section{Explicaciones compartidas por Artista, Miembro, Género y Canción}
-
-Estas explicaciones son compartidas en los cuatro niveles y resultan de gran interés porque nos permitirán enlazar los cuatro mismos en el caso en el que coincidan en el objeto con las relaciones de la canción opuesta.\\
-
-\subsubsection*{País de origen}
-
-Esta explicación puede ser especialmente útil para países relativamente pequeños donde la música nacional presenta unos patrones claros. Además, a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país en el que se forma un artista y esto nos daría una relación muy específica que definitivamente acertaría por completo en la relación 1 a 1 de dos canciones.\\
-
-En países que son significativamente grandes o con una población muy alta perdería algo de especificidad, pero aún así hay más posibilidades de que dos un artistas del mismo país sean escuchados por un mismo usuario.\\
-
-La canción \textit{Black Hole Sun} de la banda \textbf{Soundgarden} y \textit{Closer} de \textbf{Nine Inch Nails} guardan cierta similitud porque ambos grupos son originarios de \textbf{Estados Unidos}.\\
-
-Para comprobarlo, obtendremos la propiedad ``country of origin''~(país de origen) del artista que previamente ya hemos almacenado al estudiar las relaciones directas en el caso de las bandas o la propiedad ``country of citizenship''~(país de nacionalidad) en el caso de los artistas en solitario. \textit{Black Hole Sun} tiene el ``performer'' \textbf{Soundgarden}, cuyo ``country of origin'' es \textbf{United States of America}.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/País ejemplo.png}
-	\caption{Ejemplo de explicación por país de origen}
-	\label{fig:sampleImage}
-\end{figure}
-
-También podemos recoger la información del país donde se formó ese género. Con esta propiedad queremos recoger movimientos artísticos que surgieron en el mismo país. Los géneros que fueron formados en un determinado país están mucho más arraigados a este a pesar de que se hayan extendido por todo el mundo. Es por esto que si queremos relacionar una artista que cualquier parte del mundo, que tiene un estilo techno, será más propenso a estar relacionado con artistas o canciones holandesas, cuna de este estilo musical.\\
-
-En el caso de que la propiedad se estableciese en la canción, significaría que ambas canciones han sido lanzadas originariamente en el mismo país.\\
-
-\subsubsection*{Influenciado por}
-\label{subsubsec:influenced}
-
-La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas de formas que no siempre están ligadas a un género musical concreto, así que podemos encontrar una relación entre dos canciones examinando estas influencias.\\
-
-Tomando como ejemplo las canciones \textit{Billie Jean} de \textbf{Michael Jackson} y \textit{Paint It Black} de \textbf{The Rolling Stones}, podemos establecer una relación entre ellas al ver que ambos artistas fueron influenciados por la banda \textbf{The Beatles}.\\
-
-Obtenemos esta explicación gracias a la propiedad ``influenced by''~(influenciado por) de Wikidata, además de la propiedad ``performer'' para relacionar el tema con su artista. Así averiguamos que \textit{Billie Jean} tiene de ``intérprete'' a \textbf{Michael Jackson}, quien fue ``influenciado por'' \textbf{The Beatles}.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Influencia ejemplo.png}
-	\caption{Ejemplo de explicación por influencia}
-	\label{fig:sampleImage}
-\end{figure}
-
-Al igual que con el artista, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...\\
-
-\section{Propiedades propias del artista o grupo}
-
-Aquí se expones las principales relaciones que solo pueden ser propias del artista o grupo.\\
+Aquí se exponen las relaciones que solo pueden ser propias del artista o grupo.\\
 
 \subsubsection*{Integrantes}
 
@@ -283,7 +142,7 @@ Utilizaremos la propiedad ``work period (start)''~(inicio del periodo de activid
 	\label{fig:sampleImage}
 \end{figure}
 
-\section{Explicaciones basadas en el género}
+\section{Explicaciones del género}
 
 Estas propiedades vienen ligadas directamente al género de la canción. Es una de las propiedades más detalladas en Wikidata y por lo tanto una de de las que más información nos pueden proporcionar. Hay muchos géneros y subgéneros documentados, lo que nos facilita la obtención y clasificación de estos.\\
 
@@ -302,4 +161,144 @@ Para esta explicación usamos la propiedad ``subclass of''~(subclase de) encontr
 	\label{fig:sampleImage}
 \end{figure}
 
+\section{Explicaciones por Artista y Canción}
+
+En esta sección exponemos propiedades que pueden ser establecidas tanto en el nivel de estudio de la canción como en el nivel de estudio del artista.
+
+\subsection*{Premios}
+
+La siguiente explicación son los premios recibidos. Existe una variedad de premios compartidos por diferentes canciones. Algunos de estos premios son más específicos que otros, pero en cualquier caso pueden resultar una relación útil para nuestras explicaciones ya que son un reflejo de la repercusión de las canciones. El mismo caso se da para los artistas, aquellos que suelen optar al mismo premio tienen más posibilidades de tener un estilo muy similar y por ende se puede establecer una relación de cercanía.\\
+
+En esta sección hemos recogido dos propiedades: ``award received''~(premio recibido) y ``nominated for''~(nominado a). Estas categorías hacen referencia a los premios que han recibido los artistas o canciones y a los premios a los que han sido nominados respectivamente. Normalmente los premios se reparten según distintas categorías en función al estilo de música, pero también hay otros que nos aportan otro tipo de información al estudio como Grammy al Mejor Videoclip, Grammy Award a la Mejor Canción Escrita, Grammy Award a la Mejor Interpretación Rap/Sung etc...\\
+
+Basándonos en el nivel de canción tenemos como ejemplo \textit{Single Ladies (Put a Ring on It)} de \textbf{Beyoncé} y \textit{Rolling in the Deep} de \textbf{Adele}, ya que ambos temas han recibido el Premio Grammy a la canción del año. Además, como es lógico, ambas canciones fueron nominadas a ese mismo premio, así que podemos mostrar ambas propiedades en este ejemplo.\\
+
+Usaremos la propiedad ``award received''~(premio recibido) y ``nominated for''~(nominado a) encontradas en Wikidata. De esta forma, \textit{Rolling in the Deep} sería el sujeto, ``award received'' y ``nominated for'' serían los predicados y \textit{Grammy Award for Song of the Year} sería el objeto.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Premio ejemplo.png}
+	\caption{Ejemplo de explicación por premio}
+	\label{fig:sampleImage}
+\end{figure}
+
+\subsection*{Género}
+
+La explicación Género es una de las más representativas ya que las personas se guían por el género que prefieren para escuchar canciones similares, aunque en ocasiones no deba ser así. Un usuario que sea fan del jazz querrá escuchar canciones de ese mismo género o géneros similares porque todas los temas de un mismo género comparten una serie de puntos en común como la elección de los instrumentos, temáticas similares en sus letras o patrones de composición.\\
+
+Gracias al género, podemos explicar la relación entre canciones como \textit{A-Punk} de \textbf{Vampire Weekend} y \textit{Brianstorm} de \textbf{Arctic Monkeys}, que pertenecen a un subgénero muy concreto del rock conocido como \textbf{surf music}.\\
+
+Para esta relación utilizamos la propiedad ``genre''~(género) de Wikidata. Así tenemos que la canción \textit{A-Punk} pertenece al género \textbf{surf music}.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Género ejemplo.png}
+	\caption{Ejemplo de explicación por género entre canciones}
+	\label{fig:sampleImage}
+\end{figure}
+
+En este caso podríamos crear una relación del mismo tipo con los artistas, debido a que ambos artistas de las dos canciones previas también cuentan con un registro de \textbf{alternative rock} (entre otros géneros) en su propiedad de género.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Género ejemplo artistas.png}
+	\caption{Ejemplo de explicación por género entre artistas}
+	\label{fig:sampleImage}
+\end{figure}
+
+\subsection*{Idioma}
+
+La explicación Idioma denota, como su nombre sugiere, que ambas canciones están en el mismo idioma o lenguaje. Existen numerosos ejemplos de temas musicales que están escritos en un idioma que no se corresponde con la lengua materna del artista que los publican, o sencillamente están escritas en un idioma que se habla en varias partes del mundo distintas, como el inglés o el español. En ciertos casos el compartir idioma es un indicativo de otras relaciones adicionales, como puede ser el caso de canciones que pertenecen a un folclore regional determinado. En cualquier caso el compartir lenguaje ya es una relación directa en sí misma.\\
+
+Como ejemplo podemos tomar el tema \textit{Talk} de \textbf{Coldplay} y \textit{Light My Fire} de \textbf{The Doors}, los cuales están escritos en inglés.\\
+
+Para esta explicación emplearemos la propiedad ``language of work or name''~(idioma de la obra o del nombre) de Wikidata. Así tenemos que la canción \textit{Talk} tiene idioma ``inglés''.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Idioma ejemplo.png}
+	\caption{Ejemplo de explicación por idioma}
+	\label{fig:sampleImage}
+\end{figure}
+
+La misma explicación podría para relacionar dos artistas con una misma propiedad de idioma, lo que significa que ambos artistas han trabajado interpretando canciones en ese idioma.\\
+
+\section{Explicaciones por Canción, Artista y Miembro}
+
+En esta sección solo aparecen las principales propiedades que por naturaleza son exclusivas de la canción, el artista o un miembro del grupo (en caso de que el artista sea una banda compuesta por varias personas).\\
+
+\subsection*{Compañía discográfica}
+
+Record Label~(compañía discográfica) hace referencia a la compañía por la que ha firmado el artista para publicar un tema concreto. Hemos podido observar que una misma compañía puede firmar a artistas que a veces no tienen relación ninguna en cuanto al estilo musical, pero hay otras causas que sí los pueden relacionar indirectamente como la tendencia del momento, el target del público que generan, etc. También se puede dar el caso en el que un miembro del grupo firme o haya firmado con una compañía individual, ya sea por conceptos relacionados con marcas, representantes o contratos. Además también tenemos en cuenta la compañía discográfica bajo la que se ha publicado cada canción, lo cual nos puede aportar relaciones adicionales.\\
+
+Para ilustrarlo con un ejemplo, las canciones \textit{Personal Jesus} de \textbf{Depeche Mode} y \textit{Australia} de \textbf{The Shins} pertenecen a bandas que han trabajado con el sello discográfico \textbf{Columbia Records}.\\
+
+Podemos alcanzar esta explicación gracias a la propiedad ``record label''~(sello discográfico) de Wikidata. \textit{Personal Jesus} tiene un ``record label'' cuyo nombre (o valor) es \textbf{Columbia Records}.\\\\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/Discográfica ejemplo.png}
+	\caption{Ejemplo de explicación por compañía discográfica}
+	\label{fig:sampleImage}
+\end{figure}
+
+\section{Explicaciones por Género, Artista y Miembro}
+
+Estas explicaciones son compartidas por géneros, artistas y miembros, excluyendo solamente el nivel de canción.\\
+
+\subsection*{Lugar de formación}
+
+La propiedad ``location of formation''~(lugar de formación) que hace referencia a la localidad de formación del grupo o artista, puede parecer muy similar a la explicación ``country of origin'', pero esta ejerce una selección más precisa porque nos da un núcleo de población más pequeño. Un ejemplo de ello podrían ser dos míticas bandas de la ciudad de Seattle: \textbf{Pearl Jam} y \textbf{Foo Fighters}. Creemos que la unión de la ciudad natal con la música puede hacer a un usuario el escuchar grupos de su misma ciudad o estado. En cuanto a la relación referente a un miembro del grupo, se trataría del lugar donde ese miembro se inició como músico ya sea como artista en solitario o en su grupo original.\\
+
+De esta forma podemos explicar la relación existente entre sus temas \textit{Black} y \textit{Everlong}, respectivamente.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/LocationOfFormation.png}
+	\caption{Ejemplo de explicación por lugar de formación}
+	\label{fig:sampleImage}
+\end{figure}
+
+\section{Explicaciones por Artista, Miembro, Género y Canción}
+
+Estas explicaciones son compartidas en los cuatro niveles y resultan de gran interés porque nos permitirán enlazar los cuatro en el caso en el que coincidan en el objeto con las relaciones de la canción opuesta.\\
+
+\subsubsection*{País de origen}
+
+Esta explicación puede ser especialmente útil para países relativamente pequeños donde la música nacional presenta unos patrones claros. Además, a lo largo de la historia en un país se genera una tendencia o nuevo género musical el cual es propio de ese país en el que se forma un artista y esto nos daría una relación muy específica que definitivamente acertaría por completo en la relación 1 a 1 de dos canciones.\\
+
+En países que son significativamente grandes o con una población muy alta perdería algo de especificidad, pero aún así hay más posibilidades de que dos un artistas del mismo país sean escuchados por un mismo usuario.\\
+
+La canción \textit{Black Hole Sun} de la banda \textbf{Soundgarden} y \textit{Closer} de \textbf{Nine Inch Nails} guardan cierta similitud porque ambos grupos son originarios de \textbf{Estados Unidos}.\\
+
+Para comprobarlo, obtendremos la propiedad ``country of origin''~(país de origen) del artista que previamente ya hemos almacenado al estudiar las relaciones directas en el caso de las bandas o la propiedad ``country of citizenship''~(país de nacionalidad) en el caso de los artistas en solitario. \textit{Black Hole Sun} tiene el ``performer'' \textbf{Soundgarden}, cuyo ``country of origin'' es \textbf{United States of America}.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/País ejemplo.png}
+	\caption{Ejemplo de explicación por país de origen}
+	\label{fig:sampleImage}
+\end{figure}
+
+También podemos recoger la información del país donde se formó ese género. Con esta propiedad queremos recoger movimientos artísticos que surgieron en el mismo país. Los géneros que fueron formados en un determinado país están mucho más arraigados a este a pesar de que se hayan extendido por todo el mundo. Es por esto que si queremos relacionar una artista que cualquier parte del mundo, que tiene un estilo techno, será más propenso a estar relacionado con artistas o canciones holandesas, cuna de este estilo musical.\\
+
+En el caso de que la propiedad se estableciese en la canción, significaría que ambas canciones han sido lanzadas originariamente en el mismo país.\\
+
+\subsubsection*{Influenciado por}
+\label{subsubsec:influenced}
+
+La \textbf{influencia de los artistas} es otra explicación importante. A menudo el trabajo de un artista se ve influenciado por otros artistas de formas que no siempre están ligadas a un género musical concreto, así que podemos encontrar una relación entre dos canciones examinando estas influencias.\\
+
+Tomando como ejemplo las canciones \textit{Billie Jean} de \textbf{Michael Jackson} y \textit{Paint It Black} de \textbf{The Rolling Stones}, podemos establecer una relación entre ellas al ver que ambos artistas fueron influenciados por la banda \textbf{The Beatles}.\\
+
+Obtenemos esta explicación gracias a la propiedad ``influenced by''~(influenciado por) de Wikidata, además de la propiedad ``performer'' para relacionar el tema con su artista. Así averiguamos que \textit{Billie Jean} tiene de ``intérprete'' a \textbf{Michael Jackson}, quien fue ``influenciado por'' \textbf{The Beatles}.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 1\textwidth]{Imagenes/Bitmap/Influencia ejemplo.png}
+	\caption{Ejemplo de explicación por influencia}
+	\label{fig:sampleImage}
+\end{figure}
+
+Al igual que con el artista, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...\\
 
