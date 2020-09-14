@@ -103,7 +103,7 @@
   year      = {2006},
 }
 
-@Article{heath2011,
+@Article{heath2011linke,
   author    = {Heath, Tom and Bizer, Christian},
   title     = {Linked data: Evolving the web into a global data space},
   journal   = {Synthesis lectures on the semantic web: theory and technology},
