@@ -56,9 +56,34 @@ La comunicación con el servidor de Wikidata, se hace mediante el módulo modelo
 
 La conexión será establecida cada vez que el usuario quiera hacer una comparación entre un par de canciones, es decir el servidor hace una llamada por cada caso de uso que se quiera probar.
 
-En nuestro cóigodel modelo, hemos creado una librería propia en sí, que hace acopio de todas estas funciones y nos permite hacer un preprocesado y postprocesado de nuestros parámetros y las respuestas obtenidas. También contamos con una serie de clases, que nos permiten pasar toda esa información a dataframes para poder operar con ella más fácilmente.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/conexion.png}
+	\caption{Diagrama para establecer una conexión}
+	\label{fig:diagramaCS}
+\end{figure}
 
-La entrada común para todo caso de uso en nuestro modelo de la aplicación para un determinado caso de uso, siempre es la misma: El par de canciónes y el conjunto de propiedades que se va a estudiar sobre ellas para poder hallar las explicaciones. Esta información está guardada en formatos JSON y CSV, los cuáles al inicio del proceso, serán convertidos en diccionarios para poderlos procesar con las clases del modelo en python. Por último la información obtenida en un dataset final de propiedades y relaciones, también será guardada para posteriormente poder representarla gráficamente.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/conexionReturn.png}
+	\caption{Respuesta del servidor de Wikidata}
+	\label{fig:diagramaCS}
+\end{figure}
+
+Una vez que obtengamos el objeto Sparql que devuelve el servidor de Wikidata ya podemos utilizarlo reiteradamente para poder mandar queries al servidor de Wikidata. Estas queries están predefinidas por las propiedades objeto de estudio y son las mismas para cada canción.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/conexionQueries.png}
+	\caption{Lanzamiento de queries al servidor}
+	\label{fig:diagramaCS}
+\end{figure}
+
+
+La entrada común para todo caso de uso en nuestro modelo de la aplicación para un determinado caso de uso, siempre es la misma: El par de canciónes y el conjunto de propiedades que se va a estudiar sobre ellas para poder hallar las explicaciones. Esta información está guardada en formatos JSON y CSV, los cuáles al inicio del proceso, serán convertidos en diccionarios para poderlos procesar con las clases del modelo en python. 
+
+Contamos con una jerarquía de clases, las cuales completan el módulo de conexión. Se encargarán de procesar las repuestas del servidor y crear progresivamente a medida que nos llegan respuestas varios documento que contengan todas las propiedades de cada canción y las relacione entre sí para poder obtener un grafo representable.
+
 
 
 
