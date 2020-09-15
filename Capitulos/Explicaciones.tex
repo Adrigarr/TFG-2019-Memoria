@@ -1,33 +1,34 @@
 \chapter{Explicaciones}
 \label{cap:explicaciones}
 
-El objetivo de nuestro trabajo consiste en explicar las relaciones entre dos canciones dadas por un recomendador de música que trabaja con un dataset concreto. De esta manera, llamaremos \textbf{explicación} a cada factor común que compartan ambas canciones, siendo principalmente propiedades que poseen las propias canciones o los valores de otras propiedades intermedias. A lo largo de este capítulo concretaremos todas las explicaciones que vamos a estudiar y el sistema que une todas ellas para poder relacionar dos canciones en su totalidad.\\
+En el recomendador de música que tomamos como punto de partida para nuestro trabajo, el sistema recomienda una canción A y proporciona una explicación de esa recomendación en forma de una segunda canción B que ya le gusta al usuario y que es similar a la canción recomendada. Nuestro objetivo es enriquecer esas explicaciones para que el usuario tenga un mejor entendimiento de por qué se le recomienda la canción A a partir de la canción B, mostrando las características que tienen ambas canciones en común.\\
 
-Las relaciones que recogemos en cualquier caso de uso forman un grafo siguiendo el modelo RDF. Hemos decidido, además de seguir ese formato, dotarlas de un nivel que escala a medida que el estudio se aleje del objeto canción inicial. Al expresar alejamiento, nos referimos a que, como en el contexto del formato RDF y Linked Data, la creación de relaciones se establece navegando por distintos objetos relacionados con el inicial secuencialmente. La idea de los niveles viene dada por dos motivos:\\
+El uso de Linked Data nos permite aportar contexto a estas relaciones entre canciones. En nuestro caso consultaremos la web Wikidata para obtener las distintas propiedades de una canción y las compararemos con las propiedades de la canción con la que está relacionada, de tal forma que obtendremos una justificación fácil de entender de la similitud de ambas canciones.\\
 
-El primero es debido a la cercanía de niveles. Cuanto menor sea el nivel, significará que está mas próximo al objeto canción inicial y por ello tendrá más peso a la hora de relacionarlas.\\
+De esta manera, llamaremos \textbf{explicación} a cada factor común que compartan ambas canciones, siendo principalmente propiedades que poseen las propias canciones. Estas propiedades son datos como, por ejemplo, el género al que pertenece la canción, su fecha de publicación o el artista que la interpreta. A lo largo de este capítulo concretaremos todas las explicaciones que vamos a estudiar, detallando cómo las obtenemos y lo que significa cada una.\\
 
-El segundo es porque a la hora de representar gráficamente todas las relaciones, queremos dividirlas por objetos de estudio de una forma nivelada y ordenada.\\
-
-En una primera fase, generaremos explicaciones básicas para relacionar directamente las dos canciones u objetos principales, por ejemplo: género, artista, álbum, etc. Asignaremos una complejidad de k=1 a las explicaciones directas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad, es decir, solo tenemos en cuenta propiedades ligadas a cada objeto en un primer nivel.\\
-
-Una vez obtenemos las relaciones básicas, es necesario seguir avanzando en el estudio, ya que dos canciones que a priori no son muy similares musicalmente, no compartirán casi ninguna de estas relaciones directas. Es por esto por lo que indagamos más en la información que podemos obtener a partir de las relaciones que hemos sacado en el paso anterior. Aquí aparecen las relaciones indirectas, aquellas que surgen del estudio de otras obtenidas en niveles anteriores, siempre que coincidan en ambas canciones. La idea es poder representar toda la información compartida, de forma que se pueda representar con un grafo. Estas explicaciones pueden tener un nivel de complejidad diferente (k= 2, 3, 4...) dependiendo de cuántos niveles se hayan estudiado. La idea principal es ejecutar un estudio de ambas canciones obteniendo varios niveles de cada una de ellas, para finalmente unirlas enlazando únicamente las que coincidan.\\
-
-Hemos recopilado a lo largo de investigación y consultas un conjunto de posibles relaciones a obtener, que suman un total de 24 explicaciones. Es importante añadir que la mayoría de ellas pueden presentarse en distintos niveles. Para explicar este caso más fácilmente lo representamos con el ejemplo de la Figura 3.1.\\
-
+Las relaciones que recogemos en cualquier caso de uso forman un grafo siguiendo el modelo RDF, ya que consideramos que una estructura de grafo permite una interpretación intuitiva de las explicaciones. Hemos decidido, además de seguir ese formato, dotarlas de un nivel que escala a medida que el estudio se aleje de la canción inicial. Esta distancia o alejamiento viene porque en el contexto del formato RDF y Linked Data la creación de relaciones se establece navegando por distintos objetos relacionados con el inicial secuencialmente. En ciertas explicaciones la propiedad que conecta las dos canciones no es una propiedad directa perteneciente a las canciones, sino que es la propiedad de los artistas que los interpretan, por ejemplo. La Figura~\ref{fig:ejemploNiveles} es útil para entender esta distinción.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 0.9\textwidth]{Imagenes/Bitmap/RelationLevels.png}
 	\caption{Ejemplo de misma relación en distintos niveles}
-	\label{fig:sampleImage}
+	\label{fig:ejemploNiveles}
 \end{figure}
 
-Para nuestro caso, en el cual tratamos con dos objetos iniciales que representan a dos canciones, hemos seleccionado una serie de propiedades a investigar para obtener los distintos niveles. El primer nivel es el más intuitivo: obtener relaciones directamente de ambas canciones. Entre esas relaciones se encontraría la relación ``Interpretado por'', la cual nos proporciona el artista o grupo que interpreta la canción. Este artista es el que vamos a usar como objeto de estudio del nivel k = 2, obteniendo así otro conjunto de relaciones del artista y sus respectivos valores. También obtendremos el género de la canción, que usaremos para generar el nivel k = 3 mediante las propiedades que obtengamos del género. Por último, como nivel final hemos seleccionado investigar las propiedades de los miembros que conforman la banda de música en caso de que el intérprete de la canción esté formado por varios artistas, y denominamos a este último nivel k= 4.\\
+La distinción de niveles nos permite identificar rápidamente las explicaciones más importantes. Cuanto menor sea el nivel, significará que está mas próximo a la canción inicial y por ello tendrá más peso a la hora de relacionarlas. Además, esta forma de separar las explicaciones hace que los grafos resultantes sean más ordenados y fáciles de entender.\\
 
-Queremos señalar que estos niveles podrían alargarse más a medida que seguimos investigando nuevas propiedades y generando un grafo más completo. Hemos decidido poner un límite en este punto debido a que, a medida que vamos avanzando en el estudio de los niveles de las propiedades, las explicaciones son menos significativas debido a que están más alejadas del primer nivel, que es el que está relacionado con la canción en sí.\\
+En una primera fase, generaremos explicaciones directas para relacionar directamente las dos canciones u objetos principales, por ejemplo: género, artista, álbum, etc. Asignaremos un nivel de $k=1$ a las explicaciones directas. Estas explicaciones son una relación directa entre dos canciones relacionadas por una propiedad, es decir, solo tenemos en cuenta propiedades ligadas a cada objeto en un primer nivel.\\
 
-En esta sección vamos a recopilar las principales propiedades de la lista total y cómo relacionarían dos canciones objeto iniciales. Algunas de ellas podrán aparecer en distintos niveles mientras que otras serán propias de un solo nivel:\\
+Una vez obtenemos las relaciones directas, es necesario seguir avanzando en el estudio, ya que dos canciones que a priori no son muy similares musicalmente, no compartirán casi ninguna de estas relaciones directas. Es por esto por lo que indagamos más en la información que podemos obtener a partir de las relaciones que hemos sacado en el paso anterior. Aquí aparecen las relaciones indirectas, aquellas que surgen del estudio de otras obtenidas en niveles anteriores, siempre que coincidan en ambas canciones. La idea es poder representar toda la información compartida, de forma que se pueda representar con un grafo. Estas explicaciones pueden tener un nivel diferente (k= 2, 3, 4...) dependiendo de cuántos niveles se hayan estudiado. La idea principal es ejecutar un estudio de ambas canciones obteniendo varios niveles de cada una de ellas, para finalmente unirlas enlazando únicamente las que coincidan.\\
+
+Hemos recopilado a lo largo de investigación y consultas un conjunto de posibles relaciones a obtener, que suman un total de 24 explicaciones. Es importante añadir que la mayoría de ellas pueden presentarse en distintos niveles. Para explicar este caso más fácilmente lo representamos con el ejemplo de la Figura 3.1.\\
+
+Para nuestro caso, en el cual tratamos con dos objetos iniciales que representan a dos canciones, hemos seleccionado una serie de propiedades a investigar para obtener los distintos niveles. El primer nivel es el más intuitivo: obtener relaciones directamente de ambas canciones. Entre esas relaciones se encontraría la relación ``Interpretado por'', la cual nos proporciona el artista o grupo que interpreta la canción. Este artista es el que vamos a usar como objeto de estudio del nivel $k = 2$, obteniendo así otro conjunto de relaciones del artista y sus respectivos valores. También obtendremos el género de la canción, que compartirá el nivel $k = 2$ y usará las propiedades que obtengamos del género. Por último, como nivel final hemos seleccionado investigar las propiedades de los miembros que conforman la banda de música en caso de que el intérprete de la canción esté formado por varios artistas, y denominamos a este último nivel $k= 3$.\\
+
+Queremos señalar que estos niveles podrían alargarse más a medida que seguimos investigando nuevas propiedades y generando un grafo más completo. Hemos decidido poner un límite en este punto debido a que, a medida que vamos avanzando en el estudio de los niveles de las propiedades, las explicaciones son menos significativas debido a que están más alejadas del primer nivel, que es el que está relacionado con la canción en sí. Por ello nos limitaremos a estudiar los 4 elementos mencionados: canción, artista, género y miembro (del artista).\\
+
+A continuación vamos a recopilar las propiedades que hemos seleccionado como parte de nuestro estudio y cómo relacionarían dos canciones iniciales. Algunas de ellas podrán aparecer en distintos niveles mientras que otras serán propias de un solo nivel.\\
 
 \section{Explicaciones de la canción}
 
@@ -39,7 +40,7 @@ El artista es una de las explicaciones más obvias pero también es una de las m
 
 Como ejemplo podemos tomar los temas \textit{One More Time} y \textit{Something About Us}. Ambos son interpretados por el dúo musical \textbf{Daft Punk}, así que podemos explicar su relación gracias a este dato.\\
 
-Para esta explicación utilizamos la propiedad ``performer''~(intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}).\\
+Para esta explicación utilizamos la propiedad ``performer''~(intérprete) de Wikidata. Siguiendo el modelo RDF, el sujeto es la canción (\textit{One More Time}, por ejemplo), el predicado es la propiedad intérprete y el objeto es el artista (\textbf{Daft Punk}). Para hacer más fácil de entender esta explicación y mantener una terminología coherente con el resto del proyecto, en las aristas aparecerá la palabra ``artist'' en lugar de ``performer''.\\
 
 \begin{figure}[h!]
 	\centering
@@ -129,7 +130,7 @@ Para esta explicación resulta útil la propiedad ``voice type''~(tipo de voz) e
 
 \subsubsection*{Fecha de fundación}
 
-Con esta propiedad intentamos tener en cuenta la historia de los o su cronograma. Hay grupos que comenzaron su etapa musical  conjuntamente a lo largo del tiempo. Un ejemplo de este caso se en curiosamente en el technopop que tanto caracterizó a los años 80, pues convivió a veces con el soul y con el estilo afroamericano doo-wop.\\
+Con esta propiedad intentamos tener en cuenta la historia de los artistas o su cronograma. Hay grupos que comenzaron su etapa musical  conjuntamente a lo largo del tiempo. Un ejemplo de este caso se da curiosamente en el technopop que tanto caracterizó a los años 80, pues convivió a veces con el soul y con el estilo afroamericano doo-wop.\\
 
 Gracias a esta explicación podemos relacionar canciones como \textit{Clint Eastwood} de \textbf{Gorillaz} y \textit{Parabola} de \textbf{Tool}. Son canciones muy diferentes, pero ambos artistas comenzaron su carrera en la década de los 90, por lo que comparten un marco temporal.\\
 
@@ -300,5 +301,7 @@ Obtenemos esta explicación gracias a la propiedad ``influenced by''~(influencia
 	\label{fig:sampleImage}
 \end{figure}
 
-Al igual que con el artista, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...\\
+Al igual que con el artista, los géneros también son influenciados por otros los cuales ha servido para el desarrollo de nuevos estilos a lo largo de la historia. Gracias a la evolución del Rock hay otros géneros que han marcado tendencia como el Rock and Roll, el Heavy Metal,Hard Rock, Garage Rock etc...\\\\
 
+
+Una vez examinado el concepto de explicación y los distintos tipos que podremos encontrar en este proyecto, es el momento de pasar al desarrollo de la aplicación. En el siguiente capítulo se hará un repaso de todo el proceso de diseño de la interfaz, donde se utilizarán las propiedades y conceptos vistos en este capítulo para formar los grafos de explicaciones.\\
