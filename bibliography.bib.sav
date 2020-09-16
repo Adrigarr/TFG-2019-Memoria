@@ -114,7 +114,7 @@
   publisher = {Morgan \& Claypool Publishers},
 }
 
-@InCollection{tintarev2011,
+@InCollection{tintarev2011designin,
   author    = {Tintarev, Nava and Masthoff, Judith},
   title     = {Designing and evaluating explanations for recommender systems},
   booktitle = {Recommender systems handbook},
