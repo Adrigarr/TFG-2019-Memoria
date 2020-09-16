@@ -8,7 +8,7 @@ El código fuente de la aplicación está alojado en el siguiente repositorio de
 
 \section{Procesamiento y manejo de la muestra}
 
-Partimos de una muestra (o \textbf{dataset}) de alrededor de 19 millones de líneas, obtenido a partir de la API de \textbf{Last.fm} \cite{lastfm}, una plataforma que almacena y proporciona mucho contenido musical. Constaba de los siguientes campos: \textbf{<user, timestamp, artist, song>}, los cuales hacen referencia al usuario que ha escuchado la canción, la fecha en la que fue escuchada, el nombre del artista y el título de la canción respectivamente.\\
+Partimos de una muestra (o \textbf{dataset}) de alrededor de 19 millones de líneas, obtenido a partir de la API de \textbf{Last.fm} \cite{lastfm}, una plataforma que almacena y proporciona gran cantidad de contenido musical. Constaba de los siguientes campos: \textbf{<user, timestamp, artist, song>}, los cuales hacen referencia al usuario que ha escuchado la canción, la fecha en la que fue escuchada, el nombre del artista y el título de la canción respectivamente.\\
 
 El primer paso fue hacer un pequeño estudio del dataset para hacernos una idea de cómo era nuestra muestra y qué podríamos sacar de ella. Se trataba de un dataset con muy pocos campos que no daba información ninguna sobre la canción o el artista, sino que solo proporcionaba un medio para poder obtenerla de una fuente externa. Hicimos una limpieza del dataset, ya que había numerosos valores que eran nulos en determinados campos o no tenían una codificación correcta.\\
 
@@ -18,11 +18,11 @@ En la librería de Wikidata, por motivos obvios, se debe poner como entrada de c
 
 El problema aquí es que para obtener el identificador del objeto, su nombre o título debía ser exacto al que aparecía en Wikidata, pues de cualquier otra forma se lanzaría una excepción. Por ejemplo, intentar obtener el identificador de la canción ``Don’t Stop me Now'' sería incorrecto, porque en Wikidata figura como ``Don’t Stop Me Now''. Debido a esto, es necesario hacer un parseo previo de cualquier String (o cadena de caracteres) que se vaya a utilizar como entrada.\\
 
-Finalmente decidimos crear una lista preseleccionada y parseada de las canciones más populares de todo el dataset. Para ello ordenamos las canciones del dataset por popularidad descendente, entendiendo como popularidad la cantidad de veces que aparecían en la muestra. Después elaboramos un script que recorría todas ellas, ejecutaba el parseo y finalmente comprobaba si era posible obtener los datos de Wikidata mediante una llamada a un método de la librería SPARQLWrapper que retornaba un objeto si se había encontrado información del artista o una excepción en caso contrario. Finalmente obtuvimos una lista con tuplas de canciones-artista con las que trabajar sabiendo que no íbamos a obtener fallos o excepciones(sin tener en cuenta la posible cantidad de datos que podríamos obtener de cada una de ellas).\\
+Finalmente decidimos crear una lista preseleccionada y parseada de las canciones más populares de todo el dataset. Para ello ordenamos las canciones del dataset por popularidad descendente, entendiendo como popularidad la cantidad de veces que aparecían en la muestra. Después recorrimos todas ellas, ejecutando un parseo y finalmente comprobamos si era posible obtener los datos de Wikidata. Comprobamos todos los casos de uso en los cuales se tomaban como entrada una canción con sus respectivos artistas (limpios) y recibíamos una respuesta exitosa o una excepción en caso contrario. Con este proceso pudimos obtener una lista con tuplas de canciones-artista exitosas con las que trabajar, sabiendo que no íbamos a obtener fallos o excepciones (sin tener en cuenta la posible cantidad de datos que podríamos obtener de cada una de ellas).\\
 
-Empezamos con un dataset de las 2500 canciones más populares y fuimos capaces de obtener la información de 1408 canciones con su determinado artista. Cabe señalar que en cada búsqueda de una canción se debe añadir su artista, pues hay varias canciones con el mismo título que no podrían diferenciarse de otro modo.\\
+Empezamos con un dataset de las 2500 canciones más populares y fuimos capaces de obtener la información de 421 canciones con sus determinados artistas. Cabe señalar el porqué de  incluir el artista en cada búsqueda ya que, dos canciones pueden tener el mismo título si son de artistas distintos.\\
 
-Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban. a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.
+Nuestra aplicación final funciona con este dataset limitado pero que cuenta con la seguridad de que se pueden obtener datos fiables sin importar la canción que se elija. Además, al haber escogido las canciones con mayor popularidad nos vamos a encontrar con mayor cantidad de datos ya que estas eran las que más documentadas estaban, a diferencia de las que estaban en la parte inferior del dataset, que eran muy poco conocidas y apenas se podían sacar datos valiosos sobre ellas.
 
 
 \section{Arquitectura de la aplicación}
@@ -71,7 +71,8 @@ Por último, el módulo ``helpers'' es un módulo auxiliar para el dibujo de los
 
 \subsection{Comunicación}
 
-La comunicación con el servidor de Wikidata, se hace mediante el módulo ``model''. Este módulo se encarga de establecer la conexión con el punto de consultas de Wikidata para poder iniciar las consultas y recoger los datos devueltos. Como punto principal, encontramos la librería que nos ha permitido todas estas funciones SPARQLWrapper. Esta librería hace las funciones principales de establecer queries, crear un canal de conexión, y recibir en formato JSON, XML o CSV los datos obtenidos a partir de las mismas.\\
+La comunicación con el servidor de Wikidata, se hace mediante el módulo ``model''. Este módulo se encarga de establecer la conexión con el punto de consultas de Wikidata para poder iniciar las consultas y recoger los datos devueltos. Como punto principal, encontramos la librería que nos ha permitido todas estas funciones SPARQLWrapper. La librería SPARQLWrapper permite el intercambio de información con la API de Wikidata, la cuál está conectada a la base de datos. Permite búsquedas de menor a mayor complejidad aunque con un número de requests limitado. Nuestro modelo se va a encargar de obtener todas las propiedades requeridas sobre cada par canción-artista, clasificarla en función del nivel o categoría de cada una de ellas.\\
+
 
 La conexión será establecida cada vez que el usuario quiera hacer una comparación entre un par de canciones, es decir el servidor hace una llamada por cada caso de uso que se quiera probar.\\
 
@@ -89,7 +90,8 @@ La conexión será establecida cada vez que el usuario quiera hacer una comparac
 	\label{fig:respuestaWikidata}
 \end{figure}
 
-Una vez que obtengamos el objeto Sparql que devuelve el servidor de Wikidata ya podemos utilizarlo reiteradamente para poder mandar queries al servidor de Wikidata. Estas queries están predefinidas por las propiedades objeto de estudio y son las mismas para cada canción.\\
+Una vez que obtengamos el objeto Sparql que devuelve el servidor de Wikidata ya podemos utilizarlo reiteradamente para poder mandar búsquedas al servidor de Wikidata. Estas búsquedas están predefinidas previamente ya que, todas las propiedades que serán objeto de estudio, están recogidas en nuestro servidor y son las mismas para cada caso de uso. 
+\\
 
 \begin{figure}[h!]
 	\centering
@@ -98,10 +100,9 @@ Una vez que obtengamos el objeto Sparql que devuelve el servidor de Wikidata ya 
 	\label{fig:queriesServidor}
 \end{figure}
 
+Como acabamos de explicar, la entrada común para todo caso de uso en nuestro modelo de la aplicación, siempre es la misma: El par de canciones y el conjunto de propiedades que se va a estudiar sobre ellas para poder hallar las explicaciones. Las propiedades junto con sus respectivos códigos de búsqueda están guardados en formato JSON y CSV, los cuáles al inicio del proceso, serán reconvertidos en diccionarios para poderlos procesar con las clases del modelo. Todas consultas realizadas son devueltas en formato JSON, el cuál es transformado a dataframe para poder operar más fácilmente con toda la información recogida.\\
 
-La entrada común para todo caso de uso en nuestro modelo de la aplicación para un determinado caso de uso, siempre es la misma: El par de canciones y el conjunto de propiedades que se va a estudiar sobre ellas para poder hallar las explicaciones. Esta información está guardada en formatos JSON y CSV, los cuáles al inicio del proceso, serán convertidos en diccionarios para poderlos procesar con las clases del modelo en Python.\\
-
-Contamos con una jerarquía de clases, las cuales completan el módulo de conexión. Se encargarán de procesar las repuestas del servidor y crear progresivamente a medida que nos llegan respuestas varios documento que contengan todas las propiedades de cada canción y las relacione entre sí para poder obtener un grafo representable.\\
+Contamos con una jerarquía de clases, las cuáles completan el módulo de conexión. Se encargarán de procesar las repuestas del servidor y crear progresivamente, a medida que nos llegan respuestas, varios documentos que contengan todas las propiedades de cada canción y las relacionen entre sí para poder obtener un grafo representable.\\
 
 \section{Extensibilidad de la aplicación}
 
@@ -182,7 +183,7 @@ Este ha sido el procesador de textos elegido para la realización de este docume
 
 \subsection*{TeXiS}
 
-TeXiS es una plantilla de \LaTeX para Tesis, Trabajos de Fin de Máster y otros documentos desarrollada por Marco Antonio y Pedro Pablo Gómez Martín. Es la plantilla que se ha usado como base para construir este documento y ha resultado de gran ayuda tanto para cuestiones de organización como para aprender a usar varias funcionalidades de \LaTeX, lo cual ha sido muy importante debido a nuestra falta de experiencia previa a este proyecto.
+TeXiS es una plantilla de LaTeX para Tesis, Trabajos de Fin de Máster y otros documentos desarrollada por Marco Antonio y Pedro Pablo Gómez Martín. Es la plantilla que se ha usado como base para construir este documento y ha resultado de gran ayuda tanto para cuestiones de organización como para aprender a usar varias funcionalidades de LaTeX, lo cual ha sido muy importante debido a nuestra falta de experiencia previa a este proyecto.
 
 \subsection{Tecnologías y herramientas descartadas}
 
