@@ -92,7 +92,7 @@
 @Misc{alchemyjs,
   title = {{A}lchemy.js},
   note  = {Accessed 11-September-2020. URL: https://graphalchemist.github.io/Alchemy},
-  url   = {https://graphalchemist.github.io/Alchemy},
+  url   = {https://graphalchemist.github.io/Alchemy/#},
 }
 
 @InCollection{codina2006,
