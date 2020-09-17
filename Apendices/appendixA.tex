@@ -19,7 +19,7 @@ Centrándose en la representación de los grafos, investigó varias librerías d
 
 Pasando a la elaboración de este documento de Memoria, Adrián ha hecho numerosas aportaciones. Utilizó \LaTeX y concretamente la plantilla TeXiS para dar formato y coherencia al documento, además de encargarse de la gestión de las referencias bibliográficas gracias al uso del programa JabRef. \\
 
-Escribió íntegramente el Resumen y el Capítulo~\ref{cap:interfaz}. Diseño de la interfaz de explicaciones debido al desarrollo realizado en la interfaz, además de hacer todas las traducciones al inglés encontradas en el Capítulo~\ref{cap:introduction}. Introduction y \ref{cap:conclusions}. Conclusions and Future Work. \\
+Escribió íntegramente el Resumen y el Capítulo~\ref{cap:interfaz}. Diseño de la interfaz de explicaciones debido al desarrollo realizado en la interfáz, además de hacer todas las traducciones al inglés encontradas en el Capítulo~\ref{cap:introduction}. Introduction y \ref{cap:conclusions}. Conclusions and Future Work. \\
 
 
 En el Capítulo~\ref{cap:implementacion}. Implementación se encargó de buena parte de la sección de Arquitectura de la aplicación y  también añadió una lista de herramientas y tecnologías estudiadas durante el desarrollo de la aplicación al final de este mismo capítulo. \\
@@ -31,14 +31,22 @@ Por último, hizo grandes contribuciones a los capítulos \ref{cap:introduccion}
 
 \section{Diego Sánchez Muniesa}
 
-Inicialmente, comencé estudiando todo lo que hace referencia al estudio del arte y sus principales conceptos: ¿Qué es la Web Semántica?, ¿qué es el concepto de Linked Data y como se relacionan?, ¿cómo se estructuran los datos y cómo acceder a ellos? y demás información referente al estado del arte.\\
+Inicialmente, comenzó estudiando todo lo que hace referencia al estudio del arte y sus principales conceptos: ¿Qué es la Web Semántica?, ¿qué es el concepto de Linked Data y como se relacionan?, ¿cómo se estructuran los datos y cómo acceder a ellos? y demás información referente al estado de la cuestión.\\
 
-Posteriormente, estuve investigando posibles opciones a elegir para poder establecer la base de datos que íbamos a usar, junto a su correspondiente plataforma o API final. Era obviamente necesario que mantuviese un modelo RDF para poder crear relaciones o links entre toda la información que necesitábamos relacionar. Entre ellas he podido testear principalmente DBpedia y MusicBrainz hasta que finalmente optamos por lo que consideramos la mejor opción: Wikidata.\\
+Posteriormente, estuvo investigando posibles opciones a elegir para poder establecer la base de datos que íbamos a usar, junto a su correspondiente plataforma o API final. Era obviamente necesario que mantuviese un modelo RDF para poder crear relaciones o links entre toda la información que necesitábamos relacionar. Entre ellas ha podido testear principalmente DBpedia y MusicBrainz hasta que finalmente optamos por lo que consideramos la mejor opción: Wikidata.\\
 
-Una vez seleccionada la base de datos que íbamos a usar en el proyecto, comencé a crear un conjunto de queries que nos brindasen información sobre canciones aleatorias, con el propósito de obtener soltura y experiencia con el lenguaje SparQL y su aplicación en Wikidata ya que tiene un manejo diferente a otras bases de datos.\\
+Una vez seleccionada la base de datos que íbamos a usar en el proyecto, creó un conjunto de procesos de búsqueda que nos brindasen información sobre canciones individuales, con el propósito de obtener soltura y experiencia con el lenguaje SparQL y su aplicación en Wikidata ya que tiene un manejo diferente a otras bases de datos.\\
 
-Más tarde, me encargué de pensar un sistema que pudiese unir diferentes explicaciones de forma que, al aplicar un proceso de obtención de datos, estos pudiesen almacenarse ordenada y jerárquicamente en nodos y aristas. Esta necesidad era un punto clave ya que de no tener una estructura adecuada, la representación gráfica sería perjudicada. Con queries individuales no podría hacerse un trabajo complejo y eficiente. El primer punto fue la modificación de las prestaciones de la librería de SparqlWrapper en un módulo el cuál nos permitía la conexión con la API de Wikidata y el manejo de queries y sus respectivas respuestas. Alrededor de ese módulo se creó el modelo de la aplicación, haciendo un estudio de todas las explicaciones que nos habíamos fijado en un proceso en el cuál, se reciben dos canciones de entrada y en consecuencia, se inicia un proceso encargado de hacer todo el estudio secuencialmente hasta crear un esquema de todo lo compartido por ambas canciones.\\
+Se ha encargado de pensar un sistema que pudiese unir diferentes explicaciones de forma que, al aplicar un proceso de obtención de datos, estos pudiesen almacenarse ordenada y jerárquicamente en nodos y aristas. Esta necesidad era un punto clave ya que de no tener una estructura adecuada, la representación gráfica sería perjudicada. El primer punto fue la modificación de las prestaciones de la librería de SparqlWrapper en un módulo el cuál nos permitía la conexión con la API de Wikidata y el manejo de queries y sus respectivas respuestas. Alrededor de ese módulo se creó el modelo de la aplicación, haciendo un estudio de todas las explicaciones que nos habíamos fijado en un conjunto de procesos secuenciales que creasen un estudio completo sobre dos canciones.\\
 
-Después elaboré un pre-procesado de la lista inicial de canciones de LastFM el cual contaba con una larga lista de alrededor de 19 millones de canciones, muchas de ellas, repetidas o con valores incorrectos y nulos. Quedó un final de 421 canciones, después de un tratado de sus caracteres y de hacer el testeo de que podíamos obtener información relevante sobre ellas en Wikidata.\\
+Después elaboró un pre-procesado de la lista inicial de canciones de LastFM el cual contaba con una larga lista de alrededor de 19 millones de canciones, muchas de ellas, repetidas o con valores incorrectos y nulos, haciendo testeos de las mismas hasta alcanzar un datasource correcto que pudiera trabajar sin errores con la API de Wikidata.\\
 
-Por último, me encargué de elaborar pruebas del modelo y sus consiguientes actualizaciones a medida que obteníamos distintos datos en diferentes casos de uso, ya que, no siempre el formato de los datos recogidos era el correcto o a veces surgían excepciones por la falta de ellos en la base de datos.\\
+Por último, se encargó de elaborar pruebas del modelo y sus consiguientes actualizaciones a medida que obteníamos distintos datos en diferentes casos de uso, ya que, no siempre el formato de los datos recogidos era el correcto o a veces surgían excepciones por la falta de ellos en la base de datos.\\
+
+En cuanto a la redacción de la memoria, ha participado en los siguientes capítulos:\\
+
+Colaboración en los capítulos Capítulo~\ref{cap:introduction}. Introduction , \ref{cap:conclusions} y \ref{cap:explicaciones}. Conclusions and Future Work, en forma de revisiones y redacción de partes de los mismos.\\
+
+Elaboración del capítulo \ref{cap:estadoDeLaCuestion}. Estado de la Cuestión y parte del capítulo~\ref{cap:implementacion}. Implementación elaborando del módulo de conexión.
+
+
