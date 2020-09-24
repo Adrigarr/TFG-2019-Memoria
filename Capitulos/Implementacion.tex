@@ -71,7 +71,7 @@ Por último, el módulo ``helpers'' es un módulo auxiliar para el dibujo de los
 
 \subsection{Comunicación}
 
-La comunicación con el servidor de Wikidata, se hace mediante el módulo ``model''. Este módulo se encarga de establecer la conexión con el punto de consultas de Wikidata para poder iniciar las consultas y recoger los datos devueltos. Como punto principal, encontramos la librería que nos ha permitido todas estas funciones SPARQLWrapper. La librería SPARQLWrapper permite el intercambio de información con la API de Wikidata, la cual está conectada a la base de datos. Permite búsquedas de menor a mayor complejidad aunque con un número de requests limitado. Nuestro modelo se va a encargar de obtener todas las propiedades requeridas sobre cada par canción-artista, clasificarla en función del nivel o categoría de cada una de ellas.\\
+La comunicación con el servidor de Wikidata, se hace mediante el módulo ``model''. Este módulo se encarga de establecer la conexión con el punto de consultas de Wikidata para poder iniciar las consultas y recoger los datos devueltos. Como punto principal, encontramos la librería que nos ha permitido todas estas funciones SPARQLWrapper. La librería SPARQLWrapper permite el intercambio de información con la API de Wikidata, la cual está conectada a la base de datos. Permite búsquedas de menor a mayor complejidad aunque con un número de peticiones limitado. Nuestro modelo se va a encargar de obtener todas las propiedades requeridas sobre cada par canción-artista, clasificarla en función del nivel o categoría de cada una de ellas.\\
 
 
 La conexión será establecida cada vez que el usuario quiera hacer una comparación entre un par de canciones, es decir el servidor hace una llamada por cada caso de uso que se quiera probar.\\
@@ -112,7 +112,7 @@ Poniendo un ejemplo, imaginemos que Wikidata implementa nuevas propiedades y có
 
 En cuanto a la extensibilidad del DataSource de canciones y artistas, si necesitásemos añadir una nueva canción de un determinado artista, sería un caso distinto. Toda tupla canción-artista, debe sufrir un parseo y test previo a su adición al datasource. Esta no es una función que se pueda lanzar desde el main de la aplicación porque no está pensada para que los usuarios puedan añadir canciones a voluntad por motivos de compatibilidad con la sintaxis y el manejo que Wikidata hace sobre sus datos. Hay varios motivos como por ejemplo, el que la canción deseada no se encuentre en la base de datos de Wikidata o también que las letras iniciales de cada palabra estén guardadas en mayúsculas.\\
 
-\section{Tecnologías y Herramientas utilizadas}
+\section{Tecnologías y herramientas utilizadas}
 \label{sec:tecnologias}
 
 Para la elaboración de este proyecto hemos tenido que estudiar numerosas tecnologías y herramientas diferentes. Algunas de ellas son viejas conocidas mientras que otras son completamente nuevas para nosotros y hemos tenido que familiarizarnos con ellas para poder trabajar con ellas.\\
